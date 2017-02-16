@@ -1,4 +1,4 @@
-package com.danikula.videocache.demo;
+package com.biz;
 
 import android.app.Application;
 import android.content.Context;

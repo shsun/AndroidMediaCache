@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
-    package="com.danikula.videocache.demo"
+    package="com.biz"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -13,17 +13,52 @@
         android:label="@string/app_name"
         android:theme="@android:style/Theme.Holo.Light.NoActionBar">
         <activity
-            android:name=".MenuActivity_"
+            android:name="com.danikula.videocache.demo.MenuActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SingleVideoActivity_" />
-        <activity android:name=".MultipleVideosActivity_" />
-        <activity android:name=".VideoGalleryActivity_" />
-        <activity android:name=".SharedCacheActivity_" />
+        <activity android:name="com.danikula.videocache.demo.SingleVideoActivity" />
+        <activity android:name="com.danikula.videocache.demo.MultipleVideosActivity" />
+        <activity android:name="com.danikula.videocache.demo.VideoGalleryActivity" />
+        <activity android:name="com.danikula.videocache.demo.SharedCacheActivity" />
+
+        <activity
+            android:name="me.kaede.frescosample.samplelist.SampleListActivity"
+            android:label="Fresco GO!"
+            android:theme="@style/NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="me.kaede.frescosample.basicusage.BasicUsageActivity"
+            android:label="Basic Usage"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name="me.kaede.frescosample.gif.GifActivity"
+            android:label="Animation Image" />
+        <activity android:name="me.kaede.frescosample.lowres.LowResActivity" />
+        <activity android:name="me.kaede.frescosample.listener.ListenerActivity" />
+        <activity android:name="me.kaede.frescosample.progressivejpg.ProgressiveJPGActivity" />
+        <activity android:name="me.kaede.frescosample.resize.ResizeActivity" />
+        <activity android:name="me.kaede.frescosample.postprocessor.PostprocessorActivity" />
+        <activity android:name="me.kaede.frescosample.listview.ListViewActivity" />
+        <activity
+            android:name="me.kaede.frescosample.recyclerview.RecyclerViewActivity"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name="me.kaede.frescosample.photoview.PhotoViewActivity"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name="me.kaede.frescosample.subsampling.SubsamplingActvity"
+            android:theme="@style/NoActionBar" />
+        <activity android:name="me.kaede.frescosample.gifimageview.GifImageViewActivity" />
+        <activity android:name="me.kaede.frescosample.snippet.SnippetActivity" android:label="Code Snippet"></activity>
+
     </application>
 
 </manifest>
