@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import me.kaede.frescosample.ImageApi;
-import me.kaede.frescosample.R;
+import com.biz.R;
 
 public class ListViewActivity extends AppCompatActivity {
 

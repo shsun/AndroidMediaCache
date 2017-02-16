@@ -6,10 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import com.facebook.drawee.view.SimpleDraweeView;
-import me.kaede.frescosample.R;
+
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.biz.R;
 
 /**
  * Created by kaede on 2015/10/22.

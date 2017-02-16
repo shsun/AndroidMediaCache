@@ -3,8 +3,10 @@ package me.kaede.frescosample.snippet;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import me.kaede.frescosample.R;
+
 import me.kaede.widget.markdownview.MarkdownView;
+
+import com.biz.R;
 
 public class SnippetActivity extends AppCompatActivity {
 

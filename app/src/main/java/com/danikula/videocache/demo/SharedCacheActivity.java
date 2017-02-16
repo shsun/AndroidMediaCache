@@ -5,6 +5,8 @@ import android.support.v4.app.FragmentActivity;
 
 import org.androidannotations.annotations.EActivity;
 
+import com.biz.R;
+
 @EActivity(R.layout.activity_multiple_videos)
 public class SharedCacheActivity extends FragmentActivity {
 

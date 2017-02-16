@@ -11,7 +11,8 @@ import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.imagepipeline.request.ImageRequest;
 import me.kaede.frescosample.ImageApi;
-import me.kaede.frescosample.R;
+
+import com.biz.R;
 
 public class LowResActivity extends AppCompatActivity {
 

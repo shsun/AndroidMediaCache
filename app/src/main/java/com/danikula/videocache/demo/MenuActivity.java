@@ -18,6 +18,8 @@ import org.androidannotations.annotations.ViewById;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import com.biz.R;
+
 
 @EActivity(R.layout.activity_menu)
 public class MenuActivity extends FragmentActivity {
@@ -33,10 +35,10 @@ public class MenuActivity extends FragmentActivity {
     @NonNull
     private List<ListEntry> buildListData() {
         return Arrays.asList(
-                new ListEntry("Single Video", SingleVideoActivity_.class),
-                new ListEntry("Multiple Videos", MultipleVideosActivity_.class),
-                new ListEntry("Video Gallery with pre-caching", VideoGalleryActivity_.class),
-                new ListEntry("Shared Cache", SharedCacheActivity_.class)
+                new ListEntry("Single Video", SingleVideoActivity.class),
+                new ListEntry("Multiple Videos", MultipleVideosActivity.class),
+                new ListEntry("Video Gallery with pre-caching", VideoGalleryActivity.class),
+                new ListEntry("Shared Cache", SharedCacheActivity.class)
         );
     }
 

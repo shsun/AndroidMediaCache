@@ -8,11 +8,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import me.kaede.frescosample.ImageApi;
-import me.kaede.frescosample.R;
+
 import me.kaede.util.fresco.photoview.HackyViewPager;
 import me.kaede.util.fresco.photoview.PhotoView;
 
 import java.util.List;
+
+import com.biz.R;
 
 public class PhotoViewActivity extends AppCompatActivity {
 

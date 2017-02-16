@@ -20,6 +20,9 @@ import org.androidannotations.annotations.ViewById;
 
 import java.io.File;
 
+import com.biz.R;
+import com.biz.App;
+
 @EFragment(R.layout.fragment_video)
 public class VideoFragment extends Fragment implements CacheListener {
 
@@ -39,7 +42,7 @@ public class VideoFragment extends Fragment implements CacheListener {
     }
 
     public static Fragment build(String url, String cachePath) {
-        return VideoFragment_.builder()
+        return VideoFragment.builder()
                 .url(url)
                 .cachePath(cachePath)
                 .build();

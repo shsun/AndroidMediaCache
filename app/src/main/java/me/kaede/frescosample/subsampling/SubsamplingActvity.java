@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import me.kaede.frescosample.ImageApi;
-import me.kaede.frescosample.R;
+
 import me.kaede.util.fresco.subscaleview.SubsamplingScaleImageView;
+
+import com.biz.R;
 
 public class SubsamplingActvity extends AppCompatActivity {
 

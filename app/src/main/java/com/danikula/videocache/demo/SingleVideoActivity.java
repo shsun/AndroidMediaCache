@@ -3,7 +3,11 @@ package com.danikula.videocache.demo;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
+import com.biz.R;
+
 import org.androidannotations.annotations.EActivity;
+
+
 
 @EActivity(R.layout.activity_single_video)
 public class SingleVideoActivity extends FragmentActivity {

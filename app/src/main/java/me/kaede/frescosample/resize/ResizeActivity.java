@@ -14,7 +14,9 @@ import com.facebook.imagepipeline.common.ResizeOptions;
 import com.facebook.imagepipeline.request.ImageRequest;
 import com.facebook.imagepipeline.request.ImageRequestBuilder;
 import me.kaede.frescosample.ImageApi;
-import me.kaede.frescosample.R;
+
+
+import com.biz.R;
 
 public class ResizeActivity extends AppCompatActivity {
 

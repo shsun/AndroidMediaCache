@@ -8,12 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.sshsun.cnbusinessmagazine.R;
+import com.biz.R;
+
 
 /**
  * Created by shsun on 17/1/11.
  */
 public class ItemFragment extends Fragment {
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

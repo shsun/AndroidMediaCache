@@ -66,7 +66,6 @@ import com.facebook.imagepipeline.memory.PooledByteBuffer;
 import com.facebook.imagepipeline.memory.PooledByteBufferInputStream;
 import com.facebook.imagepipeline.request.ImageRequest;
 import com.facebook.imagepipeline.request.ImageRequestBuilder;
-import me.kaede.frescosample.R.styleable;
 import me.kaede.util.fresco.AndroidUtils;
 import me.kaede.util.fresco.CustomProgressbarDrawable;
 import me.kaede.util.fresco.cache.FileCache;

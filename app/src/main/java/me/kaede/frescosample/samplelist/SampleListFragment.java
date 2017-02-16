@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import me.kaede.frescosample.R;
+
 import me.kaede.frescosample.basicusage.BasicUsageActivity;
 import me.kaede.frescosample.gif.GifActivity;
 import me.kaede.frescosample.gifimageview.GifImageViewActivity;
@@ -22,6 +22,8 @@ import me.kaede.frescosample.progressivejpg.ProgressiveJPGActivity;
 import me.kaede.frescosample.recyclerview.RecyclerViewActivity;
 import me.kaede.frescosample.resize.ResizeActivity;
 import me.kaede.frescosample.subsampling.SubsamplingActvity;
+
+import com.biz.R;
 
 /**
  * Created by kaede on 2015/10/23.

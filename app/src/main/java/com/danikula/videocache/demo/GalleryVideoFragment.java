@@ -19,6 +19,10 @@ import org.androidannotations.annotations.ViewById;
 
 import java.io.File;
 
+
+import com.biz.App;
+import com.biz.R;
+
 @EFragment(R.layout.fragment_video)
 public class GalleryVideoFragment extends Fragment implements CacheListener {
 

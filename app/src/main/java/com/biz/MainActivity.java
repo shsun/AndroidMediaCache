@@ -43,7 +43,7 @@ public class MainActivity extends Activity implements OnPageChangeListener {
         this.mGoHomePageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, com.sshsun.cnbusinessmagazine.homepage.HomePageActivity.class);
+                Intent intent = new Intent(MainActivity.this, com.biz.homepage.HomePageActivity.class);
                 MainActivity.this.startActivity(intent);
             }
         });

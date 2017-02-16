@@ -9,8 +9,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v7.widget.RecyclerView;
 
-import com.sshsun.cnbusinessmagazine.R;
-import com.sshsun.cnbusinessmagazine.core.AbstractBasicFragment;
+import com.biz.R;
+import com.biz.core.AbstractBasicFragment;
 
 /**
  * Created by shsun on 17/1/12.

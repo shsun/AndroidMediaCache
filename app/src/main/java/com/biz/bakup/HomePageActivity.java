@@ -15,14 +15,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.sshsun.cnbusinessmagazine.R;
 import com.viewpagerindicator.PageIndicator;
 import com.viewpagerindicator.TabPageIndicator;
 
 import android.support.v4.view.ViewPager;
 
 import com.shsunframework.utils.MathUtils;
-import com.sshsun.cnbusinessmagazine.net.BMServer;
+import com.biz.net.BMServer;
+
+import com.biz.R;
 
 /**
  *

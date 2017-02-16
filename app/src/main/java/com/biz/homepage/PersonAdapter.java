@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import com.biz.App;
+import com.biz.R;
 
 /**
  * Created by shsun on 17/1/18.

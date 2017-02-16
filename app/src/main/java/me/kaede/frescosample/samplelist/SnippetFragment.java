@@ -13,8 +13,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.kaede.frescosample.R;
+
 import me.kaede.frescosample.snippet.SnippetActivity;
+
+import com.biz.R;
 
 /**
  * Created by kaede on 2015/10/23.

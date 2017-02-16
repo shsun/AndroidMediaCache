@@ -1,12 +1,11 @@
 package com.biz.bakup;
 
-import com.sshsun.cnbusinessmagazine.R;
-
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.biz.R;
 import com.viewpagerindicator.IconPagerAdapter;
 
 class NewsTabPagerAdapter extends FragmentPagerAdapter implements IconPagerAdapter {

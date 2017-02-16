@@ -1,0 +1,44 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        <LinearLayout
+            android:id="@+id/viewGroup"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal" >
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_go_homepage"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="立即体验"
+            android:textSize="30dp"
+            android:textColor="@color/tomato"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="180dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:textStyle="normal|bold"
+            android:textAllCaps="false"
+            android:textAlignment="center"
+            android:fontFamily="sans-serif"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:elevation="0dp"
+            android:visibility="invisible">
+        </Button>
+    </RelativeLayout>
+</FrameLayout>

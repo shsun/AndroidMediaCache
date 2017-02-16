@@ -8,10 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import me.kaede.frescosample.ImageApi;
-import me.kaede.frescosample.R;
+
 
 import java.util.List;
 
+import com.biz.R;
 
 public class RecyclerViewFragment extends Fragment{
 	private static final String BUNDLE_INDEX = "BUNDLE_INDEX";

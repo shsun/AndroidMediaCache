@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.sshsun.cnbusinessmagazine.core.AbstractBasicFragment;
+import com.biz.core.AbstractBasicFragment;
 
 /**
  * Created by shsun on 17/1/12.

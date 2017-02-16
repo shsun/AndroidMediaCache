@@ -12,6 +12,8 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
+import com.biz.R;
+
 @EActivity(R.layout.activity_video_gallery)
 public class VideoGalleryActivity extends FragmentActivity {
 

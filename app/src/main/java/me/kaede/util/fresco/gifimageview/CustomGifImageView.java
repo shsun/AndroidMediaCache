@@ -28,11 +28,12 @@ import com.facebook.imagepipeline.request.ImageRequestBuilder;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 
-import me.kaede.frescosample.R;
+
 import me.kaede.util.fresco.CustomProgressbarDrawable;
 import me.kaede.util.fresco.ImageDownloadListener;
 import pl.droidsonroids.gif.GifDrawable;
 import pl.droidsonroids.gif.GifImageView;
+import com.biz.R;
 
 /**
  * Created by 06peng on 15/6/28.
