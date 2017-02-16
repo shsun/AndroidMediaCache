@@ -1,4 +1,4 @@
-package com.danikula.videocache.sample;
+package com.danikula.videocache.demo;
 
 import android.content.Context;
 import android.os.Handler;

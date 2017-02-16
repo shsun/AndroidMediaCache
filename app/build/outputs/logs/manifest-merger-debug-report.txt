@@ -2,7 +2,7 @@
 manifest
 ADDED from /Users/baidu/repos/AndroidMediaCache/app/src/main/AndroidManifest.xml:2:1-29:12
 	package
-		ADDED from /Users/baidu/repos/AndroidMediaCache/app/src/main/AndroidManifest.xml:3:5-45
+		ADDED from /Users/baidu/repos/AndroidMediaCache/app/src/main/AndroidManifest.xml:3:5-43
 		INJECTED from /Users/baidu/repos/AndroidMediaCache/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/baidu/repos/AndroidMediaCache/app/src/main/AndroidManifest.xml
 	android:versionName
@@ -35,7 +35,7 @@ MERGED from [com.danikula:videocache:2.6.4] /Users/baidu/repos/AndroidMediaCache
 		ADDED from /Users/baidu/repos/AndroidMediaCache/app/src/main/AndroidManifest.xml:14:9-68
 	android:name
 		ADDED from /Users/baidu/repos/AndroidMediaCache/app/src/main/AndroidManifest.xml:10:9-28
-activity#com.danikula.videocache.sample.MenuActivity_
+activity#com.danikula.videocache.demo.MenuActivity_
 ADDED from /Users/baidu/repos/AndroidMediaCache/app/src/main/AndroidManifest.xml:15:9-22:20
 	android:label
 		ADDED from /Users/baidu/repos/AndroidMediaCache/app/src/main/AndroidManifest.xml:17:13-45
@@ -51,19 +51,19 @@ category#android.intent.category.LAUNCHER
 ADDED from /Users/baidu/repos/AndroidMediaCache/app/src/main/AndroidManifest.xml:20:17-77
 	android:name
 		ADDED from /Users/baidu/repos/AndroidMediaCache/app/src/main/AndroidManifest.xml:20:27-74
-activity#com.danikula.videocache.sample.SingleVideoActivity_
+activity#com.danikula.videocache.demo.SingleVideoActivity_
 ADDED from /Users/baidu/repos/AndroidMediaCache/app/src/main/AndroidManifest.xml:23:9-58
 	android:name
 		ADDED from /Users/baidu/repos/AndroidMediaCache/app/src/main/AndroidManifest.xml:23:19-55
-activity#com.danikula.videocache.sample.MultipleVideosActivity_
+activity#com.danikula.videocache.demo.MultipleVideosActivity_
 ADDED from /Users/baidu/repos/AndroidMediaCache/app/src/main/AndroidManifest.xml:24:9-61
 	android:name
 		ADDED from /Users/baidu/repos/AndroidMediaCache/app/src/main/AndroidManifest.xml:24:19-58
-activity#com.danikula.videocache.sample.VideoGalleryActivity_
+activity#com.danikula.videocache.demo.VideoGalleryActivity_
 ADDED from /Users/baidu/repos/AndroidMediaCache/app/src/main/AndroidManifest.xml:25:9-59
 	android:name
 		ADDED from /Users/baidu/repos/AndroidMediaCache/app/src/main/AndroidManifest.xml:25:19-56
-activity#com.danikula.videocache.sample.SharedCacheActivity_
+activity#com.danikula.videocache.demo.SharedCacheActivity_
 ADDED from /Users/baidu/repos/AndroidMediaCache/app/src/main/AndroidManifest.xml:26:9-58
 	android:name
 		ADDED from /Users/baidu/repos/AndroidMediaCache/app/src/main/AndroidManifest.xml:26:19-55

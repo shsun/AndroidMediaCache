@@ -1,4 +1,4 @@
-package com.danikula.videocache.sample;
+package com.danikula.videocache.demo;
 
 import android.app.Application;
 import android.content.Context;
@@ -18,6 +18,15 @@ public class App extends Application {
     }
 
     private HttpProxyCacheServer newProxy() {
-        return new HttpProxyCacheServer(this);
+//        return new HttpProxyCacheServer(this);
+
+        // limit total count of files in cache:
+//        return new HttpProxyCacheServer.Builder(this)
+//                .maxCacheFilesCount(20)
+//                .build();
+
+        return new HttpProxyCacheServer.Builder(this)
+                .maxCacheSize(1024 * 1024 * 1024)       // 100 M for cache
+                .build();
     }
 }
