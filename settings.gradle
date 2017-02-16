@@ -1,1 +1,1 @@
-include ':sample', ':library', ':test'
+include ':app', ':lib_videocache', ':lib_videocache_test'
