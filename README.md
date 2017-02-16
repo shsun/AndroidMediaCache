@@ -1,1 +1,2 @@
-# AndroidMediaCache
+
+based on AndroidVideoCache
