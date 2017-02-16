@@ -24,6 +24,7 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName '1.0'
+        multiDexEnabled true
     }
 }
 
@@ -40,5 +41,6 @@ dependencies {
     compile 'org.androidannotations:androidannotations-api:3.3.2'
     compile 'com.danikula:videocache:2.6.4'
     compile 'com.viewpagerindicator:library:2.4.2-SNAPSHOT@aar'
+
     apt 'org.androidannotations:androidannotations:3.3.2'
 }

@@ -1,6 +1,7 @@
 package com.danikula.videocache;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.danikula.videocache.sourcestorage.SourceInfoStorage;
 import com.danikula.videocache.sourcestorage.SourceInfoStorageFactory;
@@ -28,7 +29,9 @@ import static java.net.HttpURLConnection.HTTP_SEE_OTHER;
  *
  * @author Alexey Danilov (danikula@gmail.com).
  */
-public class HttpUrlSource implements Source {
+public class HttpUrlSource extends UrlSource {
+
+    private static final String LOG_TAG = "HttpUrlSource";
 
     private static final Logger LOG = LoggerFactory.getLogger("HttpUrlSource");
 
@@ -42,24 +45,50 @@ public class HttpUrlSource implements Source {
         this(url, SourceInfoStorageFactory.newEmptySourceInfoStorage());
     }
 
-    public HttpUrlSource(String url, SourceInfoStorage sourceInfoStorage) {
-        this.sourceInfoStorage = checkNotNull(sourceInfoStorage);
-        SourceInfo sourceInfo = sourceInfoStorage.get(url);
+    public HttpUrlSource(String url, SourceInfoStorage storage) {
+        super(url);
+        this.sourceInfoStorage = checkNotNull(storage);
+        SourceInfo sourceInfo = storage.get(url);
         this.sourceInfo = sourceInfo != null ? sourceInfo :
                 new SourceInfo(url, Integer.MIN_VALUE, ProxyCacheUtils.getSupposablyMime(url));
     }
 
     public HttpUrlSource(HttpUrlSource source) {
+        super(source);
         this.sourceInfo = source.sourceInfo;
         this.sourceInfoStorage = source.sourceInfoStorage;
     }
 
+    public HttpUrlSource(IMimeCache mimeCache, String url) {
+        this(url);
+    }
+
+    public HttpUrlSource(IMimeCache mimeCache, String url, SourceInfoStorage sourceInfoStorage) {
+        this(url, sourceInfoStorage);
+    }
+
+    public HttpUrlSource(IMimeCache mimeCache, HttpUrlSource source) {
+        this(source);
+    }
+
+
+    //    @Override
+//    public synchronized int length() throws ProxyCacheException {
+//        if (sourceInfo.length == Integer.MIN_VALUE) {
+//            fetchContentInfo();
+//        }
+//        return sourceInfo.length;
+//    }
+//
     @Override
     public synchronized int length() throws ProxyCacheException {
-        if (sourceInfo.length == Integer.MIN_VALUE) {
+        if (length == Integer.MIN_VALUE) {
+            tryLoadMimeCache();
+        }
+        if (length == Integer.MIN_VALUE) {
             fetchContentInfo();
         }
-        return sourceInfo.length;
+        return length;
     }
 
     @Override
@@ -115,9 +144,14 @@ public class HttpUrlSource implements Source {
         HttpURLConnection urlConnection = null;
         InputStream inputStream = null;
         try {
-            urlConnection = openConnection(0, 10000);
+            // urlConnection = openConnection(0, 10000);
+            urlConnection = openConnectionForHeader(10000);
+
             int length = urlConnection.getContentLength();
             String mime = urlConnection.getContentType();
+            //将数据放入缓存
+            tryPutMimeCache();
+
             inputStream = urlConnection.getInputStream();
             this.sourceInfo = new SourceInfo(sourceInfo.url, length, mime);
             this.sourceInfoStorage.put(sourceInfo.url, sourceInfo);
@@ -131,6 +165,7 @@ public class HttpUrlSource implements Source {
             }
         }
     }
+
 
     private HttpURLConnection openConnection(int offset, int timeout) throws IOException, ProxyCacheException {
         HttpURLConnection connection;
@@ -161,11 +196,67 @@ public class HttpUrlSource implements Source {
         return connection;
     }
 
+
+    private HttpURLConnection openConnectionForHeader(int timeout) throws IOException, ProxyCacheException {
+        HttpURLConnection connection;
+        boolean redirected;
+        int redirectCount = 0;
+        String url = this.url;
+        do {
+            Log.d(LOG_TAG, "Open connection for header to " + url);
+            connection = (HttpURLConnection) new URL(url).openConnection();
+            if (timeout > 0) {
+                connection.setConnectTimeout(timeout);
+                connection.setReadTimeout(timeout);
+            }
+            connection.setRequestMethod("HEAD");
+            int code = connection.getResponseCode();
+            redirected = code == HTTP_MOVED_PERM || code == HTTP_MOVED_TEMP || code == HTTP_SEE_OTHER;
+            if (redirected) {
+                url = connection.getHeaderField("Location");
+                Log.d(LOG_TAG, "Redirect to:" + url);
+                redirectCount++;
+                connection.disconnect();
+                Log.d(LOG_TAG, "Redirect closed:" + url);
+            }
+            if (redirectCount > MAX_REDIRECTS) {
+                throw new ProxyCacheException("Too many redirects: " + redirectCount);
+            }
+        } while (redirected);
+        return connection;
+    }
+
+    //    public synchronized String getMime() throws ProxyCacheException {
+//        if (TextUtils.isEmpty(sourceInfo.mime)) {
+//            fetchContentInfo();
+//        }
+//        return sourceInfo.mime;
+//    }
     public synchronized String getMime() throws ProxyCacheException {
-        if (TextUtils.isEmpty(sourceInfo.mime)) {
+        if (TextUtils.isEmpty(mime)) {
+            tryLoadMimeCache();
+        }
+        if (TextUtils.isEmpty(mime)) {
             fetchContentInfo();
         }
-        return sourceInfo.mime;
+        return mime;
+    }
+
+    private void tryLoadMimeCache() {
+        if (mimeCache != null) {
+            UrlMime urlMime = mimeCache.getMime(url);
+            if (urlMime != null && !TextUtils.isEmpty(urlMime.getMime()) && urlMime.getLength() != Integer.MIN_VALUE) {
+                this.mime = urlMime.getMime();
+                this.length = urlMime.getLength();
+            }
+        }
+    }
+
+
+    private void tryPutMimeCache() {
+        if (mimeCache != null) {
+            mimeCache.putMime(url, length, mime);
+        }
     }
 
     public String getUrl() {

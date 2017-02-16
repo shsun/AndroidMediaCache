@@ -37,13 +37,15 @@ idea {
 
 dependencies {
     compile 'org.slf4j:slf4j-android:1.7.21'
+    compile 'com.squareup.okio:okio:1.11.0'
+    compile 'com.squareup.okhttp:okhttp:2.7.5'
 }
 
 publish {
     userOrg = 'alexeydanilov'
     groupId = 'com.danikula'
-    artifactId = 'videocache'
+    artifactId = 'mediacache'
     publishVersion = android.defaultConfig.versionName
     description = 'Cache support for android VideoView'
-    website = 'https://github.com/danikula/AndroidVideoCache'
+    website = 'https://github.com/shsun/AndroidMediaCache'
 }
