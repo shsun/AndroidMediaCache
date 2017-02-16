@@ -42,10 +42,7 @@ public class VideoFragment extends Fragment implements CacheListener {
     }
 
     public static Fragment build(String url, String cachePath) {
-        return VideoFragment.builder()
-                .url(url)
-                .cachePath(cachePath)
-                .build();
+        return build(url, cachePath);
     }
 
     @AfterViews
