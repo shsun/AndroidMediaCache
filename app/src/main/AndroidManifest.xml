@@ -34,6 +34,7 @@
         <activity android:name="com.danikula.videocache.demo.VideoGalleryActivity_" />
         <activity android:name="com.danikula.videocache.demo.SharedCacheActivity_" />
         <activity android:name="com.danikula.videocache.demo.MenuActivity_" />
+        <!--
         <activity
             android:name="me.kaede.frescosample.samplelist.SampleListActivity"
             android:label="Fresco GO!"
@@ -43,6 +44,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        -->
+        <activity android:name="me.kaede.frescosample.samplelist.SampleListActivity"></activity>
+        
         <activity
             android:name="me.kaede.frescosample.basicusage.BasicUsageActivity"
             android:label="Basic Usage"
