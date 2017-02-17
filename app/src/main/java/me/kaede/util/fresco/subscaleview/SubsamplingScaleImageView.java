@@ -49,6 +49,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 
+import com.biz.R.styleable;
 import com.facebook.common.references.CloseableReference;
 import com.facebook.datasource.DataSource;
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -71,6 +72,7 @@ import me.kaede.util.fresco.CustomProgressbarDrawable;
 import me.kaede.util.fresco.cache.FileCache;
 import me.kaede.util.fresco.cache.FileUtils;
 import me.kaede.util.fresco.subscaleview.decoder.*;
+// import me.kaede.frescosample.R.styleable;
 
 
 import java.io.BufferedInputStream;

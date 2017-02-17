@@ -52,6 +52,7 @@ dependencies {
     compile 'com.danikula:videocache:2.6.4'
     compile 'com.viewpagerindicator:library:2.4.2-SNAPSHOT@aar'
     // fresco
+    // fresco
     compile "com.facebook.fresco:fresco:1.1.0"
     compile "com.facebook.fresco:webpsupport:1.1.0"
     compile "com.facebook.fresco:animated-webp:1.1.0"
