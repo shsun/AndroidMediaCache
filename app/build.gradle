@@ -16,7 +16,7 @@ apply plugin: 'com.neenbedankt.android-apt'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion '22.0.1'
+    buildToolsVersion "23.0.1"
 
     defaultConfig {
         applicationId 'com.danikula.videocache.demo'
@@ -39,10 +39,13 @@ dependencies {
 //    compile project(':library')
 
     compile 'com.android.support:support-v4:23.1.0'
-    compile 'com.android.support:appcompat-v7:23.1.0+'
+    // compile 'com.android.support:appcompat-v7:23.1.0+'
     compile 'com.android.support:design:23+'
     compile 'com.android.support:cardview-v7:23+'
     compile 'com.android.support:recyclerview-v7:23+'
+
+    compile fileTree(dir: 'libs', include: '*.jar')
+
     //
     compile 'org.androidannotations:androidannotations-api:3.3.2'
     //

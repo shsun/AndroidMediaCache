@@ -17,7 +17,7 @@ import com.biz.R;
  */
 public class PersonAdapter extends RecyclerView.Adapter {
 
-    private static final String TAG = "PersonAdapter";
+//    private static final String TAG = "PersonAdapter";
 
     public static interface OnRecyclerViewListener {
         void onItemClick(int position);
@@ -42,10 +42,12 @@ public class PersonAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         // Logger.d(TAG, "onCreateViewHolder, i: " + i);
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recycler_view_test_item_person, null);
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        view.setLayoutParams(lp);
-        return new PersonViewHolder(view);
+//        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recycler_view_test_item_person, null);
+//        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//        view.setLayoutParams(lp);
+//        return new PersonViewHolder(view);
+
+        return null;
     }
 
     @Override
@@ -70,11 +72,15 @@ public class PersonAdapter extends RecyclerView.Adapter {
 
         public PersonViewHolder(View itemView) {
             super(itemView);
-            nameTv = (TextView) itemView.findViewById(R.id.recycler_view_test_item_person_name_tv);
-            ageTv = (TextView) itemView.findViewById(R.id.recycler_view_test_item_person_age_tv);
-            rootView = itemView.findViewById(R.id.recycler_view_test_item_person_view);
-            rootView.setOnClickListener(this);
-            rootView.setOnLongClickListener(this);
+
+            // TODO
+
+//            nameTv = (TextView) itemView.findViewById(R.id.recycler_view_test_item_person_name_tv);
+//            ageTv = (TextView) itemView.findViewById(R.id.recycler_view_test_item_person_age_tv);
+//            rootView = itemView.findViewById(R.id.recycler_view_test_item_person_view);
+//            rootView.setOnClickListener(this);
+//            rootView.setOnLongClickListener(this);
+
         }
 
         @Override

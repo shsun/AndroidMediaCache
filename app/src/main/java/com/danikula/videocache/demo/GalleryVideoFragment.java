@@ -46,10 +46,7 @@ public class GalleryVideoFragment extends Fragment implements CacheListener {
     }
 
     public static Fragment build(String url, String cachePath) {
-        return GalleryVideoFragment_.builder()
-                .url(url)
-                .cachePath(cachePath)
-                .build();
+        return GalleryVideoFragment.build(url,cachePath);
     }
 
     @AfterViews
