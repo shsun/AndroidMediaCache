@@ -20,6 +20,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <activity
+            android:name="com.biz.homepage.HomePageActivity"
+            android:theme="@style/Theme.AppCompat">
+        </activity>
+
+
+
         <activity android:name="com.danikula.videocache.demo.SingleVideoActivity_" />
         <activity android:name="com.danikula.videocache.demo.MultipleVideosActivity_" />
         <activity android:name="com.danikula.videocache.demo.VideoGalleryActivity_" />
