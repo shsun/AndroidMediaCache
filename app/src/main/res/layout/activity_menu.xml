@@ -7,7 +7,7 @@
     android:divider="@android:drawable/divider_horizontal_dark"
     android:orientation="vertical"
     android:showDividers="middle"
-    tools:context=".MenuActivity">
+    tools:context="com.danikula.videocache.demo.MenuActivity">
 
     <Button
         android:id="@+id/cleanCacheButton"

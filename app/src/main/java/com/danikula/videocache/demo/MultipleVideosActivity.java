@@ -7,7 +7,6 @@ import org.androidannotations.annotations.EActivity;
 
 import com.biz.R;
 
-
 @EActivity(R.layout.activity_multiple_videos)
 public class MultipleVideosActivity extends FragmentActivity {
 

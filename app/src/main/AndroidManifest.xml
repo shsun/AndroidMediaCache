@@ -20,11 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.danikula.videocache.demo.SingleVideoActivity" />
-        <activity android:name="com.danikula.videocache.demo.MultipleVideosActivity" />
-        <activity android:name="com.danikula.videocache.demo.VideoGalleryActivity" />
-        <activity android:name="com.danikula.videocache.demo.SharedCacheActivity" />
-
+        <activity android:name="com.danikula.videocache.demo.SingleVideoActivity_" />
+        <activity android:name="com.danikula.videocache.demo.MultipleVideosActivity_" />
+        <activity android:name="com.danikula.videocache.demo.VideoGalleryActivity_" />
+        <activity android:name="com.danikula.videocache.demo.SharedCacheActivity_" />
+        <activity android:name="com.danikula.videocache.demo.MenuActivity_" />
         <activity
             android:name="me.kaede.frescosample.samplelist.SampleListActivity"
             android:label="Fresco GO!"
