@@ -13,7 +13,6 @@ public class DetailActivity extends BaseAppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.backup_activity_homepage);
     }
 
     @Override
@@ -23,6 +22,7 @@ public class DetailActivity extends BaseAppCompatActivity {
 
     @Override
     protected void initView(Bundle savedInstanceState, Bundle prevInstanceState) {
+        setContentView(R.layout.backup_activity_homepage);
 
     }
 

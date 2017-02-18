@@ -3,14 +3,15 @@ package com.biz.homepage.fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.shsunframework.app.BaseFragment;
-import com.biz.homepage.PersonEntry;
 import com.biz.homepage.PersonAdapter;
+import com.biz.homepage.PersonEntry;
+import com.shsunframework.app.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +47,19 @@ public class NewestFragment extends BaseFragment {
         setUpAndLoadNativeExpressAds();
 
         PersonAdapter adapter = new PersonAdapter(this.getContext(), this.mRecyclerViewItems);
+        adapter.setOnRecyclerViewListener(new PersonAdapter.OnRecyclerViewListener() {
+            @Override
+            public void onItemClick(int position, PersonEntry entry) {
+                Log.i(TAG, "onItemClick=" + position + ", " + entry.getName());
+            }
+
+            @Override
+            public boolean onItemLongClick(int position, PersonEntry entry) {
+                Log.i(TAG, "onItemLongClick=" + position + ", " + entry.getName());
+                return false;
+            }
+
+        });
         mRecyclerView.setAdapter(adapter);
     }
 

@@ -3,27 +3,27 @@ package com.biz.homepage;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.biz.R;
-import com.shsunframework.app.BaseFragment;
 import com.biz.homepage.fragment.ActivityFragment;
 import com.biz.homepage.fragment.AmuseFragment;
 import com.biz.homepage.fragment.FindFragment;
 import com.biz.homepage.fragment.NewestFragment;
+import com.shsunframework.app.BaseAppCompatActivity;
+import com.shsunframework.app.BaseFragment;
+import com.shsunframework.app.BaseFragmentActivity;
 
 /**
  * Created by shsun on 17/1/9.
  */
-public class HomePageActivity extends AppCompatActivity {
+public class HomePageActivity extends BaseFragmentActivity {
     private String[] mTabTitles = new String[]{};
     private BaseFragment[] fragments = {new NewestFragment(), new ActivityFragment(),
             new AmuseFragment(), new FindFragment(), new NewestFragment(), new NewestFragment(), new NewestFragment()};
@@ -31,6 +31,15 @@ public class HomePageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void initVariables(Bundle savedInstanceState, Bundle prevInstanceState) {
+
+    }
+
+    @Override
+    protected void initView(Bundle savedInstanceState, Bundle prevInstanceState) {
         setContentView(R.layout.activity_homepage);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
@@ -61,6 +70,11 @@ public class HomePageActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    protected void initData(Bundle savedInstanceState, Bundle prevInstanceState) {
+
     }
 
     @Override

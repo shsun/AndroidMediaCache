@@ -17,28 +17,30 @@ import java.util.List;
  */
 public class PersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-//    private static final String TAG = "PersonAdapter";
+    private static final String TAG = PersonAdapter.class.getSimpleName();
 
     public static interface OnRecyclerViewListener {
-        void onItemClick(int position);
+        void onItemClick(int position, PersonEntry entry);
 
-        boolean onItemLongClick(int position);
+        boolean onItemLongClick(int position, PersonEntry entry);
     }
+
+    private final Context mContext;
+    private List<PersonEntry> mDataEntries;
 
     private OnRecyclerViewListener onRecyclerViewListener;
 
-    public void setOnRecyclerViewListener(OnRecyclerViewListener onRecyclerViewListener) {
-        this.onRecyclerViewListener = onRecyclerViewListener;
-    }
-
-    private static final String TAG = PersonAdapter.class.getSimpleName();
-
-    private final Context mContext;
-    private List<PersonEntry> mRecyclerViewItems;
-
+    /**
+     * @param context
+     * @param list
+     */
     public PersonAdapter(Context context, List<PersonEntry> list) {
         this.mContext = context;
-        this.mRecyclerViewItems = list;
+        this.mDataEntries = list;
+    }
+
+    public void setOnRecyclerViewListener(OnRecyclerViewListener onRecyclerViewListener) {
+        this.onRecyclerViewListener = onRecyclerViewListener;
     }
 
     @Override
@@ -53,17 +55,17 @@ public class PersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
         PersonViewHolder holder = (PersonViewHolder) viewHolder;
         holder.position = i;
-        PersonEntry person = mRecyclerViewItems.get(i);
+        PersonEntry person = mDataEntries.get(i);
         holder.mNameTextView.setText(person.getName());
         holder.mDesTextView.setText(person.getDescription());
     }
 
     @Override
     public int getItemCount() {
-        return mRecyclerViewItems.size();
+        return mDataEntries.size();
     }
 
-    class PersonViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
+    class PersonViewHolder extends RecyclerView.ViewHolder {
         public View mRootView;
         public TextView mNameTextView;
         public TextView mDesTextView;
@@ -75,25 +77,25 @@ public class PersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             // TODO
             mNameTextView = (TextView) itemView.findViewById(R.id.nameTextView);
             mDesTextView = (TextView) itemView.findViewById(R.id.desTextView);
-
+            //
             mRootView = itemView.findViewById(R.id.contentView);
-            mRootView.setOnClickListener(this);
-            mRootView.setOnLongClickListener(this);
-        }
-
-        @Override
-        public void onClick(View v) {
-            if (null != onRecyclerViewListener) {
-                onRecyclerViewListener.onItemClick(position);
-            }
-        }
-
-        @Override
-        public boolean onLongClick(View v) {
-            if (null != onRecyclerViewListener) {
-                return onRecyclerViewListener.onItemLongClick(position);
-            }
-            return false;
+            mRootView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (null != onRecyclerViewListener) {
+                        onRecyclerViewListener.onItemClick(position, mDataEntries.get(position));
+                    }
+                }
+            });
+            mRootView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    if (null != onRecyclerViewListener) {
+                        return onRecyclerViewListener.onItemLongClick(position, mDataEntries.get(position));
+                    }
+                    return false;
+                }
+            });
         }
     }
 }

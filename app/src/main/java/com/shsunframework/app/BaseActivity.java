@@ -13,7 +13,6 @@ public abstract class BaseActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         Bundle bundle = this.getIntent().getExtras();
         //
         initVariables(savedInstanceState, bundle);

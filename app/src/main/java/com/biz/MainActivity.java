@@ -12,9 +12,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.shsunframework.app.BaseActivity;
 import com.shsunframework.app.BaseAppCompatActivity;
 
-public class MainActivity extends BaseAppCompatActivity implements OnPageChangeListener {
+public class MainActivity extends BaseActivity implements OnPageChangeListener {
 
     private static final String TAG = "MainActivity";
 
@@ -36,7 +37,6 @@ public class MainActivity extends BaseAppCompatActivity implements OnPageChangeL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
     }
 
 
@@ -115,10 +115,12 @@ public class MainActivity extends BaseAppCompatActivity implements OnPageChangeL
 
 
     protected void initVariables(Bundle savedInstanceState, Bundle prevInstanceState) {
-        prevInstanceState.getString("key","defaultValue");
+        //
     }
 
     protected void initView(Bundle savedInstanceState, Bundle prevInstanceState) {
+        setContentView(R.layout.activity_main);
+
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
         ViewGroup group = (ViewGroup) findViewById(R.id.viewGroup);
         this.mGoHomePageButton = (Button) this.findViewById(R.id.btn_go_homepage);
