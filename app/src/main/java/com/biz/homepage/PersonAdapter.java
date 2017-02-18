@@ -1,5 +1,6 @@
 package com.biz.homepage;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,15 +8,14 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.List;
-
-import com.biz.App;
 import com.biz.R;
+
+import java.util.List;
 
 /**
  * Created by shsun on 17/1/18.
  */
-public class PersonAdapter extends RecyclerView.Adapter {
+public class PersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 //    private static final String TAG = "PersonAdapter";
 
@@ -32,55 +32,53 @@ public class PersonAdapter extends RecyclerView.Adapter {
     }
 
     private static final String TAG = PersonAdapter.class.getSimpleName();
-    private List<Person> list;
 
-    public PersonAdapter(List<Person> list) {
-        this.list = list;
+    private final Context mContext;
+    private List<PersonEntry> mRecyclerViewItems;
+
+    public PersonAdapter(Context context, List<PersonEntry> list) {
+        this.mContext = context;
+        this.mRecyclerViewItems = list;
     }
-
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        // Logger.d(TAG, "onCreateViewHolder, i: " + i);
-//        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recycler_view_test_item_person, null);
-//        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//        view.setLayoutParams(lp);
-//        return new PersonViewHolder(view);
-
-        return null;
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.common_listview_item_content, null);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        view.setLayoutParams(lp);
+        return new PersonViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
         PersonViewHolder holder = (PersonViewHolder) viewHolder;
         holder.position = i;
-        Person person = list.get(i);
-        holder.nameTv.setText(person.getName());
-        holder.ageTv.setText(person.getAge() + "岁");
+        PersonEntry person = mRecyclerViewItems.get(i);
+        holder.mNameTextView.setText(person.getName());
+        holder.mDesTextView.setText(person.getDescription());
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return mRecyclerViewItems.size();
     }
 
     class PersonViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
-        public View rootView;
-        public TextView nameTv;
-        public TextView ageTv;
+        public View mRootView;
+        public TextView mNameTextView;
+        public TextView mDesTextView;
         public int position;
 
         public PersonViewHolder(View itemView) {
             super(itemView);
 
             // TODO
+            mNameTextView = (TextView) itemView.findViewById(R.id.nameTextView);
+            mDesTextView = (TextView) itemView.findViewById(R.id.desTextView);
 
-//            nameTv = (TextView) itemView.findViewById(R.id.recycler_view_test_item_person_name_tv);
-//            ageTv = (TextView) itemView.findViewById(R.id.recycler_view_test_item_person_age_tv);
-//            rootView = itemView.findViewById(R.id.recycler_view_test_item_person_view);
-//            rootView.setOnClickListener(this);
-//            rootView.setOnLongClickListener(this);
-
+            mRootView = itemView.findViewById(R.id.contentView);
+            mRootView.setOnClickListener(this);
+            mRootView.setOnLongClickListener(this);
         }
 
         @Override

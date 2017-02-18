@@ -31,7 +31,6 @@ public abstract class AbstractBasicFragment extends Fragment {
         setHasOptionsMenu(true);
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

@@ -1,22 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/contentView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/aliceblue"
-    android:orientation="horizontal">
-
-    <ImageView
-        android:id="@+id/iconView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/cadetblue"
-        android:scaleType="centerCrop" />
+    android:layout_height="80.0dip"
+    android:orientation="vertical" >
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/iconView"
+            android:layout_width="80.0dip"
+            android:layout_height="match_parent"
+            android:background="@color/cadetblue"
+            android:scaleType="centerCrop"
+            android:src="@drawable/icon" />
 
         <TextView
             android:id="@+id/nameTextView"
@@ -27,20 +28,12 @@
             android:text="nameTextView" />
 
         <TextView
-            android:id="@+id/pointTextView"
+            android:id="@+id/desTextView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@color/green"
             android:gravity="center_horizontal|center_vertical"
-            android:text="pointTextView" />
-
-        <TextView
-            android:id="@+id/percentTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@color/blue"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="percentTextView" />
+            android:text="desTextView" />
 
     </LinearLayout>
 

@@ -15,12 +15,10 @@ import android.widget.Toast;
 
 import com.biz.R;
 import com.biz.core.AbstractBasicFragment;
-import com.biz.core.AbstractBasicFragment;
 import com.biz.homepage.fragment.ActivityFragment;
 import com.biz.homepage.fragment.AmuseFragment;
 import com.biz.homepage.fragment.FindFragment;
 import com.biz.homepage.fragment.NewestFragment;
-
 
 /**
  * Created by shsun on 17/1/9.
