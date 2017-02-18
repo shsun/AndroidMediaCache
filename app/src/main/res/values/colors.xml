@@ -21,7 +21,7 @@
     <color name="seashell">#FFF5EE</color><!--海贝色 -->
     <color name="lavenderblush">#FFF0F5</color><!--淡紫红 -->
     <color name="papayawhip">#FFEFD5</color><!--番木色 -->
-    <color name="blanchedalmond">#FFEBCD</color><!--白杏色 -->
+    <color name="blanchedalmond">#ffebcd</color><!--白杏色 -->
     <color name="mistyrose">#FFE4E1</color><!--浅玫瑰色 -->
     <color name="bisque">#FFE4C4</color><!--桔黄色 -->
     <color name="moccasin">#FFE4B5</color><!--鹿皮色 -->

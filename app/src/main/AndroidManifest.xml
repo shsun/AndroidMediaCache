@@ -46,7 +46,7 @@
         </activity>
         -->
         <activity android:name="me.kaede.frescosample.samplelist.SampleListActivity"></activity>
-        
+
         <activity
             android:name="me.kaede.frescosample.basicusage.BasicUsageActivity"
             android:label="Basic Usage"

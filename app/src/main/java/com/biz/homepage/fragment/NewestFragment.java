@@ -35,11 +35,5 @@ public class NewestFragment extends AbstractBasicFragment {
     public void initData() {
         Toast.makeText(getActivity(), "加载了最新数据", Toast.LENGTH_SHORT).show();
         mTextView.setText("最新视图");
-
-
-
-
-
-
     }
 }
