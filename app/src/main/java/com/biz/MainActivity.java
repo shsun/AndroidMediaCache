@@ -1,6 +1,5 @@
 package com.biz;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
@@ -13,7 +12,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-public class MainActivity extends Activity implements OnPageChangeListener {
+import com.shsunframework.app.BaseAppCompatActivity;
+
+public class MainActivity extends BaseAppCompatActivity implements OnPageChangeListener {
 
     private static final String TAG = "MainActivity";
 
@@ -36,56 +37,6 @@ public class MainActivity extends Activity implements OnPageChangeListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mViewPager = (ViewPager) findViewById(R.id.viewPager);
-        ViewGroup group = (ViewGroup) findViewById(R.id.viewGroup);
-        this.mGoHomePageButton = (Button) this.findViewById(R.id.btn_go_homepage);
-        this.mGoHomePageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, com.biz.homepage.HomePageActivity.class);
-                MainActivity.this.startActivity(intent);
-            }
-        });
-
-        //载入图片资源ID
-        mVPImgIds = new int[]{R.drawable.item01, R.drawable.item02, R.drawable.item03/*, R.drawable.item04,
-                R.drawable.item05, R.drawable.item06, R.drawable.item07, R.drawable.item08*/};
-
-
-        // 将点点加入到ViewGroup中
-        mIndicatorImgViews = new ImageView[mVPImgIds.length];
-        for (int i = 0; i < mIndicatorImgViews.length; i++) {
-            ImageView imageView = new ImageView(this);
-            imageView.setLayoutParams(new LayoutParams(10, 10));
-            mIndicatorImgViews[i] = imageView;
-            if (i == 0) {
-                mIndicatorImgViews[i].setBackgroundResource(R.drawable.page_indicator_focused);
-            } else {
-                mIndicatorImgViews[i].setBackgroundResource(R.drawable.page_indicator_unfocused);
-            }
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
-                    LayoutParams.WRAP_CONTENT));
-            layoutParams.leftMargin = 5;
-            layoutParams.rightMargin = 5;
-            group.addView(imageView, layoutParams);
-        }
-
-        // 将图片装载到数组中
-        mVPImageViews = new ImageView[mVPImgIds.length];
-        for (int i = 0; i < mVPImageViews.length; i++) {
-            ImageView imageView = new ImageView(this);
-            mVPImageViews[i] = imageView;
-            imageView.setBackgroundResource(mVPImgIds[i]);
-        }
-
-        // 设置Adapter
-        mViewPager.setAdapter(new WelcomePagerAdapter());
-        // 设置监听，主要是设置点点的背景
-        mViewPager.setOnPageChangeListener(this);
-        // 设置ViewPager的默认项, 设置为长度的100倍，这样子开始就能往左滑动
-        mViewPager.setCurrentItem((mVPImageViews.length) * 100);
-
     }
 
 
@@ -160,5 +111,64 @@ public class MainActivity extends Activity implements OnPageChangeListener {
                 mIndicatorImgViews[i].setBackgroundResource(R.drawable.page_indicator_unfocused);
             }
         }
+    }
+
+
+    protected void initVariables(Bundle savedInstanceState, Bundle prevInstanceState) {
+        prevInstanceState.getString("key","defaultValue");
+    }
+
+    protected void initView(Bundle savedInstanceState, Bundle prevInstanceState) {
+        mViewPager = (ViewPager) findViewById(R.id.viewPager);
+        ViewGroup group = (ViewGroup) findViewById(R.id.viewGroup);
+        this.mGoHomePageButton = (Button) this.findViewById(R.id.btn_go_homepage);
+        this.mGoHomePageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, com.biz.homepage.HomePageActivity.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
+
+        //载入图片资源ID
+        mVPImgIds = new int[]{R.drawable.item01, R.drawable.item02, R.drawable.item03/*, R.drawable.item04,
+                R.drawable.item05, R.drawable.item06, R.drawable.item07, R.drawable.item08*/};
+
+
+        // 将点点加入到ViewGroup中
+        mIndicatorImgViews = new ImageView[mVPImgIds.length];
+        for (int i = 0; i < mIndicatorImgViews.length; i++) {
+            ImageView imageView = new ImageView(this);
+            imageView.setLayoutParams(new LayoutParams(10, 10));
+            mIndicatorImgViews[i] = imageView;
+            if (i == 0) {
+                mIndicatorImgViews[i].setBackgroundResource(R.drawable.page_indicator_focused);
+            } else {
+                mIndicatorImgViews[i].setBackgroundResource(R.drawable.page_indicator_unfocused);
+            }
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
+                    LayoutParams.WRAP_CONTENT));
+            layoutParams.leftMargin = 5;
+            layoutParams.rightMargin = 5;
+            group.addView(imageView, layoutParams);
+        }
+
+        // 将图片装载到数组中
+        mVPImageViews = new ImageView[mVPImgIds.length];
+        for (int i = 0; i < mVPImageViews.length; i++) {
+            ImageView imageView = new ImageView(this);
+            mVPImageViews[i] = imageView;
+            imageView.setBackgroundResource(mVPImgIds[i]);
+        }
+
+        // 设置Adapter
+        mViewPager.setAdapter(new WelcomePagerAdapter());
+        // 设置监听，主要是设置点点的背景
+        mViewPager.setOnPageChangeListener(this);
+        // 设置ViewPager的默认项, 设置为长度的100倍，这样子开始就能往左滑动
+        mViewPager.setCurrentItem((mVPImageViews.length) * 100);
+    }
+
+    protected void initData(Bundle savedInstanceState, Bundle prevInstanceState) {
     }
 }

@@ -9,20 +9,21 @@ import android.os.Bundle;
 
 public abstract class BaseActivity extends Activity {
 
-
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
 
-        initVariables(savedInstanceState);
-        initView(savedInstanceState);
-        initData(savedInstanceState);
+        Bundle bundle = this.getIntent().getExtras();
+        //
+        initVariables(savedInstanceState, bundle);
+        initView(savedInstanceState, bundle);
+        initData(savedInstanceState, bundle);
     }
 
-    protected abstract void initVariables(Bundle savedInstanceState);
+    protected abstract void initVariables(Bundle savedInstanceState, Bundle prevInstanceState);
 
-    protected abstract void initView(Bundle savedInstanceState);
+    protected abstract void initView(Bundle savedInstanceState, Bundle prevInstanceState);
 
-    protected abstract void initData(Bundle savedInstanceState);
+    protected abstract void initData(Bundle savedInstanceState, Bundle prevInstanceState);
 }
