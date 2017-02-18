@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/contentView"
     android:layout_width="match_parent"
-    android:layout_height="80.0dip"
+    android:layout_height="20.0dip"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -13,15 +13,15 @@
 
         <ImageView
             android:id="@+id/iconView"
-            android:layout_width="80.0dip"
-            android:layout_height="match_parent"
+            android:layout_width="20.0dip"
+            android:layout_height="20.0dip"
             android:background="@color/cadetblue"
             android:scaleType="centerCrop"
             android:src="@drawable/icon" />
 
         <TextView
             android:id="@+id/nameTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="60.0dip"
             android:layout_height="match_parent"
             android:background="@color/red"
             android:gravity="center_horizontal|center_vertical"
@@ -29,7 +29,7 @@
 
         <TextView
             android:id="@+id/desTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="60.0dip"
             android:layout_height="match_parent"
             android:background="@color/green"
             android:gravity="center_horizontal|center_vertical"
