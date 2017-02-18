@@ -3,6 +3,7 @@ package com.shsunframework.app;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.biz.App;
 import com.biz.homepage.PersonEntry;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -17,6 +18,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        ((App)this.getApplication()).addActivity(this);
 
         Bundle bundle = this.getIntent().getExtras();
 

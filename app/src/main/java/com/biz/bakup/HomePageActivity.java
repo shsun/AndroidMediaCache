@@ -133,8 +133,8 @@ public class HomePageActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
                     case Dialog.BUTTON_POSITIVE:
-                        // System.exit(0);
-                        android.os.Process.killProcess(android.os.Process.myPid());
+                        System.exit(0);
+                        // android.os.Process.killProcess(android.os.Process.myPid());
                         break;
                     case Dialog.BUTTON_NEGATIVE:
                         Toast.makeText(HomePageActivity.this, "吓死宝宝了, 还好不是真退出！！！", Toast.LENGTH_SHORT).show();

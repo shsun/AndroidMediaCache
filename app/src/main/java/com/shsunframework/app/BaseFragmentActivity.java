@@ -3,6 +3,8 @@ package com.shsunframework.app;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
+import com.biz.App;
+
 /**
  * Created by shsun on 17/2/18.
  */
@@ -12,6 +14,7 @@ public abstract class BaseFragmentActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        ((App)this.getApplication()).addActivity(this);
 
         Bundle bundle = this.getIntent().getExtras();
         initVariables(savedInstanceState, bundle);

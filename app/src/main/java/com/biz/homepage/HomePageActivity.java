@@ -16,7 +16,6 @@ import com.biz.homepage.fragment.ActivityFragment;
 import com.biz.homepage.fragment.AmuseFragment;
 import com.biz.homepage.fragment.FindFragment;
 import com.biz.homepage.fragment.NewestFragment;
-import com.shsunframework.app.BaseAppCompatActivity;
 import com.shsunframework.app.BaseFragment;
 import com.shsunframework.app.BaseFragmentActivity;
 
@@ -84,8 +83,11 @@ public class HomePageActivity extends BaseFragmentActivity {
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
                     case Dialog.BUTTON_POSITIVE:
-                        System.exit(0);
+                        // System.exit(0);
                         // android.os.Process.killProcess(android.os.Process.myPid());
+
+                        getApplication().onTerminate();
+
                         break;
                     case Dialog.BUTTON_NEGATIVE:
                         Toast.makeText(com.biz.homepage.HomePageActivity.this, "吓死宝宝了, 还好不是真退出！！！", Toast.LENGTH_SHORT).show();
