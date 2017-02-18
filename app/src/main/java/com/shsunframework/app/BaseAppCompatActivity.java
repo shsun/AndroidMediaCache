@@ -14,9 +14,10 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
 
 
         Bundle bundle = this.getIntent().getExtras();
-        initVariables(savedInstanceState, bundle);
-        initView(savedInstanceState, bundle);
-        initData(savedInstanceState, bundle);
+
+        this.initVariables(savedInstanceState, bundle);
+        this.initView(savedInstanceState, bundle);
+        this.initData(savedInstanceState, bundle);
     }
 
     protected abstract void initVariables(Bundle savedInstanceState, Bundle prevInstanceState);
