@@ -21,7 +21,7 @@ import org.androidannotations.annotations.ViewById;
 import java.io.File;
 
 import com.biz.R;
-import com.biz.App;
+import com.biz.CZSZApplication;
 
 @EFragment(R.layout.fragment_video)
 public class VideoFragment extends Fragment implements CacheListener {
@@ -52,7 +52,7 @@ public class VideoFragment extends Fragment implements CacheListener {
     }
 
     private void checkCachedState() {
-        HttpProxyCacheServer proxy = App.getProxy(getActivity());
+        HttpProxyCacheServer proxy = CZSZApplication.getProxy(getActivity());
         boolean fullyCached = proxy.isCached(url);
         setCachedState(fullyCached);
         if (fullyCached) {
@@ -61,7 +61,7 @@ public class VideoFragment extends Fragment implements CacheListener {
     }
 
     private void startVideo() {
-        HttpProxyCacheServer proxy = App.getProxy(getActivity());
+        HttpProxyCacheServer proxy = CZSZApplication.getProxy(getActivity());
         proxy.registerCacheListener(this, url);
         String proxyUrl = proxy.getProxyUrl(url);
         Log.d(LOG_TAG, "Use proxy url " + proxyUrl + " instead of original url " + url);
@@ -86,7 +86,7 @@ public class VideoFragment extends Fragment implements CacheListener {
         super.onDestroy();
 
         videoView.stopPlayback();
-        App.getProxy(getActivity()).unregisterCacheListener(this);
+        CZSZApplication.getProxy(getActivity()).unregisterCacheListener(this);
     }
 
     @Override

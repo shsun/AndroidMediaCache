@@ -20,7 +20,7 @@ import org.androidannotations.annotations.ViewById;
 import java.io.File;
 
 
-import com.biz.App;
+import com.biz.CZSZApplication;
 import com.biz.R;
 
 @EFragment(R.layout.fragment_video)
@@ -65,7 +65,7 @@ public class GalleryVideoFragment extends Fragment implements CacheListener {
     }
 
     private void startProxy() {
-        HttpProxyCacheServer proxy = App.getProxy(getActivity());
+        HttpProxyCacheServer proxy = CZSZApplication.getProxy(getActivity());
         proxy.registerCacheListener(this, url);
         videoView.setVideoPath(proxy.getProxyUrl(url));
     }
@@ -102,7 +102,7 @@ public class GalleryVideoFragment extends Fragment implements CacheListener {
         super.onDestroy();
 
         videoView.stopPlayback();
-        App.getProxy(getActivity()).unregisterCacheListener(this);
+        CZSZApplication.getProxy(getActivity()).unregisterCacheListener(this);
     }
 
     @Override
