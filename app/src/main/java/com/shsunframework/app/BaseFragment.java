@@ -1,4 +1,4 @@
-package com.biz.core;
+package com.shsunframework.app;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,12 +11,12 @@ import android.view.ViewGroup;
 /**
  * Created by shsun on 17/1/12.
  */
-public abstract class AbstractBasicFragment extends Fragment {
+public abstract class BaseFragment extends Fragment {
 
     private static final String TAG = "AbstractBasicFragment";
 
     // by ms
-    // protected int mTimeoutOfHttpRequest = 1000 * 5;
+    protected int mTimeoutOfHttpRequest = 1000 * 5;
 
     protected View mRootView;
     public Context mContext;
@@ -35,7 +35,7 @@ public abstract class AbstractBasicFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         if (mRootView == null) {
-            mRootView = initView();
+            mRootView = initView(inflater, container, savedInstanceState);
         }
         return mRootView;
     }
@@ -67,7 +67,7 @@ public abstract class AbstractBasicFragment extends Fragment {
     }
 
     /**
-     * 懒加载
+     * lazy loading
      */
     protected void lazyLoad() {
         if (this.isUIViewControllerCreated && this.isUIViewVisible) {
@@ -80,7 +80,8 @@ public abstract class AbstractBasicFragment extends Fragment {
      *
      * @return
      */
-    public abstract View initView();
+    public abstract View initView(LayoutInflater inflater, ViewGroup container,
+                                  Bundle savedInstanceState);
 
     /**
      * fetch data here

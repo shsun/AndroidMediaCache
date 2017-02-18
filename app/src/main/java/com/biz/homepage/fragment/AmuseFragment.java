@@ -1,22 +1,26 @@
 package com.biz.homepage.fragment;
 
 import android.graphics.Color;
+import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.biz.core.AbstractBasicFragment;
+import com.shsunframework.app.BaseFragment;
 
 /**
  * Created by shsun on 17/1/12.
  */
-public class AmuseFragment extends AbstractBasicFragment {
+public class AmuseFragment extends BaseFragment {
 
     private TextView mTextView;
 
     @Override
-    public View initView() {
+    public View initView(LayoutInflater inflater, ViewGroup container,
+                         Bundle savedInstanceState) {
         mTextView = new TextView(getActivity());
         mTextView.setGravity(Gravity.CENTER);
 

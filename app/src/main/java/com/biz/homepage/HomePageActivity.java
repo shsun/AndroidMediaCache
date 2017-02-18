@@ -14,7 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.biz.R;
-import com.biz.core.AbstractBasicFragment;
+import com.shsunframework.app.BaseFragment;
 import com.biz.homepage.fragment.ActivityFragment;
 import com.biz.homepage.fragment.AmuseFragment;
 import com.biz.homepage.fragment.FindFragment;
@@ -25,7 +25,7 @@ import com.biz.homepage.fragment.NewestFragment;
  */
 public class HomePageActivity extends AppCompatActivity {
     private String[] mTabTitles = new String[]{};
-    private AbstractBasicFragment[] fragments = {new NewestFragment(), new ActivityFragment(),
+    private BaseFragment[] fragments = {new NewestFragment(), new ActivityFragment(),
             new AmuseFragment(), new FindFragment(), new NewestFragment(), new NewestFragment(), new NewestFragment()};
 
     @Override

@@ -1,4 +1,4 @@
-package com.biz.core;
+package com.shsunframework.os;
 
 
 import android.os.Parcel;

@@ -1,11 +1,14 @@
 package com.biz.homepage.fragment;
 
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.biz.core.AbstractBasicFragment;
+import com.shsunframework.app.BaseFragment;
 import com.biz.homepage.PersonEntry;
 import com.biz.homepage.PersonAdapter;
 
@@ -16,7 +19,7 @@ import java.util.List;
 /**
  * Created by shsun on 17/1/12.
  */
-public class NewestFragment extends AbstractBasicFragment {
+public class NewestFragment extends BaseFragment {
 
     private static final String TAG = "NewestFragment";
 
@@ -24,7 +27,8 @@ public class NewestFragment extends AbstractBasicFragment {
     private List<PersonEntry> mRecyclerViewItems = new ArrayList<PersonEntry>();
 
     @Override
-    public View initView() {
+    public View initView(LayoutInflater inflater, ViewGroup container,
+                         Bundle savedInstanceState) {
         mRecyclerView = new RecyclerView(this.getActivity());
         mRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this.getActivity());
