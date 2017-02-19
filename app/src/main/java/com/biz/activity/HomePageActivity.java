@@ -35,8 +35,8 @@ public class HomePageActivity extends BaseFragmentActivity {
     private List<ChannelEntry> mChannelEntries = new ArrayList<ChannelEntry>();
 
 
-    private Fragment[] fragments = {new NewestFragment(), RecyclerViewFragment.newInstance(1),
-            new MyVideoFragment(), new FindFragment(), new NewestFragment(), new NewestFragment(), new NewestFragment()};
+    private Fragment[] fragments = {new NewestFragment(), new RecyclerViewFragment(0),
+            new RecyclerViewFragment(1), new RecyclerViewFragment(2), new MyVideoFragment(), new FindFragment(), new NewestFragment()};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,7 +126,6 @@ public class HomePageActivity extends BaseFragmentActivity {
             Fragment fragment = fragments[position];
 
 
-
             Bundle bundle = new Bundle();
             bundle.putString("str", "fuck you");
 
@@ -136,13 +135,10 @@ public class HomePageActivity extends BaseFragmentActivity {
             fragment.setArguments(bundle);
 
 
-
-
             return fragment;
 
 
-
-    }
+        }
 
         @Override
         public int getCount() {

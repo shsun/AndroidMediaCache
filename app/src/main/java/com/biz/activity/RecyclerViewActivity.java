@@ -64,7 +64,8 @@ public class RecyclerViewActivity extends BaseAppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return RecyclerViewFragment.newInstance(position);
+            //return RecyclerViewFragment.newInstance(position);
+            return new RecyclerViewFragment(position);
         }
 
         @Override
