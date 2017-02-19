@@ -13,54 +13,52 @@ import java.util.Stack;
  */
 public class CZSZApplication extends Application {
 
-    private HttpProxyCacheServer proxy;
+    private HttpProxyCacheServer mProxyServer;
 
-    public static HttpProxyCacheServer getProxy(Context context) {
-        CZSZApplication app = (CZSZApplication) context.getApplicationContext();
-        return app.proxy == null ? (app.proxy = app.newProxy()) : app.proxy;
+    private Stack<Activity> mActivityStack;
+
+    private static CZSZApplication theSingletonInstance;
+
+    // Returns the application instance
+    public static CZSZApplication getInstance() {
+        return theSingletonInstance;
     }
-
-    private HttpProxyCacheServer newProxy() {
-        // limit total count of files in cache:
-//        return new HttpProxyCacheServer.Builder(this)
-//                .maxCacheFilesCount(20)
-//                .build();
-
-        return new HttpProxyCacheServer.Builder(this)
-                .maxCacheSize(1024 * 1024 * 1024)       // 100 M for cache
-                .build();
-    }
-
-
-    private static Stack<Activity> activityStack;
-    private static CZSZApplication singleton;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        singleton = this;
+        theSingletonInstance = this;
     }
 
-    // Returns the application instance
-    public static CZSZApplication getInstance() {
-        return singleton;
+    public HttpProxyCacheServer getProxyCacheServer() {
+        if (mProxyServer == null) {
+            // limit total count of files in cache:
+//            mProxyServer = new HttpProxyCacheServer.Builder(this)
+//                    .maxCacheFilesCount(20)
+//                    .build();
+
+            mProxyServer = new HttpProxyCacheServer.Builder(this)
+                    .maxCacheSize(1024 * 1024 * 1024)       // 100 M for cache
+                    .build();
+        }
+        return mProxyServer;
     }
 
     /**
      * add Activity 添加Activity到栈
      */
     public void addActivity(Activity activity) {
-        if (activityStack == null) {
-            activityStack = new Stack<Activity>();
+        if (mActivityStack == null) {
+            mActivityStack = new Stack<Activity>();
         }
-        activityStack.add(activity);
+        mActivityStack.add(activity);
     }
 
     /**
      * get current Activity 获取当前Activity（栈中最后一个压入的）
      */
     public Activity currentActivity() {
-        Activity activity = activityStack.lastElement();
+        Activity activity = mActivityStack.lastElement();
         return activity;
     }
 
@@ -68,7 +66,7 @@ public class CZSZApplication extends Application {
      * 结束当前Activity（栈中最后一个压入的）
      */
     public void finishActivity() {
-        Activity activity = activityStack.lastElement();
+        Activity activity = mActivityStack.lastElement();
         finishActivity(activity);
     }
 
@@ -77,7 +75,7 @@ public class CZSZApplication extends Application {
      */
     public void finishActivity(Activity activity) {
         if (activity != null) {
-            activityStack.remove(activity);
+            mActivityStack.remove(activity);
             activity.finish();
             activity = null;
         }
@@ -87,7 +85,7 @@ public class CZSZApplication extends Application {
      * 结束指定类名的Activity
      */
     public void finishActivity(Class<?> cls) {
-        for (Activity activity : activityStack) {
+        for (Activity activity : mActivityStack) {
             if (activity.getClass().equals(cls)) {
                 finishActivity(activity);
             }
@@ -98,12 +96,12 @@ public class CZSZApplication extends Application {
      * 结束所有Activity
      */
     public void finishAllActivity() {
-        for (int i = 0, size = activityStack.size(); i < size; i++) {
-            if (null != activityStack.get(i)) {
-                activityStack.get(i).finish();
+        for (int i = 0, size = mActivityStack.size(); i < size; i++) {
+            if (null != mActivityStack.get(i)) {
+                mActivityStack.get(i).finish();
             }
         }
-        activityStack.clear();
+        mActivityStack.clear();
     }
 
     /**

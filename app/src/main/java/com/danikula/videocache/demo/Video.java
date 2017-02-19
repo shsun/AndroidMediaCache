@@ -43,7 +43,10 @@ public enum Video {
     }
 
     public File getCacheFile(Context context) {
-        return new File(context.getExternalCacheDir(), name());
+        File dir = context.getExternalCacheDir();
+        String name = name();
+        File f = new File(dir, name);
+        return f;
     }
 
     private class Config {

@@ -16,6 +16,10 @@ import com.biz.homepage.fragment.ActivityFragment;
 import com.biz.homepage.fragment.AmuseFragment;
 import com.biz.homepage.fragment.FindFragment;
 import com.biz.homepage.fragment.NewestFragment;
+import com.danikula.videocache.demo.GalleryVideoFragment;
+import com.danikula.videocache.demo.MyVideoFragment;
+import com.danikula.videocache.demo.Video;
+import com.danikula.videocache.demo.VideoFragment;
 import com.shsunframework.app.BaseFragment;
 import com.shsunframework.app.BaseFragmentActivity;
 
@@ -24,8 +28,10 @@ import com.shsunframework.app.BaseFragmentActivity;
  */
 public class HomePageActivity extends BaseFragmentActivity {
     private String[] mTabTitles = new String[]{};
-    private BaseFragment[] fragments = {new NewestFragment(), new ActivityFragment(),
-            new AmuseFragment(), new FindFragment(), new NewestFragment(), new NewestFragment(), new NewestFragment()};
+
+
+    private Fragment[] fragments = {new NewestFragment(), new ActivityFragment(),
+            new MyVideoFragment(), new FindFragment(), new NewestFragment(), new NewestFragment(), new NewestFragment()};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

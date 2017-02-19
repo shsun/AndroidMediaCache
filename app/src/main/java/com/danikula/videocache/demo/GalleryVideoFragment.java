@@ -1,9 +1,13 @@
 package com.danikula.videocache.demo;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.VideoView;
 
@@ -22,11 +26,12 @@ import java.io.File;
 
 import com.biz.CZSZApplication;
 import com.biz.R;
+import com.shsunframework.app.BaseFragment;
 
 @EFragment(R.layout.fragment_video)
 public class GalleryVideoFragment extends Fragment implements CacheListener {
 
-    private static final String LOG_TAG = "VideoFragment";
+    private static final String LOG_TAG = "GalleryVideoFragment";
 
     @FragmentArg String url;
     @FragmentArg String cachePath;
@@ -65,7 +70,7 @@ public class GalleryVideoFragment extends Fragment implements CacheListener {
     }
 
     private void startProxy() {
-        HttpProxyCacheServer proxy = CZSZApplication.getProxy(getActivity());
+        HttpProxyCacheServer proxy = CZSZApplication.getInstance().getProxyCacheServer();
         proxy.registerCacheListener(this, url);
         videoView.setVideoPath(proxy.getProxyUrl(url));
     }
@@ -85,6 +90,7 @@ public class GalleryVideoFragment extends Fragment implements CacheListener {
         }
     }
 
+
     @Override
     public void onResume() {
         super.onResume();
@@ -102,7 +108,7 @@ public class GalleryVideoFragment extends Fragment implements CacheListener {
         super.onDestroy();
 
         videoView.stopPlayback();
-        CZSZApplication.getProxy(getActivity()).unregisterCacheListener(this);
+        CZSZApplication.getInstance().getProxyCacheServer().unregisterCacheListener(this);
     }
 
     @Override

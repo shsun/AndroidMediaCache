@@ -22,6 +22,7 @@ import java.io.File;
 
 import com.biz.R;
 import com.biz.CZSZApplication;
+import com.shsunframework.app.BaseFragment;
 
 @EFragment(R.layout.fragment_video)
 public class VideoFragment extends Fragment implements CacheListener {
@@ -52,7 +53,7 @@ public class VideoFragment extends Fragment implements CacheListener {
     }
 
     private void checkCachedState() {
-        HttpProxyCacheServer proxy = CZSZApplication.getProxy(getActivity());
+        HttpProxyCacheServer proxy = CZSZApplication.getInstance().getProxyCacheServer();
         boolean fullyCached = proxy.isCached(url);
         setCachedState(fullyCached);
         if (fullyCached) {
@@ -61,7 +62,7 @@ public class VideoFragment extends Fragment implements CacheListener {
     }
 
     private void startVideo() {
-        HttpProxyCacheServer proxy = CZSZApplication.getProxy(getActivity());
+        HttpProxyCacheServer proxy = CZSZApplication.getInstance().getProxyCacheServer();
         proxy.registerCacheListener(this, url);
         String proxyUrl = proxy.getProxyUrl(url);
         Log.d(LOG_TAG, "Use proxy url " + proxyUrl + " instead of original url " + url);
@@ -86,7 +87,7 @@ public class VideoFragment extends Fragment implements CacheListener {
         super.onDestroy();
 
         videoView.stopPlayback();
-        CZSZApplication.getProxy(getActivity()).unregisterCacheListener(this);
+        CZSZApplication.getInstance().getProxyCacheServer().unregisterCacheListener(this);
     }
 
     @Override
