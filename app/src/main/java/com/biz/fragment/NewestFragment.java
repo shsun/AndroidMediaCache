@@ -33,6 +33,7 @@ public class NewestFragment extends BaseFragment {
     @Override
     public View initView(Bundle bundle, LayoutInflater inflater, ViewGroup container,
                          Bundle savedInstanceState) {
+
         mRecyclerView = new RecyclerView(this.getActivity());
         mRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this.getActivity());
