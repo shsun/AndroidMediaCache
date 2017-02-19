@@ -43,10 +43,10 @@ public abstract class MultiItemBaseAdapter<T> extends BaseAbListViewAdapter<T> {
 
         int layoutId = mMultiItemTypeSupport.getLayoutId(position,
                 getItem(position));
-        BaseViewHolder viewHolder = BaseViewHolder.getViewHolder(mContext, convertView, parent,
+        BaseViewHolder baseViewHolder = BaseViewHolder.getViewHolder(mContext, convertView, parent,
                 layoutId, position);
-        convert(viewHolder, getItem(position));
-        return viewHolder.getConvertView();
+        convert(baseViewHolder, getItem(position));
+        return baseViewHolder.getConvertView();
     }
 
 }

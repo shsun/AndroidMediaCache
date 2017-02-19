@@ -27,8 +27,8 @@ public class RecyclerViewFragment extends BaseFragment {
 
     // find view
     RecyclerView mRecyclerView;
-     private FKURecyclerViewAdapter mAdapter;
-    //private XURecyclerViewAdapter mAdapter;
+    // private FKURecyclerViewAdapter mAdapter;
+    private XURecyclerViewAdapter mAdapter;
 
 
     /**
@@ -69,8 +69,8 @@ public class RecyclerViewFragment extends BaseFragment {
         }
 
         //
-        this.mAdapter = new FKURecyclerViewAdapter(mIndex,datas);
-        //this.mAdapter = new XURecyclerViewAdapter(mIndex, this.getContext(), R.layout.fragment_recyclerview, datas);
+        //this.mAdapter = new FKURecyclerViewAdapter(mIndex,datas);
+        this.mAdapter = new XURecyclerViewAdapter(mIndex, this.getContext(), R.layout.item_recyclerview, datas);
         this.mRecyclerView.setHasFixedSize(false);
         this.mRecyclerView.setAdapter(mAdapter);
     }

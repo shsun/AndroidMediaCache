@@ -11,7 +11,7 @@ public class ImageApi {
     public static final String DOMAIN = "http://dn-assets-gitcafe-com.qbox.me";
     private static final String BASE_DIR = "Kaedea/Kaede-Assets/raw/gitcafe-pages/image";
     //
-    public static ImageHolder jk = new ImageHolder(DOMAIN, BASE_DIR, "jk", "jk-", ".jpg", 30, "00");
+    public static ImageHolder jk = new ImageHolder(DOMAIN, BASE_DIR, "jk", "jk-", ".jpg", 2, "00");
     public static ImageHolder girly = new ImageHolder(DOMAIN, BASE_DIR, "girly", "jk-", ".jpg", 17, "00");
     public static ImageHolder legs = new ImageHolder(DOMAIN, BASE_DIR, "legs", "legs-", ".jpg", 29, "00");
     //

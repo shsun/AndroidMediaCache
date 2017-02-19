@@ -39,25 +39,11 @@ public class FKURecyclerViewAdapter extends RecyclerView.Adapter<FKURecyclerView
     /**
      * @param index
      */
-    public FKURecyclerViewAdapter(int index, List<String> mList) {
+    public FKURecyclerViewAdapter(int index, List<String> list) {
         this.mIndex = index;
-        if (mList != null && mList.size() > 0) {
-            this.mList.clear();
-            this.mList.addAll(mList);
-        }
+        this.mList = list;
     }
 
-    public List<String> getmList() {
-        return mList;
-    }
-
-    public void setList(List<String> mList) {
-        if (mList != null && mList.size() > 0) {
-            this.mList.clear();
-            this.mList.addAll(mList);
-            notifyDataSetChanged();
-        }
-    }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -147,6 +133,19 @@ public class FKURecyclerViewAdapter extends RecyclerView.Adapter<FKURecyclerView
         CardView.LayoutParams layoutParams = (CardView.LayoutParams) child.getLayoutParams();
         layoutParams.height = height;
         cardView.updateViewLayout(child, layoutParams);
+    }
+
+
+    public List<String> getmList() {
+        return mList;
+    }
+
+    public void setList(List<String> mList) {
+        if (mList != null && mList.size() > 0) {
+            this.mList.clear();
+            this.mList.addAll(mList);
+            notifyDataSetChanged();
+        }
     }
 
     @Override

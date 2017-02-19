@@ -5,6 +5,7 @@ import android.graphics.drawable.Animatable;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.CardView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -42,14 +43,17 @@ public class XURecyclerViewAdapter extends BaseRecyclerViewAdapter<String> {
     public XURecyclerViewAdapter(int index, Context context, int layoutId, List<String> list) {
         super(context, layoutId, list);
         this.mIndex = index;
-        if (mList != null && mList.size() > 0) {
-            this.mList.clear();
-            this.mList.addAll(mList);
-        }
+        this.mList = list;
     }
 
+    public BaseViewHolder convertViewHolder(BaseViewHolder holder){
+        return new ViewHolder(holder);
+    }
+
+
     @Override
-    public void convert(BaseViewHolder pholder, final String url) {
+    public void convert(com.shsunframework.adapter.BaseViewHolder pholder, final String url) {
+
         final ViewHolder holder = (ViewHolder)pholder;
 
         if (heightMap.containsKey(url)) {
@@ -132,13 +136,40 @@ public class XURecyclerViewAdapter extends BaseRecyclerViewAdapter<String> {
         return mList.size();
     }
 
-    class ViewHolder extends BaseViewHolder {
-        SimpleDraweeView draweeView;
+    static class ViewHolder extends com.shsunframework.adapter.BaseViewHolder {
+
+        public SimpleDraweeView draweeView;
 
         public ViewHolder(Context context, View itemView, ViewGroup parent, int position) {
             super(context, itemView, parent, position);
             draweeView = (SimpleDraweeView) itemView.findViewById(R.id.draweeview);
         }
+
+        public ViewHolder(BaseViewHolder holder) {
+            super(holder);
+            draweeView = (SimpleDraweeView) itemView.findViewById(R.id.draweeview);
+        }
+
+
+//        public static BaseViewHolder getViewHolder(final Context context, View convertView,
+//                                                   ViewGroup parent, int layoutId, int position) {
+//            BaseViewHolder holder;
+//            if (convertView == null) {
+//                View itemView = LayoutInflater.from(context).inflate(layoutId, parent, false);
+//                //View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recyclerview, parent, false);
+//                // holder = new BaseViewHolder(context, itemView, parent, position);
+//                holder = new ViewHolder(context, itemView, parent, position);
+//                //holder.mLayoutId = layoutId;
+//                //holder.setLayoutId(layoutId);
+//            } else {
+//                holder = (BaseViewHolder) convertView.getTag(convertView.getId());
+//                //holder.mPosition = position;
+//                holder.updatePosition(position);
+//            }
+//            return holder;
+//        }
+
+
     }
 
 }

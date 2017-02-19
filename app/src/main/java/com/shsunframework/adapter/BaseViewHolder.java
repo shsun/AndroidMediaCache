@@ -39,6 +39,8 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
     private Context mContext;
     private int mLayoutId;
 
+    private ViewGroup mParentView;
+
     /**
      * @param context
      * @param itemView
@@ -49,9 +51,14 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         mContext = context;
         mConvertView = itemView;
+        this.mParentView = parent;
         mPosition = position;
         mViews = new SparseArray<View>();
         mConvertView.setTag(itemView.getId(), this);
+    }
+
+    public BaseViewHolder(BaseViewHolder holder) {
+        this(holder.getContext(), holder.getConvertView(), holder.getParentView(), holder.getPosition());
     }
 
     public void setItemBackgound() {
@@ -80,12 +87,11 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
             View itemView = LayoutInflater.from(context).inflate(layoutId, parent, false);
             holder = new BaseViewHolder(context, itemView, parent, position);
             holder.mLayoutId = layoutId;
-            return holder;
         } else {
             holder = (BaseViewHolder) convertView.getTag(convertView.getId());
             holder.mPosition = position;
-            return holder;
         }
+        return holder;
     }
 
     /**
@@ -108,13 +114,24 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
         return mConvertView;
     }
 
+    public Context getContext() {
+        return this.mContext;
+    }
+
+    public ViewGroup getParentView() {
+        return this.mParentView;
+    }
 
     public void updatePosition(int position) {
         mPosition = position;
     }
 
+    public void setLayoutId(int id) {
+        this.mLayoutId = id;
+    }
+
     public int getLayoutId() {
-        return mLayoutId;
+        return this.mLayoutId;
     }
 
 
