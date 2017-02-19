@@ -128,11 +128,8 @@ public class CZSZMainActivity extends BaseActivity implements OnPageChangeListen
         this.mGoHomePageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-                Intent intent = new Intent(CZSZMainActivity.this, RecyclerViewActivity.class);
-
-                // Intent intent = new Intent(CZSZMainActivity.this, com.biz.activity.HomePageActivity.class);
+                // Intent intent = new Intent(CZSZMainActivity.this, RecyclerViewActivity.class);
+                Intent intent = new Intent(CZSZMainActivity.this, com.biz.activity.HomePageActivity.class);
                 CZSZMainActivity.this.startActivity(intent);
             }
         });
