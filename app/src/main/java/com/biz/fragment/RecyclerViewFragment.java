@@ -8,9 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.biz.R;
-import com.biz.adapter.RecyclerViewAdapter;
+import com.biz.adapter.FKURecyclerViewAdapter;
+import com.biz.adapter.XURecyclerViewAdapter;
+import com.biz.entry.ChannelEntry;
 import com.shsunframework.app.BaseFragment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import me.kaede.frescosample.ImageApi;
@@ -24,7 +27,9 @@ public class RecyclerViewFragment extends BaseFragment {
 
     // find view
     RecyclerView mRecyclerView;
-    private RecyclerViewAdapter mAdapter;
+     private FKURecyclerViewAdapter mAdapter;
+    //private XURecyclerViewAdapter mAdapter;
+
 
     /**
      * @param index
@@ -49,11 +54,6 @@ public class RecyclerViewFragment extends BaseFragment {
 
     @Override
     public void initData(Bundle bundle) {
-        //
-        this.mAdapter = new RecyclerViewAdapter(mIndex);
-        this.mRecyclerView.setAdapter(mAdapter);
-        this.mRecyclerView.setHasFixedSize(false);
-
         List<String> datas = ImageApi.jk.getUrls();
         switch (mIndex) {
             case 0:
@@ -67,7 +67,12 @@ public class RecyclerViewFragment extends BaseFragment {
                 datas = ImageApi.legs.getUrls();
                 break;
         }
-        mAdapter.setmList(datas);
+
+        //
+        this.mAdapter = new FKURecyclerViewAdapter(mIndex,datas);
+        //this.mAdapter = new XURecyclerViewAdapter(mIndex, this.getContext(), R.layout.fragment_recyclerview, datas);
+        this.mRecyclerView.setHasFixedSize(false);
+        this.mRecyclerView.setAdapter(mAdapter);
     }
 
 }

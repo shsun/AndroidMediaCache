@@ -555,7 +555,7 @@ public class SubsamplingScaleImageView extends View {
                         quickScaleLastDistance = -1F;
                         quickScaleLastPoint = new PointF(quickScaleCenter.x, quickScaleCenter.y);
                         quickScaleMoved = false;
-                        // We need to get events in onTouchEvent after this.
+                        // We need to getViewHolder events in onTouchEvent after this.
                         return false;
                     } else {
                         // Start double tap zoom animation.
@@ -1388,7 +1388,7 @@ public class SubsamplingScaleImageView extends View {
     }
 
     /**
-     * Async task used to get image details without blocking the UI thread.
+     * Async task used to getViewHolder image details without blocking the UI thread.
      */
     private static class TilesInitTask extends AsyncTask<Void, Void, int[]> {
         private final WeakReference<SubsamplingScaleImageView> viewRef;
@@ -1661,7 +1661,7 @@ public class SubsamplingScaleImageView extends View {
                     Log.w(TAG, "Unsupported EXIF orientation: " + orientationAttr);
                 }
             } catch (Exception e) {
-                Log.w(TAG, "Could not get EXIF orientation of image");
+                Log.w(TAG, "Could not getViewHolder EXIF orientation of image");
             }
         }
         return exifOrientation;
@@ -2163,7 +2163,7 @@ public class SubsamplingScaleImageView extends View {
      * necessary, and may increase the likelihood of an OutOfMemoryError. This method sets a DPI at which higher
      * resolution tiles should be loaded. Using a lower number will on average use less memory but result in a lower
      * quality image. 160-240dpi will usually be enough. This should be called before setting the image source,
-     * because it affects which tiles get loaded. When using an untiled source image this method has no effect.
+     * because it affects which tiles getViewHolder loaded. When using an untiled source image this method has no effect.
      * @param minimumTileDpi Tile loading threshold.
      */
     public void setMinimumTileDpi(int minimumTileDpi) {

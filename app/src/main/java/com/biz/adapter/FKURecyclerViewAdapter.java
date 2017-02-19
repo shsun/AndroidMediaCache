@@ -27,7 +27,7 @@ import java.util.Map;
 /**
  * Created by kaede on 2015/10/22.
  */
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class FKURecyclerViewAdapter extends RecyclerView.Adapter<FKURecyclerViewAdapter.ViewHolder> {
 
     protected int mIndex;
 
@@ -39,15 +39,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     /**
      * @param index
      */
-    public RecyclerViewAdapter(int index) {
+    public FKURecyclerViewAdapter(int index, List<String> mList) {
         this.mIndex = index;
+        if (mList != null && mList.size() > 0) {
+            this.mList.clear();
+            this.mList.addAll(mList);
+        }
     }
 
     public List<String> getmList() {
         return mList;
     }
 
-    public void setmList(List<String> mList) {
+    public void setList(List<String> mList) {
         if (mList != null && mList.size() > 0) {
             this.mList.clear();
             this.mList.addAll(mList);

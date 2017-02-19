@@ -133,7 +133,7 @@ public class NewestFragment extends BaseFragment {
                 for (int i = 0; i <= mRecyclerViewItems.size(); i += ITEMS_PER_AD) {
 
                     final WebView adView =
-                            (WebView) mRecyclerViewItems.get(i);
+                            (WebView) mRecyclerViewItems.getViewHolder(i);
 //                    adView.loadUrl("http://cpu.baidu.com/1001/d77e414");
                     String ad = "";
                     String fileName = "ad" + (Math.abs(new Random().nextInt() % 3)) + ".txt";

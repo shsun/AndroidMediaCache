@@ -471,7 +471,7 @@ public class MarkdownProcessor {
                     String result = processListItems(list);
 
                     // Trim any trailing whitespace, to put the closing `</ol>` or `</ul>`
-                    // up on the preceding line, to get it past the current stupid
+                    // up on the preceding line, to getViewHolder it past the current stupid
                     // HTML block parser. This is a hack to work around the terrible
                     // hack that is the HTML block parser.
                     result = result.replaceAll("\\s+$", "");

@@ -32,7 +32,8 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
 
     private SparseArray<View> mViews;
 
-    private int mPosition;
+    protected int mPosition;
+
     private View mConvertView;
 
     private Context mContext;
@@ -53,7 +54,6 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
         mConvertView.setTag(itemView.getId(), this);
     }
 
-
     public void setItemBackgound() {
         int pressed = Color.GRAY;
         Drawable content = itemView.getBackground();
@@ -73,15 +73,16 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
         }
     }
 
-    public static BaseViewHolder get(final Context context, View convertView,
-                                     ViewGroup parent, int layoutId, int position) {
+    public static BaseViewHolder getViewHolder(final Context context, View convertView,
+                                               ViewGroup parent, int layoutId, int position) {
+        BaseViewHolder holder;
         if (convertView == null) {
             View itemView = LayoutInflater.from(context).inflate(layoutId, parent, false);
-            BaseViewHolder holder = new BaseViewHolder(context, itemView, parent, position);
+            holder = new BaseViewHolder(context, itemView, parent, position);
             holder.mLayoutId = layoutId;
             return holder;
         } else {
-            BaseViewHolder holder = (BaseViewHolder) convertView.getTag(convertView.getId());
+            holder = (BaseViewHolder) convertView.getTag(convertView.getId());
             holder.mPosition = position;
             return holder;
         }
@@ -102,12 +103,23 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
         return (T) view;
     }
 
-    public ImageView getImageView(int viewId) {
-        return getView(viewId);
-    }
 
     public View getConvertView() {
         return mConvertView;
+    }
+
+
+    public void updatePosition(int position) {
+        mPosition = position;
+    }
+
+    public int getLayoutId() {
+        return mLayoutId;
+    }
+
+
+    public ImageView getImageView(int viewId) {
+        return getView(viewId);
     }
 
     /**
@@ -298,20 +310,6 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
         view.setOnLongClickListener(listener);
         return this;
     }
-
-
-    public void updatePosition(int position) {
-        mPosition = position;
-    }
-
-    public int getmPosition() {
-        return mPosition;
-    }
-
-    public int getLayoutId() {
-        return mLayoutId;
-    }
-
 
     private void setBackgroundCompat(View view, Drawable drawable) {
         int pL = view.getPaddingLeft();

@@ -48,7 +48,7 @@ public abstract class BaseAbListViewAdapter<T> extends android.widget.BaseAdapte
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        BaseViewHolder holder = BaseViewHolder.get(mContext, convertView, parent,
+        BaseViewHolder holder = BaseViewHolder.getViewHolder(mContext, convertView, parent,
                 layoutId, position);
         convert(holder, getItem(position));
         return holder.getConvertView();

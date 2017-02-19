@@ -7,22 +7,34 @@ import android.support.v7.widget.RecyclerView;
  */
 public abstract class HeaderAndFooterAdapter<H extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<H> {
 
-    int headerSize;
-    int footerSize;
+    protected int mHeaderSize;
+    protected int mFooterSize;
 
-    public int getFooterSize() {
-        return footerSize;
+    /**
+     * @return
+     */
+    public int getmFooterSize() {
+        return mFooterSize;
     }
 
-    public void setFooterSize(int footerSize) {
-        this.footerSize = footerSize;
+    /**
+     * @param mFooterSize
+     */
+    public void setmFooterSize(int mFooterSize) {
+        this.mFooterSize = mFooterSize;
     }
 
-    public int getHeaderSize() {
-        return headerSize;
+    /**
+     * @return
+     */
+    public int getmHeaderSize() {
+        return mHeaderSize;
     }
 
-    public void setHeaderSize(int headerSize) {
-        this.headerSize = headerSize;
+    /**
+     * @param mHeaderSize
+     */
+    public void setmHeaderSize(int mHeaderSize) {
+        this.mHeaderSize = mHeaderSize;
     }
 }

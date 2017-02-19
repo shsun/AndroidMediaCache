@@ -34,7 +34,7 @@ public abstract class MultiItemBaseAdapter<T> extends BaseRecyclerViewAdapter<T>
         if (mMultiItemTypeSupport == null) return super.onCreateViewHolder(parent, viewType);
 
         int layoutId = mMultiItemTypeSupport.getLayoutId(viewType);
-        BaseViewHolder holder = BaseViewHolder.get(mContext, null, parent, layoutId, -1);
+        BaseViewHolder holder = BaseViewHolder.getViewHolder(mContext, null, parent, layoutId, -1);
         return holder;
     }
 }

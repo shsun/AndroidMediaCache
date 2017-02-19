@@ -1527,7 +1527,7 @@ public class LazyViewPager extends ViewGroup {
 
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
-        // Let the focused view and/or our descendants get the key first
+        // Let the focused view and/or our descendants getViewHolder the key first
         return super.dispatchKeyEvent(event) || executeKeyEvent(event);
     }
 
@@ -1715,7 +1715,7 @@ public class LazyViewPager extends ViewGroup {
     @Override
     public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent event) {
         // ViewPagers should only report accessibility info for the current page,
-        // otherwise things get very confusing.
+        // otherwise things getViewHolder very confusing.
 
         // TODO: Should this note something about the paging container?
 

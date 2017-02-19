@@ -15,39 +15,61 @@ import java.util.List;
  *
  */
 public abstract class BaseRecyclerViewAdapter<T> extends HeaderAndFooterAdapter<BaseViewHolder> {
+
     protected Context mContext;
+
     protected int mLayoutId;
+
     protected List<T> mDatas;
 
+    protected OnItemClickListener mOnItemClickListener;
+    protected OnItemLongClickListener mOnItemLongClickListener;
 
-    OnItemClickListener onItemClickListener;
-    OnItemLongClickListener onItemLongClickListener;
-
-    public BaseRecyclerViewAdapter(Context context, int layoutId, List<T> datas) {
+    /**
+     * onCreateViewHolder
+     *
+     * @param context
+     * @param layoutId
+     * @param list
+     */
+    public BaseRecyclerViewAdapter(Context context, int layoutId, List<T> list) {
         mContext = context;
         mLayoutId = layoutId;
-        mDatas = datas;
+        mDatas = list;
+
         setHasStableIds(true);
     }
 
-    public void setmDatas(List<T> mDatas) {
-        this.mDatas = mDatas;
+    @Override
+    public BaseViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
+        BaseViewHolder viewHolder = BaseViewHolder.getViewHolder(mContext, null, parent, mLayoutId, -1);
+        this.setListener(parent, viewHolder, viewType);
+        return viewHolder;
     }
 
-    public int getmLayoutId() {
-        return mLayoutId;
+    /**
+     * update UI with data
+     * @param holder
+     * @param position
+     */
+    @Override
+    public void onBindViewHolder(BaseViewHolder holder, int position) {
+        holder.updatePosition(position);
+        convert(holder, mDatas.get(position));
     }
+
 
     @Override
     public long getItemId(int position) {
         return mDatas.get(position).hashCode();
     }
 
-    @Override
-    public BaseViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
-        BaseViewHolder viewHolder = BaseViewHolder.get(mContext, null, parent, mLayoutId, -1);
-        setListener(parent, viewHolder, viewType);
-        return viewHolder;
+    public void setDatas(List<T> mDatas) {
+        this.mDatas = mDatas;
+    }
+
+    public int getLayoutId() {
+        return mLayoutId;
     }
 
     protected int getPosition(RecyclerView.ViewHolder viewHolder) {
@@ -58,12 +80,12 @@ public abstract class BaseRecyclerViewAdapter<T> extends HeaderAndFooterAdapter<
         return true;
     }
 
-    @Override
-    public void onBindViewHolder(BaseViewHolder holder, int position) {
-        holder.updatePosition(position);
-        convert(holder, mDatas.get(position));
-    }
 
+    /**
+     * do update UI with data
+     * @param holder
+     * @param t
+     */
     public abstract void convert(BaseViewHolder holder, T t);
 
     @Override
@@ -71,38 +93,38 @@ public abstract class BaseRecyclerViewAdapter<T> extends HeaderAndFooterAdapter<
         return mDatas == null ? 0 : mDatas.size();
     }
 
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
-        this.onItemClickListener = onItemClickListener;
+    public void setmOnItemClickListener(OnItemClickListener mOnItemClickListener) {
+        this.mOnItemClickListener = mOnItemClickListener;
     }
 
-    public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener) {
-        this.onItemLongClickListener = onItemLongClickListener;
+    public void setmOnItemLongClickListener(OnItemLongClickListener mOnItemLongClickListener) {
+        this.mOnItemLongClickListener = mOnItemLongClickListener;
     }
 
 
     protected void setListener(final ViewGroup parent, final BaseViewHolder viewHolder, int viewType) {
         if (!isEnabled(viewType)) return;
-        if (onItemLongClickListener != null || onItemClickListener != null) {
+        if (mOnItemLongClickListener != null || mOnItemClickListener != null) {
             viewHolder.setItemBackgound();
         }
-        if (onItemClickListener != null) {
+        if (mOnItemClickListener != null) {
             viewHolder.getConvertView().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
                     int position = getPosition(viewHolder);
-                    onItemClickListener.onItemClick(parent, v, mDatas.get(position - getHeaderSize()), position - getHeaderSize());
+                    mOnItemClickListener.onItemClick(parent, v, mDatas.get(position - getmHeaderSize()), position - getmHeaderSize());
                 }
             });
         }
 
-        if (onItemLongClickListener != null) {
+        if (mOnItemLongClickListener != null) {
             viewHolder.getConvertView().setOnLongClickListener(
                     new View.OnLongClickListener() {
                         @Override
                         public boolean onLongClick(View v) {
                             int position = getPosition(viewHolder);
-                            return onItemLongClickListener.onItemLongClick(parent, v, mDatas.get(position - getHeaderSize()), position - getHeaderSize());
+                            return mOnItemLongClickListener.onItemLongClick(parent, v, mDatas.get(position - getmHeaderSize()), position - getmHeaderSize());
                         }
                     }
             );

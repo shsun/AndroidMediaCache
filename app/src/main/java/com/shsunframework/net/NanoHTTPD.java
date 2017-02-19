@@ -694,7 +694,7 @@ public abstract class NanoHTTPD {
                 // Read the first 8192 bytes.
                 // The full header should fit in here.
                 // Apache's default header limit is 8KB.
-                // Do NOT assume that a single read will get the entire header
+                // Do NOT assume that a single read will getViewHolder the entire header
                 // at once!
                 byte[] buf = new byte[HTTPSession.BUFSIZE];
                 this.splitbyte = 0;

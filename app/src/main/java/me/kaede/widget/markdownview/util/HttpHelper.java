@@ -78,7 +78,7 @@ public class HttpHelper {
 	}
 
 	/*
-	 * Open the input stream to get responses from the server.
+	 * Open the input stream to getViewHolder responses from the server.
 	 */
 	private static Response getResponse(HttpURLConnection connection)
 			throws IOException {
