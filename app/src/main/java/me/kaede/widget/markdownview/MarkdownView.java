@@ -33,8 +33,8 @@ public class MarkdownView extends WebView {
 	 * @param txt
 	 *            - input in markdown format
 	 * @param cssFileUrl
-	 *            - a URL to css File. If the file located in the project assets
-	 *            folder then the URL should start with "file:///android_asset/"
+	 *            - a QQ_X5_BROWSER_KEY_URL to css File. If the file located in the project assets
+	 *            folder then the QQ_X5_BROWSER_KEY_URL should start with "file:///android_asset/"
 	 */
 	public void loadMarkdown(String txt, String cssFileUrl) {
 		loadMarkdownToView(txt, cssFileUrl);
@@ -55,12 +55,12 @@ public class MarkdownView extends WebView {
 	 * output will be styled based on the given CSS file.
 	 * 
 	 * @param url
-	 *            - a URL to the Markdown file. If the file located in the
-	 *            project assets folder then the URL should start with
+	 *            - a QQ_X5_BROWSER_KEY_URL to the Markdown file. If the file located in the
+	 *            project assets folder then the QQ_X5_BROWSER_KEY_URL should start with
 	 *            "file:///android_asset/"
 	 * @param cssFileUrl
-	 *            - a URL to css File. If the file located in the project assets
-	 *            folder then the URL should start with "file:///android_asset/"
+	 *            - a QQ_X5_BROWSER_KEY_URL to css File. If the file located in the project assets
+	 *            folder then the QQ_X5_BROWSER_KEY_URL should start with "file:///android_asset/"
 	 */
 	public void loadMarkdownFile(String url, String cssFileUrl) {
 		new LoadMarkdownUrlTask().execute(url, cssFileUrl);

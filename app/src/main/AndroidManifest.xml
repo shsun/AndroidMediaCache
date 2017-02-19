@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    package="com.biz"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.biz">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -24,9 +23,7 @@
 
         <activity
             android:name="com.biz.activity.HomePageActivity"
-            android:theme="@style/Theme.AppCompat">
-        </activity>
-
+            android:theme="@style/Theme.AppCompat"></activity>
 
 
         <activity android:name="com.danikula.videocache.demo.SingleVideoActivity_" />
@@ -70,8 +67,15 @@
             android:name="me.kaede.frescosample.subsampling.SubsamplingActvity"
             android:theme="@style/NoActionBar" />
         <activity android:name="me.kaede.frescosample.gifimageview.GifImageViewActivity" />
-        <activity android:name="me.kaede.frescosample.snippet.SnippetActivity" android:label="Code Snippet"></activity>
+        <activity
+            android:name="me.kaede.frescosample.snippet.SnippetActivity"
+            android:label="Code Snippet"></activity>
 
+
+        <!-- for sshframework -->
+        <activity
+            android:name="com.shsunframework.app.QQX5BrowserActivity"
+            android:theme="@style/NoTitleFullscreen" />
     </application>
 
 </manifest>

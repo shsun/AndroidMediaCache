@@ -3,6 +3,8 @@ package com.shsunframework.app;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.biz.R;
 import com.tencent.smtt.export.external.interfaces.SslError;
@@ -19,9 +21,12 @@ public class QQX5BrowserActivity extends BaseAppCompatActivity {
 
     private static final String TAG = "QQX5BrowserActivity";
 
-    public static final String URL = "URL";
-    public static final String CACHE_MODE = "CACHE_MODE";
 
+    public static final String QQ_X5_BROWSER_KEY_TITLE = "QQ_X5_BROWSER_KEY_TITLE";
+    public static final String QQ_X5_BROWSER_KEY_URL = "QQ_X5_BROWSER_KEY_URL";
+    public static final String QQ_X5_BROWSER_KEY_CACHE_MODE = "QQ_X5_BROWSER_KEY_CACHE_MODE";
+
+    private String mTitle;
     private String mUrl;
     private int mCacheMode;
 
@@ -30,14 +35,18 @@ public class QQX5BrowserActivity extends BaseAppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         super.onCreate(savedInstanceState);
     }
 
     @Override
     protected void initVariables(Bundle savedInstanceState, Bundle prevInstanceState) {
         // , "http://www.163.com"
-        mUrl = this.getIntent().getStringExtra(URL);
-        mCacheMode = this.getIntent().getIntExtra(CACHE_MODE, WebSettings.LOAD_NO_CACHE);
+        mTitle = this.getIntent().getStringExtra(QQ_X5_BROWSER_KEY_TITLE);
+        mUrl = this.getIntent().getStringExtra(QQ_X5_BROWSER_KEY_URL);
+        mCacheMode = this.getIntent().getIntExtra(QQ_X5_BROWSER_KEY_CACHE_MODE, WebSettings.LOAD_NO_CACHE);
     }
 
     @Override

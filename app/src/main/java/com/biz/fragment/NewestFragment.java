@@ -1,5 +1,6 @@
 package com.biz.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +13,8 @@ import android.widget.Toast;
 import com.biz.adapter.PersonAdapter;
 import com.biz.entry.PersonEntry;
 import com.shsunframework.app.BaseFragment;
+import com.shsunframework.app.QQX5BrowserActivity;
+import com.tencent.smtt.sdk.WebSettings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +54,10 @@ public class NewestFragment extends BaseFragment {
             @Override
             public void onItemClick(int position, PersonEntry entry) {
                 Log.i(TAG, "onItemClick=" + position + ", " + entry.getName());
+                Intent intent = new Intent(NewestFragment.this.getActivity(), QQX5BrowserActivity.class);
+                intent.putExtra(QQX5BrowserActivity.QQ_X5_BROWSER_KEY_URL, "http://www.qq.com");
+                intent.putExtra(QQX5BrowserActivity.QQ_X5_BROWSER_KEY_CACHE_MODE, WebSettings.LOAD_NO_CACHE);
+                NewestFragment.this.getActivity().startActivity(intent);
             }
 
             @Override
