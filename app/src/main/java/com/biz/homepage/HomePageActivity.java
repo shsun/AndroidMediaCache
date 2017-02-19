@@ -12,10 +12,11 @@ import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
 
 import com.biz.R;
+import com.biz.entry.ChannelEntry;
 import com.biz.homepage.fragment.ActivityFragment;
 import com.biz.homepage.fragment.FindFragment;
 import com.biz.homepage.fragment.NewestFragment;
-import com.danikula.videocache.demo.MyVideoFragment;
+import com.biz.homepage.fragment.MyVideoFragment;
 import com.shsunframework.app.BaseFragmentActivity;
 
 import java.util.ArrayList;
@@ -26,7 +27,15 @@ import java.util.List;
  */
 public class HomePageActivity extends BaseFragmentActivity {
 
+
+    public static final String CZSZ_BUNDLE_KEY_CHANNEL_INFO = "CZSZ_BUNDLE_KEY_CHANNEL_INFO";
+    public static final String CZSZ_BUNDLE_KEY_TEST = "CZSZ_BUNDLE_KEY_TEST";
+
+
     private List<ChannelEntry> mChannelEntries = new ArrayList<ChannelEntry>();
+
+
+
 
 
     private Fragment[] fragments = {new NewestFragment(), new ActivityFragment(),
@@ -120,6 +129,10 @@ public class HomePageActivity extends BaseFragmentActivity {
             Fragment fragment = fragments[position];
             Bundle bundle = new Bundle();
             bundle.putString("str", "fuck you");
+
+            bundle.putParcelable(CZSZ_BUNDLE_KEY_CHANNEL_INFO, mChannelEntries.get(position));
+            bundle.putString(CZSZ_BUNDLE_KEY_TEST, "what_fuck_is_going_on");
+
             fragment.setArguments(bundle);
             return fragment;
         }

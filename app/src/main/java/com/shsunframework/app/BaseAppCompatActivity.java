@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.biz.CZSZApplication;
-import com.biz.homepage.PersonEntry;
+import com.biz.entry.PersonEntry;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
 

@@ -1,4 +1,4 @@
-package com.biz.homepage;
+package com.biz.entry;
 
 import com.shsunframework.entry.BaseEntry;
 

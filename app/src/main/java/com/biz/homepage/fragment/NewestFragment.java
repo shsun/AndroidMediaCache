@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.biz.homepage.PersonAdapter;
-import com.biz.homepage.PersonEntry;
+import com.biz.entry.PersonEntry;
 import com.shsunframework.app.BaseFragment;
 
 import java.util.ArrayList;

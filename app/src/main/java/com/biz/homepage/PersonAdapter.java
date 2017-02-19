@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.biz.R;
+import com.biz.entry.PersonEntry;
 
 import java.util.List;
 

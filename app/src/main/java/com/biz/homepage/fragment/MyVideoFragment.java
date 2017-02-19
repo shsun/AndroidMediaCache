@@ -1,4 +1,4 @@
-package com.danikula.videocache.demo;
+package com.biz.homepage.fragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
