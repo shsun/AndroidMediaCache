@@ -13,7 +13,7 @@
         android:label="@string/app_name"
         android:theme="@android:style/Theme.Holo.Light.NoActionBar">
         <activity
-            android:name=".MainActivity"
+            android:name=".CZSZMainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +23,7 @@
 
 
         <activity
-            android:name="com.biz.homepage.HomePageActivity"
+            android:name="com.biz.activity.HomePageActivity"
             android:theme="@style/Theme.AppCompat">
         </activity>
 
@@ -61,7 +61,7 @@
         <activity android:name="me.kaede.frescosample.postprocessor.PostprocessorActivity" />
         <activity android:name="me.kaede.frescosample.listview.ListViewActivity" />
         <activity
-            android:name="me.kaede.frescosample.recyclerview.RecyclerViewActivity"
+            android:name=".activity.RecyclerViewActivity"
             android:theme="@style/NoActionBar" />
         <activity
             android:name="me.kaede.frescosample.photoview.PhotoViewActivity"

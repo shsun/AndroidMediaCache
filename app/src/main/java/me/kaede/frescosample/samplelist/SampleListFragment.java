@@ -19,7 +19,7 @@ import me.kaede.frescosample.lowres.LowResActivity;
 import me.kaede.frescosample.photoview.PhotoViewActivity;
 import me.kaede.frescosample.postprocessor.PostprocessorActivity;
 import me.kaede.frescosample.progressivejpg.ProgressiveJPGActivity;
-import me.kaede.frescosample.recyclerview.RecyclerViewActivity;
+import com.biz.activity.RecyclerViewActivity;
 import me.kaede.frescosample.resize.ResizeActivity;
 import me.kaede.frescosample.subsampling.SubsamplingActvity;
 

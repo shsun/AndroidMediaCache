@@ -120,7 +120,7 @@ public class NewestFragment extends BaseFragment {
             @Override
             public void run() {
                 /*
-                final float density = MainActivity.this.getResources().getDisplayMetrics().density;
+                final float density = CZSZMainActivity.this.getResources().getDisplayMetrics().density;
                 // Set the ad size and ad unit ID for each Native Express ad in the items list.
                 for (int i = 0; i <= mRecyclerViewItems.size(); i += ITEMS_PER_AD) {
 
@@ -130,7 +130,7 @@ public class NewestFragment extends BaseFragment {
                     String ad = "";
                     String fileName = "ad" + (Math.abs(new Random().nextInt() % 3)) + ".txt";
                     new Random().nextInt();
-                    ad = ReadFromfile(fileName, MainActivity.this);
+                    ad = ReadFromfile(fileName, CZSZMainActivity.this);
 
                     adView.loadDataWithBaseURL(null, getAdHtml(ad), "text/html", "UTF-8", null);
                     FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(getScreenWidth(), 800);

@@ -1,4 +1,4 @@
-package com.biz.homepage;
+package com.biz.activity;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -104,7 +104,7 @@ public class HomePageActivity extends BaseFragmentActivity {
                         getApplication().onTerminate();
                         break;
                     case Dialog.BUTTON_NEGATIVE:
-                        Toast.makeText(com.biz.homepage.HomePageActivity.this, "吓死宝宝了, 还好不是真退出！！！", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(HomePageActivity.this, "吓死宝宝了, 还好不是真退出！！！", Toast.LENGTH_SHORT).show();
                         break;
                 }
             }

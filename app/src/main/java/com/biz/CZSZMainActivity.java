@@ -13,11 +13,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.shsunframework.app.BaseActivity;
-import com.shsunframework.app.BaseAppCompatActivity;
 
-public class MainActivity extends BaseActivity implements OnPageChangeListener {
+import com.biz.activity.RecyclerViewActivity;
 
-    private static final String TAG = "MainActivity";
+public class CZSZMainActivity extends BaseActivity implements OnPageChangeListener {
+
+    private static final String TAG = "CZSZMainActivity";
 
     // ViewPager
     private ViewPager mViewPager;
@@ -127,8 +128,12 @@ public class MainActivity extends BaseActivity implements OnPageChangeListener {
         this.mGoHomePageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, com.biz.homepage.HomePageActivity.class);
-                MainActivity.this.startActivity(intent);
+
+
+                Intent intent = new Intent(CZSZMainActivity.this, RecyclerViewActivity.class);
+
+                // Intent intent = new Intent(CZSZMainActivity.this, com.biz.activity.HomePageActivity.class);
+                CZSZMainActivity.this.startActivity(intent);
             }
         });
 
