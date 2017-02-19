@@ -10,9 +10,9 @@ import android.support.v7.widget.Toolbar;
 
 import com.biz.R;
 import com.biz.entry.ChannelEntry;
+import com.biz.fragment.RecyclerViewFragment;
 import com.shsunframework.app.BaseAppCompatActivity;
 
-import me.kaede.frescosample.recyclerview.RecyclerViewFragment;
 
 /**
  *

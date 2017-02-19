@@ -1,4 +1,4 @@
-package com.biz.homepage.fragment;
+package com.biz.fragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;

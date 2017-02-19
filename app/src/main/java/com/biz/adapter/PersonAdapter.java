@@ -1,4 +1,4 @@
-package com.biz.homepage;
+package com.biz.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

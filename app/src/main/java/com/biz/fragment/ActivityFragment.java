@@ -1,4 +1,4 @@
-package com.biz.homepage.fragment;
+package com.biz.fragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -11,10 +11,11 @@ import android.widget.Toast;
 
 import com.shsunframework.app.BaseFragment;
 
+
 /**
  * Created by shsun on 17/1/12.
  */
-public class AmuseFragment extends BaseFragment {
+public class ActivityFragment extends BaseFragment {
 
     private TextView mTextView;
 
@@ -26,12 +27,14 @@ public class AmuseFragment extends BaseFragment {
 
         mTextView.setTextSize(20);
         mTextView.setTextColor(Color.BLACK);
+
         return mTextView;
     }
 
     @Override
     public void initData(Bundle bundle) {
-        Toast.makeText(getActivity(), "加载了娱乐数据", Toast.LENGTH_SHORT).show();
-        mTextView.setText("娱乐视图");
+        Toast.makeText(getActivity(), "加载了活动数据", Toast.LENGTH_SHORT).show();
+        mTextView.setText("活动视图");
     }
+
 }

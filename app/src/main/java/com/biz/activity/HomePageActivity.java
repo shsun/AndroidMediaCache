@@ -1,5 +1,8 @@
 package com.biz.activity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -13,14 +16,11 @@ import android.widget.Toast;
 
 import com.biz.R;
 import com.biz.entry.ChannelEntry;
-import com.biz.homepage.fragment.ActivityFragment;
-import com.biz.homepage.fragment.FindFragment;
-import com.biz.homepage.fragment.NewestFragment;
-import com.biz.homepage.fragment.MyVideoFragment;
+import com.biz.fragment.ActivityFragment;
+import com.biz.fragment.FindFragment;
+import com.biz.fragment.NewestFragment;
+import com.biz.fragment.MyVideoFragment;
 import com.shsunframework.app.BaseFragmentActivity;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by shsun on 17/1/9.

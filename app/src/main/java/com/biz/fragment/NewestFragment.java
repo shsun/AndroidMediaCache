@@ -1,4 +1,4 @@
-package com.biz.homepage.fragment;
+package com.biz.fragment;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.biz.homepage.PersonAdapter;
+import com.biz.adapter.PersonAdapter;
 import com.biz.entry.PersonEntry;
 import com.shsunframework.app.BaseFragment;
 

@@ -1,4 +1,4 @@
-package com.biz.homepage;
+package com.biz.activity;
 
 import android.os.Bundle;
 

@@ -1,4 +1,4 @@
-package me.kaede.frescosample.recyclerview;
+package com.biz.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,6 +13,7 @@ import com.biz.R;
 import java.util.List;
 
 import me.kaede.frescosample.ImageApi;
+import me.kaede.frescosample.recyclerview.MyAdapter;
 
 public class RecyclerViewFragment extends Fragment {
     private static final String BUNDLE_INDEX = "BUNDLE_INDEX";

@@ -1,4 +1,4 @@
-package com.biz.homepage.fragment;
+package com.biz.fragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -11,11 +11,12 @@ import android.widget.Toast;
 
 import com.shsunframework.app.BaseFragment;
 
-
 /**
  * Created by shsun on 17/1/12.
  */
-public class ActivityFragment extends BaseFragment {
+public class FindFragment extends BaseFragment {
+
+    private static final String TAG = "FindFragment";
 
     private TextView mTextView;
 
@@ -33,8 +34,8 @@ public class ActivityFragment extends BaseFragment {
 
     @Override
     public void initData(Bundle bundle) {
-        Toast.makeText(getActivity(), "加载了活动数据", Toast.LENGTH_SHORT).show();
-        mTextView.setText("活动视图");
+        Toast.makeText(getActivity(), "加载了发现数据", Toast.LENGTH_SHORT).show();
+        mTextView.setText("发现视图");
     }
 
 }
