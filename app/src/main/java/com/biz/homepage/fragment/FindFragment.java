@@ -21,7 +21,7 @@ public class FindFragment extends BaseFragment {
     private TextView mTextView;
 
     @Override
-    public View initView(LayoutInflater inflater, ViewGroup container,
+    public View initView(Bundle bundle, LayoutInflater inflater, ViewGroup container,
                          Bundle savedInstanceState) {
         mTextView = new TextView(getActivity());
         mTextView.setGravity(Gravity.CENTER);
@@ -33,7 +33,7 @@ public class FindFragment extends BaseFragment {
     }
 
     @Override
-    public void initData() {
+    public void initData(Bundle bundle) {
         Toast.makeText(getActivity(), "加载了发现数据", Toast.LENGTH_SHORT).show();
         mTextView.setText("发现视图");
     }

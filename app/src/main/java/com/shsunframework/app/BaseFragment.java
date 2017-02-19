@@ -35,7 +35,7 @@ public abstract class BaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         if (mRootView == null) {
-            mRootView = initView(inflater, container, savedInstanceState);
+            mRootView = initView(getArguments(), inflater, container, savedInstanceState);
         }
         return mRootView;
     }
@@ -71,7 +71,7 @@ public abstract class BaseFragment extends Fragment {
      */
     protected void lazyLoad() {
         if (this.isUIViewControllerCreated && this.isUIViewVisible) {
-            this.initData();
+            this.initData(getArguments());
         }
     }
 
@@ -80,11 +80,11 @@ public abstract class BaseFragment extends Fragment {
      *
      * @return
      */
-    public abstract View initView(LayoutInflater inflater, ViewGroup container,
+    public abstract View initView(Bundle bundle, LayoutInflater inflater, ViewGroup container,
                                   Bundle savedInstanceState);
 
     /**
      * fetch data here
      */
-    public abstract void initData();
+    public abstract void initData(Bundle bundle);
 }

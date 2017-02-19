@@ -42,7 +42,7 @@ public class MyVideoFragment extends BaseFragment implements CacheListener {
 
     @SuppressLint("WrongViewCast")
     @Override
-    public View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View initView(Bundle bundle, LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = LayoutInflater.from(this.getContext()).inflate(R.layout.my_fragment_video, null);
         cacheStatusImageView = (ImageView)view.findViewById(R.id.cacheStatusImageView);
         progressBar = (ProgressBar)view.findViewById(R.id.progressBar);
@@ -52,7 +52,7 @@ public class MyVideoFragment extends BaseFragment implements CacheListener {
 
 
     @Override
-    public void initData() {
+    public void initData(Bundle bundle) {
         //
         url = "http://219.238.4.104/video07/2013/12/17/779163-102-067-2207_5.mp4";
         cachePath = this.getContext().getExternalCacheDir().getAbsolutePath();

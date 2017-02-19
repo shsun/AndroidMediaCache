@@ -1,10 +1,12 @@
 package com.biz.homepage;
 
+import com.shsunframework.entry.BaseEntry;
+
 /**
  * Created by shsun on 17/1/18.
  */
 
-public class PersonEntry {
+public class PersonEntry extends BaseEntry {
 
     private final String name;
     private final String description;
@@ -12,8 +14,9 @@ public class PersonEntry {
     private final String category;
     private final String imageName;
 
-    public PersonEntry(String name, String description, String price, String category,
+    public PersonEntry(String id, String name, String description, String price, String category,
                        String imageName) {
+        super(id);
         this.name = name;
         this.description = description;
         this.price = price;

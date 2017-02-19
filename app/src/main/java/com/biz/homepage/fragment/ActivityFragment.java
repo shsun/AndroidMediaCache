@@ -20,7 +20,7 @@ public class ActivityFragment extends BaseFragment {
     private TextView mTextView;
 
     @Override
-    public View initView(LayoutInflater inflater, ViewGroup container,
+    public View initView(Bundle bundle, LayoutInflater inflater, ViewGroup container,
                          Bundle savedInstanceState) {
         mTextView = new TextView(getActivity());
         mTextView.setGravity(Gravity.CENTER);
@@ -32,7 +32,7 @@ public class ActivityFragment extends BaseFragment {
     }
 
     @Override
-    public void initData() {
+    public void initData(Bundle bundle) {
         Toast.makeText(getActivity(), "加载了活动数据", Toast.LENGTH_SHORT).show();
         mTextView.setText("活动视图");
     }
