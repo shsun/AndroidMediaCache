@@ -15,9 +15,9 @@ import com.tencent.smtt.sdk.WebViewClient;
 /**
  *
  */
-public class BrowserActivity extends BaseAppCompatActivity {
+public class QQX5BrowserActivity extends BaseAppCompatActivity {
 
-    private static final String TAG = "BrowserActivity";
+    private static final String TAG = "QQX5BrowserActivity";
 
     public static final String URL = "URL";
     public static final String CACHE_MODE = "CACHE_MODE";
@@ -42,7 +42,7 @@ public class BrowserActivity extends BaseAppCompatActivity {
 
     @Override
     protected void initView(Bundle savedInstanceState, Bundle prevInstanceState) {
-        setContentView(R.layout.activity_browser);
+        setContentView(R.layout.activity_qq_x5_browser);
 
         // Toast.makeText(this, TAG, Toast.LENGTH_SHORT).show();
         mWebView = (WebView) this.findViewById(R.id.webView);
