@@ -8,12 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.biz.R;
-import com.biz.adapter.FKURecyclerViewAdapter;
 import com.biz.adapter.XURecyclerViewAdapter;
-import com.biz.entry.ChannelEntry;
 import com.shsunframework.app.BaseFragment;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import me.kaede.frescosample.ImageApi;
@@ -67,7 +64,6 @@ public class RecyclerViewFragment extends BaseFragment {
                 datas = ImageApi.legs.getUrls();
                 break;
         }
-
         //
         //this.mAdapter = new FKURecyclerViewAdapter(mIndex,datas);
         this.mAdapter = new XURecyclerViewAdapter(mIndex, this.getContext(), R.layout.item_recyclerview, datas);

@@ -50,7 +50,6 @@ public class XURecyclerViewAdapter extends BaseRecyclerViewAdapter<String> {
         return new ViewHolder(holder);
     }
 
-
     @Override
     public void convert(com.shsunframework.adapter.BaseViewHolder pholder, final String url) {
 
@@ -149,27 +148,6 @@ public class XURecyclerViewAdapter extends BaseRecyclerViewAdapter<String> {
             super(holder);
             draweeView = (SimpleDraweeView) itemView.findViewById(R.id.draweeview);
         }
-
-
-//        public static BaseViewHolder getViewHolder(final Context context, View convertView,
-//                                                   ViewGroup parent, int layoutId, int position) {
-//            BaseViewHolder holder;
-//            if (convertView == null) {
-//                View itemView = LayoutInflater.from(context).inflate(layoutId, parent, false);
-//                //View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recyclerview, parent, false);
-//                // holder = new BaseViewHolder(context, itemView, parent, position);
-//                holder = new ViewHolder(context, itemView, parent, position);
-//                //holder.mLayoutId = layoutId;
-//                //holder.setLayoutId(layoutId);
-//            } else {
-//                holder = (BaseViewHolder) convertView.getTag(convertView.getId());
-//                //holder.mPosition = position;
-//                holder.updatePosition(position);
-//            }
-//            return holder;
-//        }
-
-
     }
 
 }
