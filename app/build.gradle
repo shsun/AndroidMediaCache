@@ -64,9 +64,13 @@ dependencies {
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.1.7+'
     //
     testCompile 'junit:junit:4.12'
+    //
     apt 'org.androidannotations:androidannotations:3.3.2'
+    //
     compile 'com.squareup.okhttp:okhttp:2.7.5'
     compile 'com.squareup.okio:okio:1.11.0'
     compile 'com.github.xxl6097:okhttputils:2.4.1'
     compile 'com.google.code.gson:gson:2.8.0'
+    //
+    compile files('libs/tbs_sdk_thirdapp_v3.0.0.1038_43000_sharewithdownload_obfs_20170110_144724.jar')
 }
