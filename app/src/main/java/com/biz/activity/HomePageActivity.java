@@ -1,8 +1,5 @@
 package com.biz.activity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -16,11 +13,14 @@ import android.widget.Toast;
 
 import com.biz.R;
 import com.biz.entry.ChannelEntry;
-import com.biz.fragment.ActivityFragment;
 import com.biz.fragment.FindFragment;
-import com.biz.fragment.NewestFragment;
 import com.biz.fragment.MyVideoFragment;
+import com.biz.fragment.NewestFragment;
+import com.biz.fragment.RecyclerViewFragment;
 import com.shsunframework.app.BaseFragmentActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by shsun on 17/1/9.
@@ -35,10 +35,7 @@ public class HomePageActivity extends BaseFragmentActivity {
     private List<ChannelEntry> mChannelEntries = new ArrayList<ChannelEntry>();
 
 
-
-
-
-    private Fragment[] fragments = {new NewestFragment(), new ActivityFragment(),
+    private Fragment[] fragments = {new NewestFragment(), RecyclerViewFragment.newInstance(1),
             new MyVideoFragment(), new FindFragment(), new NewestFragment(), new NewestFragment(), new NewestFragment()};
 
     @Override
@@ -127,6 +124,9 @@ public class HomePageActivity extends BaseFragmentActivity {
         @Override
         public Fragment getItem(int position) {
             Fragment fragment = fragments[position];
+
+
+
             Bundle bundle = new Bundle();
             bundle.putString("str", "fuck you");
 
@@ -134,8 +134,15 @@ public class HomePageActivity extends BaseFragmentActivity {
             bundle.putString(CZSZ_BUNDLE_KEY_TEST, "what_fuck_is_going_on");
 
             fragment.setArguments(bundle);
+
+
+
+
             return fragment;
-        }
+
+
+
+    }
 
         @Override
         public int getCount() {
