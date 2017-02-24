@@ -10,7 +10,7 @@ import android.support.v7.widget.Toolbar;
 
 import com.biz.R;
 import com.biz.entry.ChannelEntry;
-import com.biz.fragment.RecyclerViewFragment;
+import com.biz.fragment.ImageFragment;
 import com.shsunframework.app.BaseAppCompatActivity;
 
 
@@ -64,8 +64,8 @@ public class RecyclerViewActivity extends BaseAppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            //return RecyclerViewFragment.newInstance(position);
-            return new RecyclerViewFragment(position);
+            //return ImageFragment.newInstance(position);
+            return new ImageFragment(position);
         }
 
         @Override

@@ -14,9 +14,9 @@ import android.widget.Toast;
 import com.biz.R;
 import com.biz.entry.ChannelEntry;
 import com.biz.fragment.FindFragment;
+import com.biz.fragment.ImageFragment;
 import com.biz.fragment.MyVideoFragment;
 import com.biz.fragment.NewestFragment;
-import com.biz.fragment.RecyclerViewFragment;
 import com.shsunframework.app.BaseFragmentActivity;
 
 import java.util.ArrayList;
@@ -35,8 +35,8 @@ public class HomePageActivity extends BaseFragmentActivity {
     private List<ChannelEntry> mChannelEntries = new ArrayList<ChannelEntry>();
 
 
-    private Fragment[] fragments = {new NewestFragment(), new RecyclerViewFragment(0),
-            new RecyclerViewFragment(1), new RecyclerViewFragment(2), new MyVideoFragment(), new FindFragment(), new NewestFragment()};
+    private Fragment[] fragments = {new NewestFragment(), new ImageFragment(0),
+            new ImageFragment(1), new ImageFragment(2), new MyVideoFragment(), new FindFragment(), new NewestFragment()};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

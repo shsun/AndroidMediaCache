@@ -8,7 +8,6 @@ import com.shsunframework.adapter.recyclerview.MultiItemBaseAdapter;
 import com.shsunframework.adapter.recyclerview.MultiItemTypeSupport;
 
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -36,16 +35,16 @@ public abstract class SectionAdapter<T> extends MultiItemBaseAdapter<T> {
         }
     };
 
-    public SectionAdapter(Context context, int layoutId, List<T> datas, SectionSupport sectionSupport) {
-        this(context, layoutId, null, datas, sectionSupport);
+    public SectionAdapter(Context context, int layoutId, SectionSupport sectionSupport) {
+        this(context, layoutId, null, sectionSupport);
     }
 
-    public SectionAdapter(Context context, MultiItemTypeSupport multiItemTypeSupport, List<T> datas, SectionSupport sectionSupport) {
-        this(context, -1, multiItemTypeSupport, datas, sectionSupport);
+    public SectionAdapter(Context context, MultiItemTypeSupport multiItemTypeSupport, SectionSupport sectionSupport) {
+        this(context, -1, multiItemTypeSupport, sectionSupport);
     }
 
-    public SectionAdapter(Context context, int layoutId, MultiItemTypeSupport multiItemTypeSupport, List<T> datas, SectionSupport sectionSupport) {
-        super(context, datas, null);
+    public SectionAdapter(Context context, int layoutId, MultiItemTypeSupport multiItemTypeSupport, SectionSupport sectionSupport) {
+        super(context, null);
         mLayoutId = layoutId;
         initMulitiItemTypeSupport(layoutId, multiItemTypeSupport);
         mMultiItemTypeSupport = headerItemTypeSupport;

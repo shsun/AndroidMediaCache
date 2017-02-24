@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.biz.R;
-import com.biz.adapter.XURecyclerViewAdapter;
+import com.biz.adapter.ImageAdapter;
 import com.shsunframework.app.BaseFragment;
 
 import java.util.List;
@@ -18,20 +18,19 @@ import me.kaede.frescosample.ImageApi;
 /**
  *
  */
-public class RecyclerViewFragment extends BaseFragment {
+public class ImageFragment extends BaseFragment {
 
     private int mIndex;
 
     // find view
     RecyclerView mRecyclerView;
-    // private FKURecyclerViewAdapter mAdapter;
-    private XURecyclerViewAdapter mAdapter;
+    private ImageAdapter mAdapter;
 
 
     /**
      * @param index
      */
-    public RecyclerViewFragment(int index) {
+    public ImageFragment(int index) {
         super();
         this.mIndex = index;
     }
@@ -46,15 +45,19 @@ public class RecyclerViewFragment extends BaseFragment {
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(mIndex + 1, StaggeredGridLayoutManager.VERTICAL);
         this.mRecyclerView.setLayoutManager(layoutManager);
 
+        //
+        this.mAdapter = new ImageAdapter(this.getContext(), R.layout.item_recyclerview);
+        this.mRecyclerView.setHasFixedSize(false);
+        this.mRecyclerView.setAdapter(mAdapter);
+
         return view;
     }
 
     @Override
     public void initData(Bundle bundle) {
-        List<String> datas = ImageApi.jk.getUrls();
+        List<String> datas = null;
         switch (mIndex) {
             case 0:
-            default:
                 datas = ImageApi.jk.getUrls();
                 break;
             case 1:
@@ -63,12 +66,10 @@ public class RecyclerViewFragment extends BaseFragment {
             case 2:
                 datas = ImageApi.legs.getUrls();
                 break;
+            default:
+                datas = ImageApi.jk.getUrls();
+                break;
         }
-        //
-        //this.mAdapter = new FKURecyclerViewAdapter(mIndex,datas);
-        this.mAdapter = new XURecyclerViewAdapter(mIndex, this.getContext(), R.layout.item_recyclerview, datas);
-        this.mRecyclerView.setHasFixedSize(false);
-        this.mRecyclerView.setAdapter(mAdapter);
+        this.mAdapter.setDatas(datas);
     }
-
 }

@@ -9,6 +9,7 @@ import com.shsunframework.adapter.BaseViewHolder;
 import com.shsunframework.adapter.recyclerview.click.OnItemClickListener;
 import com.shsunframework.adapter.recyclerview.click.OnItemLongClickListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,9 +18,7 @@ import java.util.List;
 public abstract class BaseRecyclerViewAdapter<T> extends HeaderAndFooterAdapter<BaseViewHolder> {
 
     protected Context mContext;
-
     protected int mLayoutId;
-
     protected List<T> mDatas;
 
     protected OnItemClickListener mOnItemClickListener;
@@ -30,28 +29,23 @@ public abstract class BaseRecyclerViewAdapter<T> extends HeaderAndFooterAdapter<
      *
      * @param context
      * @param layoutId
-     * @param list
      */
-    public BaseRecyclerViewAdapter(Context context, int layoutId, List<T> list) {
+    public BaseRecyclerViewAdapter(Context context, int layoutId) {
         mContext = context;
         mLayoutId = layoutId;
-        mDatas = list;
-
+        this.mDatas = new ArrayList<T>();
         setHasStableIds(true);
     }
 
     @Override
     public BaseViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
         BaseViewHolder baseViewHolder = BaseViewHolder.getViewHolder(mContext, null, parent, mLayoutId, -1);
-        // BaseViewHolder baseViewHolder = getViewHolder(mContext, null, parent, mLayoutId, -1);
-
-        baseViewHolder = convertViewHolder(baseViewHolder);
-
+        baseViewHolder = doCreateViewHolder(baseViewHolder);
         this.setListener(parent, baseViewHolder, viewType);
         return baseViewHolder;
     }
 
-    public abstract BaseViewHolder convertViewHolder(BaseViewHolder holder);
+    public abstract BaseViewHolder doCreateViewHolder(BaseViewHolder holder);
 
     /**
      * update UI with data
@@ -61,7 +55,7 @@ public abstract class BaseRecyclerViewAdapter<T> extends HeaderAndFooterAdapter<
     @Override
     public void onBindViewHolder(BaseViewHolder holder, int position) {
         holder.updatePosition(position);
-        convert(holder, mDatas.get(position));
+        doBindViewHolder(holder, mDatas.get(position));
     }
 
 
@@ -70,8 +64,10 @@ public abstract class BaseRecyclerViewAdapter<T> extends HeaderAndFooterAdapter<
         return mDatas.get(position).hashCode();
     }
 
-    public void setDatas(List<T> mDatas) {
-        this.mDatas = mDatas;
+    public void setDatas(List<T> datas) {
+        this.mDatas.clear();
+        this.mDatas.addAll(datas);
+        notifyDataSetChanged();
     }
 
     public int getLayoutId() {
@@ -92,7 +88,7 @@ public abstract class BaseRecyclerViewAdapter<T> extends HeaderAndFooterAdapter<
      * @param holder
      * @param t
      */
-    public abstract void convert(BaseViewHolder holder, T t);
+    public abstract void doBindViewHolder(BaseViewHolder holder, T t);
 
     @Override
     public int getItemCount() {

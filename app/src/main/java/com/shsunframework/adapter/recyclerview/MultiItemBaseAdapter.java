@@ -6,16 +6,14 @@ import android.view.ViewGroup;
 import com.shsunframework.adapter.BaseViewHolder;
 //import com.hbung.adapter.BaseViewHolder;
 
-import java.util.List;
-
 public abstract class MultiItemBaseAdapter<T> extends BaseRecyclerViewAdapter<T> {
 
 
     protected MultiItemTypeSupport<T> mMultiItemTypeSupport;
 
-    public MultiItemBaseAdapter(Context context, List<T> datas,
+    public MultiItemBaseAdapter(Context context,
                                 MultiItemTypeSupport<T> multiItemTypeSupport) {
-        super(context, -1, datas);
+        super(context, -1);
         mMultiItemTypeSupport = multiItemTypeSupport;
 
         if (mMultiItemTypeSupport == null)

@@ -1,9 +1,7 @@
 package com.biz;
 
-import android.app.Activity;
-import android.app.Application;
-import android.content.Context;
-import android.os.Environment;
+import java.io.File;
+import java.util.Stack;
 
 import com.danikula.videocache.HttpProxyCacheServer;
 import com.facebook.cache.disk.DiskCacheConfig;
@@ -11,8 +9,9 @@ import com.facebook.common.logging.FLog;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
 
-import java.io.File;
-import java.util.Stack;
+import android.app.Activity;
+import android.app.Application;
+import android.os.Environment;
 
 /**
  * @author Alexey Danilov (danikula@gmail.com).
@@ -35,20 +34,21 @@ public class CZSZApplication extends Application {
         super.onCreate();
         theSingletonInstance = this;
 
-
         //
         FLog.setMinimumLoggingLevel(FLog.VERBOSE);
-
         //Fresco.initialize(this);
-        DiskCacheConfig diskCacheConfig = DiskCacheConfig.newBuilder(this)
-                .setBaseDirectoryPath(new File(Environment.getExternalStorageDirectory().getAbsoluteFile(),"Moe Studio"))
-                .setBaseDirectoryName("fresco_sample")
-                .setMaxCacheSize(200*1024*1024)//200MB
+        File file = new File(Environment.getExternalStorageDirectory().getAbsoluteFile(), "imgcache");
+        DiskCacheConfig diskCfg = DiskCacheConfig.newBuilder(this)
+                .setBaseDirectoryPath(file)
+                .setBaseDirectoryName("czsccj")
+                .setMaxCacheSize(200 * 1024 * 1024)//200MB
                 .build();
-        ImagePipelineConfig imagePipelineConfig = ImagePipelineConfig.newBuilder(this)
-                .setMainDiskCacheConfig(diskCacheConfig)
+
+        ImagePipelineConfig imgCfg = ImagePipelineConfig.newBuilder(this)
+                .setMainDiskCacheConfig(diskCfg)
                 .build();
-        Fresco.initialize(this, imagePipelineConfig);
+
+        Fresco.initialize(this, imgCfg);
 
     }
 
