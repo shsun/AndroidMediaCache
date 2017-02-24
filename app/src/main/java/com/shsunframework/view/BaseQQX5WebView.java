@@ -1,108 +1,117 @@
 package com.shsunframework.view;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.os.Build.VERSION_CODES;
-import android.util.AttributeSet;
-import android.view.View;
-import android.view.ViewGroup;
+import java.util.Map;
 
 import com.tencent.smtt.sdk.WebChromeClient;
-import com.tencent.smtt.sdk.WebSettings;
+
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.AttributeSet;
+import android.util.Log;
 
 /**
  * Created by shsun on 16/11/10.
  */
 public class BaseQQX5WebView extends com.tencent.smtt.sdk.WebView {
+    public class JavascriptInterface {
+        @android.webkit.JavascriptInterface
+        @SuppressWarnings("unused")
+        public void notifyVideoEnd() // Must match Javascript interface method of VideoEnabledWebChromeClient
+        {
+            Log.d("___", "GOT IT");
+            // This code is not executed in the UI thread, so we must force that to happen
+            new Handler(Looper.getMainLooper()).post(new Runnable() {
+                @Override
+                public void run() {
+                    if (videoEnabledWebChromeClient != null) {
+                        videoEnabledWebChromeClient.onHideCustomView();
+                    }
+                }
+            });
+        }
+    }
 
+    private VideoEnabledWebChromeClient videoEnabledWebChromeClient;
+    private boolean addedJavascriptInterface;
+
+    @SuppressWarnings("unused")
     public BaseQQX5WebView(Context context) {
         super(context);
-        init();
+        addedJavascriptInterface = false;
     }
 
+    @SuppressWarnings("unused")
     public BaseQQX5WebView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
-
+        addedJavascriptInterface = false;
     }
 
+    @SuppressWarnings("unused")
     public BaseQQX5WebView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        init();
+        addedJavascriptInterface = false;
     }
 
-    @SuppressWarnings("deprecation")
-    @SuppressLint({"InlinedApi", "SetJavaScriptEnabled"})
-    private void init() {
-        setClickable(true);
-        WebSettings settings = getSettings();
-        // basic
-        settings.setJavaScriptEnabled(true);
-        settings.setJavaScriptCanOpenWindowsAutomatically(true);
-        settings.setNeedInitialFocus(false);
-        settings.setAllowFileAccess(true);
+    /**
+     * Indicates if the video is being displayed using a custom view (typically full-screen)
+     *
+     * @return true it the video is being displayed using a custom view (typically full-screen)
+     */
+    @SuppressWarnings("unused")
+    public boolean isVideoFullscreen() {
+        return videoEnabledWebChromeClient != null && videoEnabledWebChromeClient.isVideoFullscreen();
+    }
 
-        String dbPath =
-                this.getContext().getApplicationContext().getDir("database", Context.MODE_PRIVATE).getPath();
+    /**
+     * Pass only a VideoEnabledWebChromeClient instance.
+     */
+    @Override
+    @SuppressLint("SetJavaScriptEnabled")
+    public void setWebChromeClient(WebChromeClient client) {
+        getSettings().setJavaScriptEnabled(true);
 
-        // support android API 7-
-        try {
-            // API 7, LocalStorage/SessionStorage
-            settings.setDomStorageEnabled(true);
-            settings.setDatabaseEnabled(true);
-            settings.setDatabasePath(dbPath);
-            // API 7， Web SQL Database, 需要重载方法（WebChromeClient）才能生效，无法只通过反射实现
-        } catch (Exception e) {
-            ;
+        if (client instanceof VideoEnabledWebChromeClient) {
+            this.videoEnabledWebChromeClient = (VideoEnabledWebChromeClient) client;
         }
 
-        try {
-            // API 7， Application Storage
-            settings.setAppCacheEnabled(true);
-            settings.setAppCachePath(dbPath);
-            settings.setAppCacheMaxSize(5 * 1024 * 1024);
-        } catch (Exception e) {
-            ;
-        }
-
-        try {
-            // API 5， Geolocation
-            settings.setGeolocationEnabled(true);
-            settings.setGeolocationDatabasePath(dbPath);
-        } catch (Exception e) {
-            ;
-        }
-
-        try {
-            // API 19, open debug
-            if (VERSION.SDK_INT >= 19) {
-                // WebView.setWebContentsDebuggingEnabled(true);
-                ;
-            }
-        } catch (Exception e) {
-            ;
-        }
-        // setWebViewClient(new XMyWebViewClient());
-        setWebChromeClient(new WebChromeClient());
-        // 关闭硬件加速，否则webview设置为透明，但是实际却是黑色背景
-        try {
-            if (VERSION.SDK_INT >= VERSION_CODES.ICE_CREAM_SANDWICH) {
-                this.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-            }
-        } catch (Exception e) {
-            ;
-        }
-
-        ViewGroup.LayoutParams p =
-                new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                        ViewGroup.LayoutParams.MATCH_PARENT);
-        this.setLayoutParams(p);
-        this.setScrollContainer(false);
+        super.setWebChromeClient(client);
     }
 
     @Override
-    public void scrollTo(int x, int y) {
-        super.scrollTo(0, 0);
+    public void loadData(String data, String mimeType, String encoding) {
+        addJavascriptInterface();
+        super.loadData(data, mimeType, encoding);
     }
+
+    @Override
+    public void loadDataWithBaseURL(String baseUrl, String data, String mimeType, String encoding, String historyUrl) {
+        addJavascriptInterface();
+        super.loadDataWithBaseURL(baseUrl, data, mimeType, encoding, historyUrl);
+    }
+
+    @Override
+    public void loadUrl(String url) {
+        addJavascriptInterface();
+        super.loadUrl(url);
+    }
+
+    @Override
+    public void loadUrl(String url, Map<String, String> additionalHttpHeaders) {
+        addJavascriptInterface();
+        super.loadUrl(url, additionalHttpHeaders);
+    }
+
+    private void addJavascriptInterface() {
+        if (!addedJavascriptInterface) {
+            // Add javascript interface to be called when the video ends (must be done before page load)
+            //noinspection all
+            addJavascriptInterface(new JavascriptInterface(),
+                    "_VideoEnabledWebView"); // Must match Javascript interface name of VideoEnabledWebChromeClient
+
+            addedJavascriptInterface = true;
+        }
+    }
+
 }
