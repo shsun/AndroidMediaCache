@@ -74,6 +74,9 @@
 
 
         <activity android:name="com.shsunframework.app.VitamioVideoPlayerActivity" />
+        <activity android:name="com.shsunframework.app.SystemVideoPlayerActivity" />
+
+
     </application>
 
 </manifest>

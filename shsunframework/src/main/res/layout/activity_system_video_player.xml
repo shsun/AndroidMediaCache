@@ -4,14 +4,13 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <com.shsunframework.widget.BaseVitamioVideoView
-            android:id="@+id/vitamio_video_view"
+    <com.shsunframework.widget.BaseSystemVideoView
+            android:id="@+id/system_video_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"/>
-
 
 </LinearLayout>

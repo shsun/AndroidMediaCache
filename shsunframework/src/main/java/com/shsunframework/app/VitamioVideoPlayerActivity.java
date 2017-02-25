@@ -31,23 +31,25 @@ import io.vov.vitamio.widget.VideoView;
 /**
  *
  */
-public class VitamioVideoPlayerActivity extends Activity
-        implements Runnable, VitamioMediaController.OnItemClickListener {
+public class VitamioVideoPlayerActivity extends Activity {
 
     public static final String TAG = "VitamioVideoPlayerActivity";
 
-    public static final String VITAMIO_VIDEO_PLAYER_KEY_URL = "VITAMIO_VIDEO_PLAYER_KEY_URL";
+    public static final String VIDEO_PLAYER_KEY_URL = "VIDEO_PLAYER_KEY_URL";
+
+    private static final int TIME = 0;
+    private static final int BATTERY = 1;
+
 
     private VideoView mVideoView;
     private MediaController mMediaController;
     private VitamioMediaController mVitamioMediaController;
+    private PopupWindow popupWindow;
 
     //    String vieoPath = "rtsp://218.204.223.237:554/live/1/66251FC11353191F/e7ooqwcfbqjoo80j.sdp";
     //String vieoPath = Environment.getExternalStorageDirectory() + "/b.mp4";
     String vieoPath = "http://219.238.4.104/video07/2013/12/17/779163-102-067-2207_5.mp4";
 
-    private static final int TIME = 0;
-    private static final int BATTERY = 1;
 
     private Handler mHandler = new Handler() {
         @Override
@@ -62,18 +64,13 @@ public class VitamioVideoPlayerActivity extends Activity
             }
         }
     };
-    private PopupWindow popupWindow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //定义全屏参数
-        int flag = WindowManager.LayoutParams.FLAG_FULLSCREEN;
-        //获得当前窗体对象
-        Window window = VitamioVideoPlayerActivity.this.getWindow();
-        //设置当前窗体为全屏显示
+        final int flag = WindowManager.LayoutParams.FLAG_FULLSCREEN;
+        Window window = this.getWindow();
         window.setFlags(flag, flag);
-        //设置视频解码监听
         toggleHideyBar();
         if (!io.vov.vitamio.LibsChecker.checkVitamioLibs(this)) {
             return;
@@ -81,23 +78,57 @@ public class VitamioVideoPlayerActivity extends Activity
         //
         setContentView(R.layout.activity_vitamio_video_player);
         //
-        mVideoView = (VideoView) findViewById(R.id.surface_view);
+        mVideoView = (VideoView) findViewById(R.id.vitamio_video_view);
         mVideoView.setVideoPath(vieoPath);
         mMediaController = new MediaController(this);
         mVitamioMediaController = new VitamioMediaController(this, mVideoView, this);
-        mVitamioMediaController.setOnItemClickListener(this);
+        mVitamioMediaController.setOnItemClickListener(new VitamioMediaController.OnItemClickListener() {
+            @Override
+            public void itemClick(View view) {
+                if (view.getId() == R.id.mediacontroller_quality1) {
+                    qualityChange(view);
+                }
+                if (view.getId() == R.id.mediacontroller_play_next) {
+                    VitamioVideoPlayerActivity.this.finish();
+                }
+            }
+        });
         mMediaController.show(5000);
         //mVideoView.setMediaController(mMediaController);
         mVideoView.setMediaController(mVitamioMediaController);
         mVideoView.setVideoQuality(MediaPlayer.VIDEOQUALITY_MEDIUM);//画质 标清
+        mVideoView.setVideoLayout(VideoView.VIDEO_LAYOUT_STRETCH, 0);
+        //          VideoView.VIDEO_LAYOUT_ORIGIN;//原始画面
+        //          VideoView.VIDEO_LAYOUT_STRETCH;//拉伸
+        //          VideoView.VIDEO_LAYOUT_ZOOM;//裁剪
+        //          VideoView.VIDEO_LAYOUT_SCALE;//全屏
         mVideoView.requestFocus();
         registerBoradcastReceiver();
-        new Thread(this).start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    // 时间读取线程
+                    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+                    String str = sdf.format(new Date());
+                    Message msg = new Message();
+                    msg.obj = str;
+                    msg.what = TIME;
+                    mHandler.sendMessage(msg);
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            }
+        }).start();
     }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
-        //当屏幕切换时 设置全屏
+        // 当屏幕切换时 设置全屏
         if (mVideoView != null) {
             mVideoView.setVideoLayout(VideoView.VIDEO_LAYOUT_SCALE, 0);
         }
@@ -110,7 +141,7 @@ public class VitamioVideoPlayerActivity extends Activity
         try {
             unregisterReceiver(batteryBroadcastReceiver);
         } catch (IllegalArgumentException ex) {
-
+            ;
         }
     }
 
@@ -139,25 +170,6 @@ public class VitamioVideoPlayerActivity extends Activity
 
     }
 
-    @Override
-    public void run() {
-        while (true) {
-            //时间读取线程
-            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-            String str = sdf.format(new Date());
-            Message msg = new Message();
-            msg.obj = str;
-            msg.what = TIME;
-            mHandler.sendMessage(msg);
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-        }
-    }
-
     public void toggleHideyBar() {
         // BEGIN_INCLUDE (get_current_ui_flags)
         // BEGIN_INCLUDE (get_current_ui_flags)
@@ -169,18 +181,20 @@ public class VitamioVideoPlayerActivity extends Activity
         boolean isImmersiveModeEnabled =
                 ((uiOptions | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY) == uiOptions);
         if (isImmersiveModeEnabled) {
-            Log.i(TAG, "Turning immersive mode mode off. ");
+            Log.i(TAG, "immersive mode mode off.");
         } else {
-            Log.i(TAG, "Turning immersive mode mode on.");
+            Log.i(TAG, "immersive mode mode on.");
         }
 
         // Navigation bar hiding:  Backwards compatible to ICS.
-        if (Build.VERSION.SDK_INT >= 14) {
+        // 14
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
             newUiOptions ^= View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
         }
 
+        // 16
         // Status bar hiding: Backwards compatible to Jellybean
-        if (Build.VERSION.SDK_INT >= 16) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             newUiOptions ^= View.SYSTEM_UI_FLAG_FULLSCREEN;
         }
 
@@ -192,7 +206,8 @@ public class VitamioVideoPlayerActivity extends Activity
         // Sticky immersive mode differs in that it makes the navigation and status bars
         // semi-transparent, and the UI flag does not get cleared when the user interacts with
         // the screen.
-        if (Build.VERSION.SDK_INT >= 18) {
+        // 18
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
             newUiOptions ^= View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
         }
 
@@ -200,30 +215,16 @@ public class VitamioVideoPlayerActivity extends Activity
         //END_INCLUDE (set_ui_flags)
     }
 
-    @Override
-    public void itemClick(View view) {
-        if (view.getId() == R.id.mediacontroller_quality1) {
-            //qualityChange(view);
-        }
-        if (view.getId() == R.id.mediacontroller_play_next) {
-            this.finish();
-        }
-    }
-
     private void qualityChange(View view) {
         View contentView = LayoutInflater.from(VitamioVideoPlayerActivity.this)
                 .inflate(R.layout.ui_video_player_popuplayout, null);
-
         popupWindow = new PopupWindow(this);
         popupWindow.setContentView(contentView);
         popupWindow.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
         popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
-        ;
-
         popupWindow.setFocusable(true);
         popupWindow.setOutsideTouchable(true);
         popupWindow.setBackgroundDrawable(new BitmapDrawable());
-
         popupWindow.showAtLocation(view, Gravity.TOP, 0, -200);
     }
 }

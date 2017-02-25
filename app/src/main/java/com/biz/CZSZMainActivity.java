@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 
 import com.shsunframework.app.BaseActivity;
 
+import com.shsunframework.app.SystemVideoPlayerActivity;
 import com.shsunframework.app.VitamioVideoPlayerActivity;
 
 public class CZSZMainActivity extends BaseActivity implements OnPageChangeListener {
@@ -133,6 +134,12 @@ public class CZSZMainActivity extends BaseActivity implements OnPageChangeListen
                 //Intent intent = new Intent(CZSZMainActivity.this, com.biz.activity.HomePageActivity.class);
 
                 Intent intent = new Intent(CZSZMainActivity.this, VitamioVideoPlayerActivity.class);
+
+
+                //Intent intent = new Intent(CZSZMainActivity.this, SystemVideoPlayerActivity.class);
+
+
+
 
                 CZSZMainActivity.this.startActivity(intent);
             }
