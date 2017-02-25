@@ -1,5 +1,11 @@
 package com.biz.adapter;
 
+import java.util.List;
+
+import com.biz.R;
+import com.biz.entry.PersonEntry;
+import com.shsunframework.adapter.recyclerview.OnRecyclerViewItemListener;
+
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,11 +14,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.biz.R;
-import com.biz.entry.PersonEntry;
-
-import java.util.List;
-
 /**
  * Created by shsun on 17/1/18.
  */
@@ -20,16 +21,10 @@ public class PersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     private static final String TAG = PersonAdapter.class.getSimpleName();
 
-    public static interface OnRecyclerViewListener {
-        void onItemClick(int position, PersonEntry entry);
-
-        boolean onItemLongClick(int position, PersonEntry entry);
-    }
-
     private final Context mContext;
     private List<PersonEntry> mDataEntries;
 
-    private OnRecyclerViewListener onRecyclerViewListener;
+    private OnRecyclerViewItemListener<PersonEntry> mOnRecyclerViewItemListener;
 
     /**
      * @param context
@@ -40,14 +35,16 @@ public class PersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         this.mDataEntries = list;
     }
 
-    public void setOnRecyclerViewListener(OnRecyclerViewListener onRecyclerViewListener) {
-        this.onRecyclerViewListener = onRecyclerViewListener;
+
+    public void setOnRecyclerViewItemListener(OnRecyclerViewItemListener<PersonEntry> listener){
+        this.mOnRecyclerViewItemListener = listener;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.common_listview_item_content, null);
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams lp =
+                new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         view.setLayoutParams(lp);
         return new PersonViewHolder(view);
     }
@@ -72,8 +69,10 @@ public class PersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         public TextView mDesTextView;
         public int position;
 
-        public PersonViewHolder(View itemView) {
+        public PersonViewHolder(final View itemView) {
             super(itemView);
+
+            final ViewGroup parent = (ViewGroup) itemView.getParent();
 
             // TODO
             mNameTextView = (TextView) itemView.findViewById(R.id.nameTextView);
@@ -83,16 +82,17 @@ public class PersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             mRootView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (null != onRecyclerViewListener) {
-                        onRecyclerViewListener.onItemClick(position, mDataEntries.get(position));
+                    if (null != mOnRecyclerViewItemListener) {
+                        mOnRecyclerViewItemListener.onItemClick(parent, itemView, mDataEntries.get(position), position);
                     }
                 }
             });
             mRootView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    if (null != onRecyclerViewListener) {
-                        return onRecyclerViewListener.onItemLongClick(position, mDataEntries.get(position));
+                    if (null != mOnRecyclerViewItemListener) {
+                        return mOnRecyclerViewItemListener
+                                .onItemLongClick(parent, itemView, mDataEntries.get(position), position);
                     }
                     return false;
                 }

@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.biz.adapter.PersonAdapter;
 import com.biz.entry.PersonEntry;
+import com.shsunframework.adapter.recyclerview.OnRecyclerViewItemListener;
 import com.shsunframework.app.BaseFragment;
 import com.shsunframework.app.QQX5BrowserActivity;
 import com.tencent.smtt.sdk.WebSettings;
@@ -51,10 +52,10 @@ public class NewestFragment extends BaseFragment {
         setUpAndLoadNativeExpressAds();
 
         PersonAdapter adapter = new PersonAdapter(this.getContext(), this.mRecyclerViewItems);
-        adapter.setOnRecyclerViewListener(new PersonAdapter.OnRecyclerViewListener() {
+        adapter.setOnRecyclerViewItemListener(new OnRecyclerViewItemListener<PersonEntry>() {
             @Override
-            public void onItemClick(int position, PersonEntry entry) {
-                Log.i(TAG, "onItemClick=" + position + ", " + entry.getName());
+            public void onItemClick(ViewGroup parent, View view, PersonEntry data, int position) {
+                Log.i(TAG, "onItemClick=" + position + ", " + data.getName());
                 Intent intent = new Intent(NewestFragment.this.getActivity(), QQX5BrowserActivity.class);
                 intent.putExtra(QQX5BrowserActivity.QQ_X5_BROWSER_KEY_URL, "http://www.qq.com");
                 intent.putExtra(QQX5BrowserActivity.QQ_X5_BROWSER_KEY_CACHE_MODE, WebSettings.LOAD_NO_CACHE);
@@ -62,12 +63,14 @@ public class NewestFragment extends BaseFragment {
             }
 
             @Override
-            public boolean onItemLongClick(int position, PersonEntry entry) {
-                Log.i(TAG, "onItemLongClick=" + position + ", " + entry.getName());
+            public boolean onItemLongClick(ViewGroup parent, View view, PersonEntry data, int position) {
+                Log.i(TAG, "onItemLongClick=" + position + ", " + data.getName());
                 return false;
             }
-
         });
+
+
+
         mRecyclerView.setAdapter(adapter);
     }
 
