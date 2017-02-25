@@ -83,6 +83,21 @@ public class SystemVideoPlayerActivity extends BaseActivity {
             }
 
             @Override
+            public void onAdResumed() {
+
+            }
+
+            @Override
+            public void onAdPaused() {
+
+            }
+
+            @Override
+            public void onAdRewind() {
+
+            }
+
+            @Override
             public void setWidth(int width) {
 
             }

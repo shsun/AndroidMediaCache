@@ -1,4 +1,4 @@
-package com.shsunframework.app;
+package com.shsunframework.widget;
 
 import com.shsunframework.R;
 

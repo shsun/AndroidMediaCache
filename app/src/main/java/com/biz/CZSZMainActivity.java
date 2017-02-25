@@ -130,17 +130,9 @@ public class CZSZMainActivity extends BaseActivity implements OnPageChangeListen
             @Override
             public void onClick(View view) {
                 // Intent intent = new Intent(CZSZMainActivity.this, RecyclerViewActivity.class);
-
                 //Intent intent = new Intent(CZSZMainActivity.this, com.biz.activity.HomePageActivity.class);
-
                 Intent intent = new Intent(CZSZMainActivity.this, VitamioVideoPlayerActivity.class);
-
-
                 //Intent intent = new Intent(CZSZMainActivity.this, SystemVideoPlayerActivity.class);
-
-
-
-
                 CZSZMainActivity.this.startActivity(intent);
             }
         });

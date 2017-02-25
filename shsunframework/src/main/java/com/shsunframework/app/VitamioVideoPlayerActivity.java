@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.shsunframework.R;
+import com.shsunframework.widget.VitamioMediaController;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;

@@ -39,6 +39,10 @@ public class BaseSystemVideoView extends SurfaceView implements SurfaceHolder.Ca
         void onAdViewSurfaceDestroyed();
         //void onImprTimer();
 
+        void onAdResumed();
+        void onAdPaused();
+        void onAdRewind();
+
         //
         void setWidth(int width);
 
@@ -102,7 +106,7 @@ public class BaseSystemVideoView extends SurfaceView implements SurfaceHolder.Ca
      */
     private MediaPlayer mediaPlayer;
     private MediaController mediaController;
-    //private VideoAdController videoAdController;
+    //private SystemMediaController videoAdController;
     /**
      * default
      * 
@@ -335,7 +339,7 @@ public class BaseSystemVideoView extends SurfaceView implements SurfaceHolder.Ca
     private void prepareMediaController() {
         if (this.mediaController != null) {
             // TODO
-            //this.videoAdController = new VideoAdController(this.hostRenderer, this, this.mediaPlayer);
+            //this.videoAdController = new SystemMediaController(this.hostRenderer, this, this.mediaPlayer);
             //this.mediaController.setMediaPlayer(this.videoAdController);
             this.mediaController.setAnchorView(this);
             this.mediaController.setEnabled(isInPlaybackState());
