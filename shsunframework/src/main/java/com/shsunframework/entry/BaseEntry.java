@@ -1,6 +1,5 @@
 package com.shsunframework.entry;
 
-
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -8,11 +7,9 @@ import android.os.Parcelable;
  * Created by shsun on 17/2/19.
  */
 
-
 public abstract class BaseEntry implements Parcelable {
 
     public String mId;
-
 
     public int mIntTesting4LM;
     public String mStringTesting4LM;
@@ -31,16 +28,16 @@ public abstract class BaseEntry implements Parcelable {
     }
 
     @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
     public void writeToParcel(Parcel out, int flags) {
         // 注意顺序，需要和构造函数内保持一致，因为是按顺序读写的
         out.writeString(mId);
         out.writeInt(mIntTesting4LM);
         out.writeString(this.mStringTesting4LM);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public String getId() {

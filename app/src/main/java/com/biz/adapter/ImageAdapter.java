@@ -1,6 +1,7 @@
 package com.biz.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Animatable;
 import android.net.Uri;
 import android.support.annotation.Nullable;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.biz.CZSZMainActivity;
 import com.biz.R;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.controller.BaseControllerListener;
@@ -19,6 +21,7 @@ import com.facebook.imagepipeline.image.ImageInfo;
 import com.facebook.imagepipeline.image.QualityInfo;
 import com.shsunframework.adapter.BaseViewHolder;
 import com.shsunframework.adapter.recyclerview.BaseRecyclerViewAdapter;
+import com.shsunframework.app.VitamioVideoPlayerActivity;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -87,15 +90,16 @@ public class ImageAdapter extends BaseRecyclerViewAdapter<String> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final String url = "http://219.238.4.104/video07/2013/12/17/779163-102-067-2207_5.mp4";
 
+                Intent intent = new Intent(ImageAdapter.this.mContext, VitamioVideoPlayerActivity.class);
+                intent.putExtra(VitamioVideoPlayerActivity.VIDEO_PLAYER_KEY_URL, url);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                ImageAdapter.this.mContext.startActivity(intent);
             }
         });
 
     }
-
-//    public List<String> getList() {
-//        return mDatas;
-//    }
 
     private float getTargetHeight(float width, float height, View view, String url) {
         View child = view.findViewById(R.id.draweeview);

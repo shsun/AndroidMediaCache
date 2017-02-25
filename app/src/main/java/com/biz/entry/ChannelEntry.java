@@ -11,27 +11,27 @@ import com.shsunframework.entry.BaseEntry;
 
 public class ChannelEntry extends BaseEntry {
 
-    private final String name;
+    private final String mName;
 
     public ChannelEntry(String id, String name) {
         super(id);
-        this.name = name;
+        this.mName = name;
     }
 
     private ChannelEntry(Parcel in) {
         super(in);
-        name = in.readString();
+        mName = in.readString();
     }
 
     public String getName() {
-        return name;
+        return mName;
     }
 
 
     @Override
     public void writeToParcel(Parcel out, int flags) {
         super.writeToParcel(out, flags);
-        out.writeString(name);
+        out.writeString(mName);
     }
 
     public static final Parcelable.Creator<ChannelEntry> CREATOR =

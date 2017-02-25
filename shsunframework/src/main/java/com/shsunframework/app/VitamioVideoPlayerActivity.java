@@ -49,7 +49,7 @@ public class VitamioVideoPlayerActivity extends Activity {
 
     //    String vieoPath = "rtsp://218.204.223.237:554/live/1/66251FC11353191F/e7ooqwcfbqjoo80j.sdp";
     //String vieoPath = Environment.getExternalStorageDirectory() + "/b.mp4";
-    String vieoPath = "http://219.238.4.104/video07/2013/12/17/779163-102-067-2207_5.mp4";
+
 
 
     private Handler mHandler = new Handler() {
@@ -78,6 +78,10 @@ public class VitamioVideoPlayerActivity extends Activity {
         }
         //
         setContentView(R.layout.activity_vitamio_video_player);
+
+        // data
+        String vieoPath = this.getIntent().getStringExtra(VIDEO_PLAYER_KEY_URL);
+
         //
         mVideoView = (VideoView) findViewById(R.id.vitamio_video_view);
         mVideoView.setVideoPath(vieoPath);
