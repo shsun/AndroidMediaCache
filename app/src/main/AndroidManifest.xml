@@ -72,10 +72,7 @@
             android:label="Code Snippet"></activity>
 
 
-        <!-- for sshframework -->
-        <activity
-            android:name="com.shsunframework.app.QQX5BrowserActivity"
-            android:theme="@style/NoTitleFullscreen" />
+
     </application>
 
 </manifest>

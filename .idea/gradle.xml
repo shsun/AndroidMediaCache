@@ -11,7 +11,8 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/lib_videocache" />
-            <option value="$PROJECT_DIR$/lib_videocache_test" />
+            <option value="$PROJECT_DIR$/shsunframework" />
+            <option value="$PROJECT_DIR$/vitamio" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

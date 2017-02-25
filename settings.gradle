@@ -1,1 +1,1 @@
-include ':app', ':lib_videocache', ':lib_videocache_test'
+include ':app', ':lib_videocache', ':vitamio', ':shsunframework'

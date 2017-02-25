@@ -70,6 +70,6 @@ public class ImageFragment extends BaseFragment {
                 datas = ImageApi.jk.getUrls();
                 break;
         }
-        this.mAdapter.setDatas(datas);
+        this.mAdapter.setDataProvider(datas);
     }
 }
