@@ -43,4 +43,5 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.1.1'
     compile 'com.android.support:support-v4:25.1.1'
     compile project(':lib_videocache')
+    compile project(':vitamio')
 }

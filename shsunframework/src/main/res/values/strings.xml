@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">shsunframework</string>
+
+
+    <!-- for video player -->
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="quality1">流畅</string>
+    <string name="quality2">标清</string>
+    <string name="quality3">高清</string>
+
+
 </resources>

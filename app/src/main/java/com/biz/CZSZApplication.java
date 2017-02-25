@@ -14,9 +14,6 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Environment;
 
-/**
- * @author Alexey Danilov (danikula@gmail.com).
- */
 public class CZSZApplication extends BaseApplication {
 
     private HttpProxyCacheServer mProxyServer;

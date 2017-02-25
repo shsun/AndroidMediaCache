@@ -73,6 +73,7 @@
 
 
 
+        <activity android:name="com.shsunframework.app.VitamioVideoPlayerActivity" />
     </application>
 
 </manifest>
