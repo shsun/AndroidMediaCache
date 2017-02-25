@@ -5,8 +5,6 @@ import java.util.List;
 
 import com.shsunframework.adapter.BaseViewHolder;
 import com.shsunframework.data.OnAdapterChangedListener;
-import com.shsunframework.adapter.recyclerview.click.OnItemClickListener;
-import com.shsunframework.adapter.recyclerview.click.OnItemLongClickListener;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -22,8 +20,7 @@ public abstract class BaseRecyclerViewAdapter<T> extends HeaderAndFooterAdapter<
     protected int mLayoutId;
     protected List<T> mDatas;
 
-    protected OnItemClickListener mOnItemClickListener;
-    protected OnItemLongClickListener mOnItemLongClickListener;
+    protected OnRecyclerViewItemListener mOnRecyclerViewItemListener;
 
     protected OnAdapterChangedListener mOnAdapterChangedListener;
 
@@ -70,40 +67,36 @@ public abstract class BaseRecyclerViewAdapter<T> extends HeaderAndFooterAdapter<
      */
     public abstract void doBindViewHolder(BaseViewHolder holder, T t);
 
-    public void setmOnItemClickListener(OnItemClickListener mOnItemClickListener) {
-        this.mOnItemClickListener = mOnItemClickListener;
-    }
-
-    public void setmOnItemLongClickListener(OnItemLongClickListener mOnItemLongClickListener) {
-        this.mOnItemLongClickListener = mOnItemLongClickListener;
+    public void setOnRecyclerViewItemListener(OnRecyclerViewItemListener<T> listener) {
+        this.mOnRecyclerViewItemListener = listener;
     }
 
     protected void setListener(final ViewGroup parent, final BaseViewHolder baseViewHolder, int viewType) {
         if (!isEnabled(viewType)) {
             return;
         }
-        if (mOnItemLongClickListener != null || mOnItemClickListener != null) {
+        if (mOnRecyclerViewItemListener != null) {
             baseViewHolder.setItemBackgound();
         }
-        if (mOnItemClickListener != null) {
+        if (mOnRecyclerViewItemListener != null) {
             baseViewHolder.getConvertView().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
                     int position = getPosition(baseViewHolder);
-                    mOnItemClickListener.onItemClick(parent, v, mDatas.get(position - getmHeaderSize()),
+                    mOnRecyclerViewItemListener.onItemClick(parent, v, mDatas.get(position - getmHeaderSize()),
                             position - getmHeaderSize());
                 }
             });
         }
 
-        if (mOnItemLongClickListener != null) {
+        if (mOnRecyclerViewItemListener != null) {
             baseViewHolder.getConvertView().setOnLongClickListener(
                     new View.OnLongClickListener() {
                         @Override
                         public boolean onLongClick(View v) {
                             int position = getPosition(baseViewHolder);
-                            return mOnItemLongClickListener
+                            return mOnRecyclerViewItemListener
                                     .onItemLongClick(parent, v, mDatas.get(position - getmHeaderSize()),
                                             position - getmHeaderSize());
                         }
