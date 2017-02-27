@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.biz.CZSZMainActivity;
 import com.biz.R;
+import com.facebook.common.logging.FLog;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.controller.BaseControllerListener;
 import com.facebook.drawee.controller.ControllerListener;
@@ -26,10 +27,10 @@ import com.shsunframework.app.VitamioVideoPlayerActivity;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by kaede on 2015/10/22.
- */
+
 public class ImageAdapter extends BaseRecyclerViewAdapter<String> {
+
+    public static final String TAG = "ImageAdapter";
 
     Map<String, Integer> heightMap = new HashMap<>();
     static Map<String, Integer> widthMap = new HashMap<>();
@@ -71,14 +72,17 @@ public class ImageAdapter extends BaseRecyclerViewAdapter<String> {
                     heightMap.put(url, heightTarget);
                     updateItemtHeight(heightTarget, holder.itemView);
                 }
+                FLog.i(TAG, "onFinalImageSet, id="+id);
             }
 
             @Override
             public void onIntermediateImageSet(String id, @Nullable ImageInfo imageInfo) {
+                FLog.e(TAG, "onIntermediateImageSet, id="+id);
             }
 
             @Override
             public void onFailure(String id, Throwable throwable) {
+                FLog.e(TAG, "onFailure, id="+id + ", msg=" + throwable.getLocalizedMessage());
             }
         };
         DraweeController controller = Fresco.newDraweeControllerBuilder()
