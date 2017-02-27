@@ -46,7 +46,7 @@ public class ImageFragment extends BaseFragment {
         this.mRecyclerView.setLayoutManager(layoutManager);
 
         //
-        this.mAdapter = new ImageAdapter(this.getContext(), R.layout.item_recyclerview);
+        this.mAdapter = new ImageAdapter(this.getContext(), R.layout.item_pure_image_recyclerview);
         this.mRecyclerView.setHasFixedSize(false);
         this.mRecyclerView.setAdapter(mAdapter);
 
