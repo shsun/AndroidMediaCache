@@ -19,7 +19,6 @@ public abstract class BaseActivity extends Activity {
 
         ((BaseApplication) this.getApplication()).addActivity(this);
 
-
         Bundle bundle = this.getIntent().getExtras();
         //
         initVariables(savedInstanceState, bundle);
