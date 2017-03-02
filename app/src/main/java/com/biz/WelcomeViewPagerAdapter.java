@@ -6,28 +6,23 @@ package com.biz;
 
 import java.util.List;
 
-import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.shsunframework.adapter.viewpager.BaseViewPagerAdapter;
 
 /**
  *
  */
-public class ViewPagerAdapter extends PagerAdapter {
-    private List<View> list;
+public class WelcomeViewPagerAdapter extends BaseViewPagerAdapter {
 
-    public ViewPagerAdapter(List<View> list) {
-        this.list = list;
+    public WelcomeViewPagerAdapter(List<View> datas) {
+        super(datas);
     }
 
     @Override
     public int getCount() {
-
-        if (list != null && list.size() > 0) {
-            return list.size();
-        } else {
-            return 0;
-        }
+        return this.mDatas.size();
     }
 
     @Override
@@ -42,8 +37,8 @@ public class ViewPagerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        container.addView(list.get(position));
-        return list.get(position);
+        container.addView(this.mDatas.get(position));
+        return mDatas.get(position);
     }
 
     @Override

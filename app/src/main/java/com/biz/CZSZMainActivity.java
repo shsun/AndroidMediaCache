@@ -26,8 +26,10 @@ public class CZSZMainActivity extends BaseActivity {
 
 
     private ViewPager mViewPager;
-    private List<View> mVPImageViews = new ArrayList<View>();
-    CirclePageIndicator mIndicator;
+    private List<View> mViewPageItems = new ArrayList<View>();
+    CirclePageIndicator mPageIndicator;
+
+    private WelcomeViewPagerAdapter mViewPagerAdapter;
 
     private Button mGoHomePageButton;
 
@@ -57,26 +59,26 @@ public class CZSZMainActivity extends BaseActivity {
         });
 
         //
-        mIndicator = (CirclePageIndicator) findViewById(R.id.indicator);
+        mPageIndicator = (CirclePageIndicator) findViewById(R.id.indicator);
         final float density = getResources().getDisplayMetrics().density;
-        mIndicator.setBackgroundColor(0xFFCCCCCC);
-        mIndicator.setRadius(10 * density);
-        mIndicator.setPageColor(0x880000FF);
-        mIndicator.setFillColor(0xFF888888);
-        mIndicator.setStrokeColor(0xFF000000);
-        mIndicator.setStrokeWidth(2 * density);
-        mIndicator.setOnPageChangeListener(new OnPageChangeListener() {
+        mPageIndicator.setBackgroundColor(0xFFCCCCCC);
+        mPageIndicator.setRadius(10 * density);
+        mPageIndicator.setPageColor(0x880000FF);
+        mPageIndicator.setFillColor(0xFF888888);
+        mPageIndicator.setStrokeColor(0xFF000000);
+        mPageIndicator.setStrokeWidth(2 * density);
+        mPageIndicator.setOnPageChangeListener(new OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                Log.e(TAG, "onPageScrolled-i:"+position+","+positionOffset+","+positionOffsetPixels);
+                Log.i(TAG, "onPageScrolled-i:" + position + "," + positionOffset + "," + positionOffsetPixels);
 
             }
 
             @Override
             public void onPageSelected(int position) {
-                Log.e(TAG, "onPageSelected-i:"+position);
-                int idx = position % mVPImageViews.size();
-                if (idx == mVPImageViews.size() - 1) {
+                Log.i(TAG, "onPageSelected-i:" + position);
+                int idx = position % mViewPageItems.size();
+                if (idx == mViewPageItems.size() - 1) {
                     CZSZMainActivity.this.mGoHomePageButton.setVisibility(View.VISIBLE);
                 } else {
                     CZSZMainActivity.this.mGoHomePageButton.setVisibility(View.INVISIBLE);
@@ -86,21 +88,23 @@ public class CZSZMainActivity extends BaseActivity {
 
             @Override
             public void onPageScrollStateChanged(int state) {
-                Log.e(TAG, "onPageScrollStateChanged-i:"+state);
+                Log.i(TAG, "onPageScrollStateChanged-i:" + state);
             }
         });
     }
 
     protected void initData(Bundle savedInstanceState, Bundle prevInstanceState) {
-        //
+        // data
         for (int i = 0; i < theViewPagerImageIds.length; i++) {
             ImageView imageView = new ImageView(this);
             imageView.setBackgroundResource(theViewPagerImageIds[i]);
-            mVPImageViews.add(imageView);
+            this.mViewPageItems.add(imageView);
         }
+        this.mViewPagerAdapter = new WelcomeViewPagerAdapter(mViewPageItems);
 
-        mViewPager.setAdapter(new ViewPagerAdapter(mVPImageViews));
-
-        mIndicator.setViewPager(mViewPager);
+        // notify
+        mViewPager.setAdapter(this.mViewPagerAdapter);
+        //
+        mPageIndicator.setViewPager(mViewPager);
     }
 }
