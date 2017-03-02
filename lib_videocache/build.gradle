@@ -40,6 +40,7 @@ idea {
 }
 
 dependencies {
+    //compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'org.slf4j:slf4j-android:1.7.21'
     compile 'com.squareup.okio:okio:1.11.0'
     compile 'com.squareup.okhttp:okhttp:2.7.5'

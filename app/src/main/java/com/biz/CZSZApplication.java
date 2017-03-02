@@ -14,6 +14,9 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Environment;
 
+/**
+ *
+ */
 public class CZSZApplication extends BaseApplication {
 
     private HttpProxyCacheServer mProxyServer;
@@ -28,12 +31,13 @@ public class CZSZApplication extends BaseApplication {
 
     @Override
     public void onCreate() {
+        com.xsj.crasheye.Crasheye.init(this, "e0ce3280");
+
         super.onCreate();
         theSingletonInstance = this;
 
         //
         FLog.setMinimumLoggingLevel(FLog.VERBOSE);
-        //Fresco.initialize(this);
         File file = new File(Environment.getExternalStorageDirectory().getAbsoluteFile(), "imgcache");
         DiskCacheConfig diskCfg = DiskCacheConfig.newBuilder(this)
                 .setBaseDirectoryPath(file)
