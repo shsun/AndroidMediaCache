@@ -26,7 +26,7 @@ import java.util.List;
  */
 public class NewestFragment extends BaseFragment {
 
-    private static final String TAG = "NewestFragment";
+    public static final String TAG = NewestFragment.class.getSimpleName();
 
     private RecyclerView mRecyclerView;
     private List<PersonEntry> mRecyclerViewItems = new ArrayList<PersonEntry>();

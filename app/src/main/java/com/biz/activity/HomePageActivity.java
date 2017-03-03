@@ -92,9 +92,9 @@ public class HomePageActivity extends BaseFragmentActivity {
     protected void initData(Bundle savedInstanceState, Bundle prevInstanceState) {
         //
         allFragment.add(new NewestFragment());
-        allFragment.add(new ImageFragment(0));
-        allFragment.add(new ImageFragment(1));
-        allFragment.add(new ImageFragment(2));
+        allFragment.add(ImageFragment.newInstance(0));
+        allFragment.add(ImageFragment.newInstance(1));
+        allFragment.add(ImageFragment.newInstance(2));
         allFragment.add(new MyVideoFragment());
         allFragment.add(new FindFragment());
         allFragment.add(new NewestFragment());

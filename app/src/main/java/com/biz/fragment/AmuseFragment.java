@@ -16,6 +16,9 @@ import com.shsunframework.app.BaseFragment;
  */
 public class AmuseFragment extends BaseFragment {
 
+    public static final String TAG = AmuseFragment.class.getSimpleName();
+
+
     private TextView mTextView;
 
     @Override

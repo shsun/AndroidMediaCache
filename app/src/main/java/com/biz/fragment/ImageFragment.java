@@ -20,19 +20,20 @@ import me.kaede.frescosample.ImageApi;
  */
 public class ImageFragment extends BaseFragment {
 
+    public static final String TAG = ImageFragment.class.getSimpleName();
+
+
     private int mIndex;
 
     // find view
     RecyclerView mRecyclerView;
     private ImageAdapter mAdapter;
 
-
-    /**
-     * @param index
-     */
-    public ImageFragment(int index) {
-        super();
-        this.mIndex = index;
+    public static ImageFragment newInstance(int index) {
+        ImageFragment f = new ImageFragment();
+        //f.setArguments(args);
+        f.mIndex = index;
+        return f;
     }
 
     @Override

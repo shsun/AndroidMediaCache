@@ -16,7 +16,8 @@ import com.shsunframework.app.BaseFragment;
  */
 public class FindFragment extends BaseFragment {
 
-    private static final String TAG = "FindFragment";
+    public static final String TAG = FindFragment.class.getSimpleName();
+
 
     private TextView mTextView;
 

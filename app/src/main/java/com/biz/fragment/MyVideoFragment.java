@@ -23,7 +23,7 @@ import java.io.File;
 
 public class MyVideoFragment extends BaseFragment {
 
-    private static final String TAG = "VideoFragment";
+    public static final String TAG = MyVideoFragment.class.getSimpleName();
 
     String url;
     String cachePath;
@@ -50,6 +50,7 @@ public class MyVideoFragment extends BaseFragment {
         View view = LayoutInflater.from(this.getContext()).inflate(R.layout.my_fragment_video, null);
         cacheStatusImageView = (ImageView)view.findViewById(R.id.cacheStatusImageView);
         progressBar = (ProgressBar)view.findViewById(R.id.progressBar);
+
         videoView =  (VideoView)view.findViewById(R.id.videoView);
         return view;
     }
@@ -99,10 +100,17 @@ public class MyVideoFragment extends BaseFragment {
     }
     */
 
+    protected void onVisible() {
+        super.onVisible();
+    }
+
     protected void onInvisible() {
-
+        super.onInvisible();
         Log.d(TAG, "onInvisible");
-
+        if (videoView != null && mUpdater != null) {
+            videoView.pause();
+            mUpdater.stop();
+        }
     }
 
 
@@ -115,8 +123,18 @@ public class MyVideoFragment extends BaseFragment {
     @Override
     public void onPause() {
         super.onPause();
+        videoView.pause();
         mUpdater.stop();
     }
+
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        videoView.pause();
+        mUpdater.stop();
+    }
+
 
     @Override
     public void onDetach() {

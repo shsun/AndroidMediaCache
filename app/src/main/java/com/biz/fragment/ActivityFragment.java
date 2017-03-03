@@ -17,6 +17,8 @@ import com.shsunframework.app.BaseFragment;
  */
 public class ActivityFragment extends BaseFragment {
 
+    public static final String TAG = ActivityFragment.class.getSimpleName();
+
     private TextView mTextView;
 
     @Override
