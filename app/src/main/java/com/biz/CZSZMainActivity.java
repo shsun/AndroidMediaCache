@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.biz.adapter.WelcomeViewPagerAdapter;
 import com.shsunframework.app.BaseActivity;
 
 import com.shsunframework.eventbus.BaseEvent;
@@ -20,7 +21,6 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.StringTokenizer;
 
 
 public class CZSZMainActivity extends BaseActivity {

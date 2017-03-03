@@ -1,4 +1,4 @@
-package com.biz.activity;
+package com.biz.adapter;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

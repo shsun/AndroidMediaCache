@@ -1,4 +1,4 @@
-package com.biz;
+package com.biz.adapter;
 
 /**
  * Created by shsun on 17/3/2.

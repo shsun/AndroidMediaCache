@@ -10,6 +10,7 @@ import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
 
 import com.biz.R;
+import com.biz.adapter.HomePageFragmentAdapter;
 import com.biz.entry.ChannelEntry;
 import com.biz.fragment.FindFragment;
 import com.biz.fragment.ImageFragment;
