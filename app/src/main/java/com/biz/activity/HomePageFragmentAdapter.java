@@ -14,7 +14,7 @@ import java.util.List;
  * Created by shsun on 17/3/3.
  */
 
-public class FragmentAdapter extends SectionsPagerAdapter {
+public class HomePageFragmentAdapter extends SectionsPagerAdapter {
 
 
     public static final String CZSZ_BUNDLE_KEY_CHANNEL_INFO = "CZSZ_BUNDLE_KEY_CHANNEL_INFO";
@@ -22,7 +22,7 @@ public class FragmentAdapter extends SectionsPagerAdapter {
 
     private List<ChannelEntry> mChannelEntries = new ArrayList<ChannelEntry>();
 
-    public FragmentAdapter(FragmentManager fm, List<Fragment> f, List<ChannelEntry> list) {
+    public HomePageFragmentAdapter(FragmentManager fm, List<Fragment> f, List<ChannelEntry> list) {
         super(fm, f);
 
         this.mChannelEntries = list;

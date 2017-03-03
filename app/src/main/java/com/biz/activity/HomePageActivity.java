@@ -85,7 +85,7 @@ public class HomePageActivity extends BaseFragmentActivity {
         for (int i = 0; i < titles.length; i++) {
             mChannelEntries.add(new ChannelEntry("" + i, titles[i]));
         }
-        mViewPager.setAdapter(new FragmentAdapter(getSupportFragmentManager(), allFragment, mChannelEntries));
+        mViewPager.setAdapter(new HomePageFragmentAdapter(getSupportFragmentManager(), allFragment, mChannelEntries));
 
         mTabLayout.setupWithViewPager(mViewPager);
     }
