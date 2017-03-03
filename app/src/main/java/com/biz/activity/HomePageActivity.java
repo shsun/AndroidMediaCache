@@ -16,6 +16,7 @@ import com.biz.fragment.FindFragment;
 import com.biz.fragment.ImageFragment;
 import com.biz.fragment.MyVideoFragment;
 import com.biz.fragment.NewestFragment;
+import com.shsunframework.app.BaseFragment;
 import com.shsunframework.app.BaseFragmentActivity;
 
 import java.util.ArrayList;
@@ -60,12 +61,28 @@ public class HomePageActivity extends BaseFragmentActivity {
             @Override
             public void onPageSelected(int position) {
                 // 方案二：页面选中时才去加载数据
-                // BaseFragment fragment = mFragments[position];
+                BaseFragment fragment = (BaseFragment)allFragment.get(position);
                 // fragment.initData();
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+        mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
 
             }
         });

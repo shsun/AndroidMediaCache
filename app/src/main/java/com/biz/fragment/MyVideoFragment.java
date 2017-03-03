@@ -21,9 +21,9 @@ import com.shsunframework.app.BaseFragment;
 import java.io.File;
 
 
-public class MyVideoFragment extends BaseFragment implements CacheListener {
+public class MyVideoFragment extends BaseFragment {
 
-    private static final String LOG_TAG = "VideoFragment";
+    private static final String TAG = "VideoFragment";
 
     String url;
     String cachePath;
@@ -33,6 +33,15 @@ public class MyVideoFragment extends BaseFragment implements CacheListener {
     ProgressBar progressBar;
 
     private final VideoProgressUpdater mUpdater = new VideoProgressUpdater();
+
+    CacheListener mCacheListener = new CacheListener() {
+        @Override
+        public void onCacheAvailable(File file, String url, int percentsAvailable) {
+            progressBar.setSecondaryProgress(percentsAvailable);
+            setCachedState(percentsAvailable == 100);
+            Log.d(TAG, String.format("onCacheAvailable. percents: %d, file: %s, url: %s", percentsAvailable, file, url));
+        }
+    };
 
 
     @SuppressLint("WrongViewCast")
@@ -54,14 +63,8 @@ public class MyVideoFragment extends BaseFragment implements CacheListener {
 
         checkCachedState();
         startVideo();
+    }
 
-    }
-    @Override
-    public void onCacheAvailable(File file, String url, int percentsAvailable) {
-        progressBar.setSecondaryProgress(percentsAvailable);
-        setCachedState(percentsAvailable == 100);
-        Log.d(LOG_TAG, String.format("onCacheAvailable. percents: %d, file: %s, url: %s", percentsAvailable, file, url));
-    }
 
     private void checkCachedState() {
         HttpProxyCacheServer proxy = CZSZApplication.getInstance().getProxyCacheServer();
@@ -74,9 +77,9 @@ public class MyVideoFragment extends BaseFragment implements CacheListener {
 
     private void startVideo() {
         HttpProxyCacheServer proxy = CZSZApplication.getInstance().getProxyCacheServer();
-        proxy.registerCacheListener(this, url);
+        proxy.registerCacheListener(mCacheListener, url);
         String proxyUrl = proxy.getProxyUrl(url);
-        Log.d(LOG_TAG, "Use proxy url " + proxyUrl + " instead of original url " + url);
+        Log.d(TAG, "Use proxy url " + proxyUrl + " instead of original url " + url);
         videoView.setVideoPath(proxyUrl);
         videoView.start();
     }
@@ -96,6 +99,13 @@ public class MyVideoFragment extends BaseFragment implements CacheListener {
     }
     */
 
+    protected void onInvisible() {
+
+        Log.d(TAG, "onInvisible");
+
+    }
+
+
     @Override
     public void onResume() {
         super.onResume();
@@ -108,13 +118,19 @@ public class MyVideoFragment extends BaseFragment implements CacheListener {
         mUpdater.stop();
     }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        videoView.pause();
+        mUpdater.stop();
+    }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
 
         videoView.stopPlayback();
-        CZSZApplication.getInstance().getProxyCacheServer().unregisterCacheListener(this);
+        CZSZApplication.getInstance().getProxyCacheServer().unregisterCacheListener(mCacheListener);
     }
 
     private void updateVideoProgress() {
