@@ -12,42 +12,40 @@ import java.util.List;
  */
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-    private String[] title;
-    private List<Fragment> fragments;
+    protected String[] mTitles;
+    protected List<Fragment> mFragments;
 
     /**
      * @param fm
      * @param fragments
-     * @param title
+     * @param titles
      */
-    public SectionsPagerAdapter(FragmentManager fm, ArrayList<Fragment> fragments, String... title) {
+    public SectionsPagerAdapter(FragmentManager fm, List<Fragment> fragments, String... titles) {
         super(fm);
-        this.title = title;
-        this.fragments = fragments;
+        this.mTitles = titles;
+        this.mFragments = fragments;
     }
 
     public SectionsPagerAdapter(FragmentManager fm, List<Fragment> fragments) {
-        super(fm);
-        this.fragments = fragments;
+        this(fm, fragments, new String[]{});
     }
-
 
     @Override
     public Fragment getItem(int position) {
-        return fragments.get(position);
+        return mFragments.get(position);
     }
 
     @Override
     public int getCount() {
-        return fragments.size();
+        return mFragments.size();
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        if (title != null && title.length != 0) {
-            return title[position];
+        if (mTitles != null && mTitles.length != 0) {
+            return mTitles[position];
         } else {
-            return fragments.get(position).getTag().toLowerCase();
+            return mFragments.get(position).getTag().toLowerCase();
         }
     }
 }

@@ -124,7 +124,7 @@ public class MarkdownProcessor {
                 "[ \\t]*\\n?[ \\t]*" + // Space
                 "<?(\\S+?)>?" + // URL = $2
                 "[ \\t]*\\n?[ \\t]*" + // Space
-                "(?:[\"(](.+?)[\")][ \\t]*)?" + // Optional title = $3
+                "(?:[\"(](.+?)[\")][ \\t]*)?" + // Optional mTitles = $3
                 "(?:\\n+|\\Z)",
                 Pattern.MULTILINE);
 
@@ -660,7 +660,7 @@ public class MarkdownProcessor {
     }
 
     private void doImages(TextEditor text) {
-        text.replaceAll("!\\[(.*)\\]\\((.*) \"(.*)\"\\)", "<img src=\"$2\" alt=\"$1\" title=\"$3\" />");
+        text.replaceAll("!\\[(.*)\\]\\((.*) \"(.*)\"\\)", "<img src=\"$2\" alt=\"$1\" mTitles=\"$3\" />");
         text.replaceAll("!\\[(.*)\\]\\((.*)\\)", "<img src=\"$2\" alt=\"$1\" />");
     }
 
@@ -693,7 +693,7 @@ public class MarkdownProcessor {
                         // protect emphasis (* and _) within urls
                         title = title.replaceAll("\\*", CHAR_PROTECTOR.encode("*"));
                         title = title.replaceAll("_", CHAR_PROTECTOR.encode("_"));
-                        titleTag = " title=\"" + title + "\"";
+                        titleTag = " mTitles=\"" + title + "\"";
                     }
                     replacementText = "<a href=\"" + url + "\"" + titleTag + ">" + linkText + "</a>";
                 } else {
@@ -703,7 +703,7 @@ public class MarkdownProcessor {
             }
         });
 
-        // Inline-style links: [link text](url "optional title")
+        // Inline-style links: [link text](url "optional mTitles")
         Pattern inlineLink = Pattern.compile("(" + // Whole match = $1
                 "\\[(.*?)\\]" + // Link text = $2
                 "\\(" +
@@ -732,7 +732,7 @@ public class MarkdownProcessor {
                     title = title.replaceAll("\\*", CHAR_PROTECTOR.encode("*"));
                     title = title.replaceAll("_", CHAR_PROTECTOR.encode("_"));
                     title = replaceAll(title, "\"", "&quot;");
-                    result.append(" title=\"");
+                    result.append(" mTitles=\"");
                     result.append(title);
                     result.append("\"");
                 }
@@ -770,7 +770,7 @@ public class MarkdownProcessor {
                         // protect emphasis (* and _) within urls
                         title = title.replaceAll("\\*", CHAR_PROTECTOR.encode("*"));
                         title = title.replaceAll("_", CHAR_PROTECTOR.encode("_"));
-                        titleTag = " title=\"" + title + "\"";
+                        titleTag = " mTitles=\"" + title + "\"";
                     }
                     replacementText = "<a href=\"" + url + "\"" + titleTag + ">" + linkText + "</a>";
                 } else {

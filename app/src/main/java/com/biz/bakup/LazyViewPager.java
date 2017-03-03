@@ -860,7 +860,7 @@ public class LazyViewPager extends ViewGroup {
         mChildHeightMeasureSpec = MeasureSpec.makeMeasureSpec(getMeasuredHeight() -
                 getPaddingTop() - getPaddingBottom(), MeasureSpec.EXACTLY);
 
-        // Make sure we have created all fragments that we need to have shown.
+        // Make sure we have created all mFragments that we need to have shown.
         mInLayout = true;
         populate();
         mInLayout = false;

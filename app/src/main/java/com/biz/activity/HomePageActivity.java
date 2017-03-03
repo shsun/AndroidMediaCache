@@ -59,7 +59,7 @@ public class HomePageActivity extends BaseFragmentActivity {
             @Override
             public void onPageSelected(int position) {
                 // 方案二：页面选中时才去加载数据
-                // BaseFragment fragment = fragments[position];
+                // BaseFragment fragment = mFragments[position];
                 // fragment.initData();
             }
 
