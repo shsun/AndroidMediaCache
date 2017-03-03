@@ -13,6 +13,7 @@ repositories {
 
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'com.neenbedankt.android-apt'
 
 android {
     compileSdkVersion 25
@@ -36,6 +37,7 @@ apt {
     arguments {
         androidManifestFile variant.outputs[0].processResources.manifestFile
         resourcePackageName android.defaultConfig.applicationId
+        eventBusIndex "com.study.sangerzhong.studyapp.MyEventBusIndex"
     }
 }
 
@@ -79,4 +81,5 @@ dependencies {
     compile project(':vitamio')
     compile project(':shsunframework')
     compile files('libs/crasheye_2.2.1.jar')
+    compile 'org.greenrobot:eventbus:3.0.0'
 }

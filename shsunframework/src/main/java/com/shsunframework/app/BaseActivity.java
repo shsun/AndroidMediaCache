@@ -5,6 +5,8 @@ import com.shsunframework.BaseApplication;
 import android.app.Activity;
 import android.os.Bundle;
 
+import org.greenrobot.eventbus.EventBus;
+
 
 /**
  * Created by shsun on 17/2/18.
@@ -16,6 +18,8 @@ public abstract class BaseActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        EventBus.getDefault().register(this);
 
         ((BaseApplication) this.getApplication()).addActivity(this);
 
@@ -36,6 +40,9 @@ public abstract class BaseActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
+        EventBus.getDefault().unregister(this);
+
         ((BaseApplication) this.getApplication()).finishActivity(this);
     }
 }

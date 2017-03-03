@@ -11,12 +11,20 @@ import android.widget.ImageView;
 
 import com.shsunframework.app.BaseActivity;
 
+import com.shsunframework.eventbus.BaseEvent;
 import com.viewpagerindicator.CirclePageIndicator;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
+
 
 public class CZSZMainActivity extends BaseActivity {
+
 
     private static final String TAG = "CZSZMainActivity";
 
@@ -39,7 +47,6 @@ public class CZSZMainActivity extends BaseActivity {
     }
 
     protected void initVariables(Bundle savedInstanceState, Bundle prevInstanceState) {
-        //
     }
 
     protected void initView(Bundle savedInstanceState, Bundle prevInstanceState) {
@@ -72,6 +79,9 @@ public class CZSZMainActivity extends BaseActivity {
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 Log.i(TAG, "onPageScrolled-i:" + position + "," + positionOffset + "," + positionOffsetPixels);
 
+
+
+                EventBus.getDefault().post(new BaseEvent<String>("go"));
             }
 
             @Override
@@ -106,5 +116,10 @@ public class CZSZMainActivity extends BaseActivity {
         mViewPager.setAdapter(this.mViewPagerAdapter);
         //
         mPageIndicator.setViewPager(mViewPager);
+    }
+
+    @Subscribe(threadMode = ThreadMode.POSTING, priority = 0, sticky = true)
+    public void handleEvent(BaseEvent<String> event) {
+        Log.d(TAG, event.getData());
     }
 }
