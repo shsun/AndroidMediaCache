@@ -5,8 +5,6 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
@@ -26,17 +24,12 @@ import java.util.List;
  * Created by shsun on 17/1/9.
  */
 public class HomePageActivity extends BaseFragmentActivity {
+    private ViewPager mViewPager;
+    private TabLayout mTabLayout;
 
-
-    public static final String CZSZ_BUNDLE_KEY_CHANNEL_INFO = "CZSZ_BUNDLE_KEY_CHANNEL_INFO";
-    public static final String CZSZ_BUNDLE_KEY_TEST = "CZSZ_BUNDLE_KEY_TEST";
-
+    private List<Fragment> allFragment = new ArrayList<Fragment>();
 
     private List<ChannelEntry> mChannelEntries = new ArrayList<ChannelEntry>();
-
-
-    private Fragment[] fragments = {new NewestFragment(), new ImageFragment(0),
-            new ImageFragment(1), new ImageFragment(2), new MyVideoFragment(), new FindFragment(), new NewestFragment()};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,21 +45,12 @@ public class HomePageActivity extends BaseFragmentActivity {
     protected void initView(Bundle savedInstanceState, Bundle prevInstanceState) {
         setContentView(R.layout.activity_homepage);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
+        mTabLayout = (TabLayout) findViewById(R.id.tab_layout);
 
         //
-        String[] titles = getResources().getStringArray(R.array.tab_titles);
-        for (int i = 0; i < titles.length; i++) {
-            mChannelEntries.add(new ChannelEntry("" + i, titles[i]));
-        }
-
-        viewPager.setAdapter(new FragmentAdapter(getSupportFragmentManager()));
-        viewPager.setOffscreenPageLimit(0);
-        tabLayout.setupWithViewPager(viewPager);
-
-
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        mViewPager = (ViewPager) findViewById(R.id.view_pager);
+        mViewPager.setOffscreenPageLimit(0);
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -88,7 +72,22 @@ public class HomePageActivity extends BaseFragmentActivity {
 
     @Override
     protected void initData(Bundle savedInstanceState, Bundle prevInstanceState) {
+        //
+        allFragment.add(new NewestFragment());
+        allFragment.add(new ImageFragment(0));
+        allFragment.add(new ImageFragment(1));
+        allFragment.add(new ImageFragment(2));
+        allFragment.add(new MyVideoFragment());
+        allFragment.add(new FindFragment());
+        allFragment.add(new NewestFragment());
+        //
+        String[] titles = getResources().getStringArray(R.array.tab_titles);
+        for (int i = 0; i < titles.length; i++) {
+            mChannelEntries.add(new ChannelEntry("" + i, titles[i]));
+        }
+        mViewPager.setAdapter(new FragmentAdapter(getSupportFragmentManager(), allFragment, mChannelEntries));
 
+        mTabLayout.setupWithViewPager(mViewPager);
     }
 
     @Override
@@ -113,45 +112,5 @@ public class HomePageActivity extends BaseFragmentActivity {
         builder.setPositiveButton("确认", listener);
         builder.setNegativeButton("取消", listener);
         builder.create().show();
-    }
-
-    private class FragmentAdapter extends FragmentPagerAdapter {
-        // FragmentPagerAdapter与FragmentStatePagerAdapter区别
-        public FragmentAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            Fragment fragment = fragments[position];
-
-
-            Bundle bundle = new Bundle();
-            bundle.putString("str", "fuck you");
-
-            bundle.putParcelable(CZSZ_BUNDLE_KEY_CHANNEL_INFO, mChannelEntries.get(position));
-            bundle.putString(CZSZ_BUNDLE_KEY_TEST, "what_fuck_is_going_on");
-
-            fragment.setArguments(bundle);
-
-
-            return fragment;
-
-
-        }
-
-        @Override
-        public int getCount() {
-            return mChannelEntries.size();
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            if (mChannelEntries != null) {
-                return mChannelEntries.get(position).getName();
-            }
-            return super.getPageTitle(position);
-        }
-
     }
 }

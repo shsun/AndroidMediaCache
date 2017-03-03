@@ -25,19 +25,14 @@ public class MyVideoFragment extends BaseFragment implements CacheListener {
 
     private static final String LOG_TAG = "VideoFragment";
 
-    //@FragmentArg
     String url;
-    //@FragmentArg
     String cachePath;
 
-    //@ViewById
     ImageView cacheStatusImageView;
-    //@ViewById
     VideoView videoView;
-    //@ViewById
     ProgressBar progressBar;
 
-    private final VideoProgressUpdater updater = new VideoProgressUpdater();
+    private final VideoProgressUpdater mUpdater = new VideoProgressUpdater();
 
 
     @SuppressLint("WrongViewCast")
@@ -93,32 +88,26 @@ public class MyVideoFragment extends BaseFragment implements CacheListener {
 
 
     /*
-    public static Fragment build(Context context, Video video) {
-        return build(video.url, video.getCacheFile(context).getAbsolutePath());
-    }
 
-    public static Fragment build(String url, String cachePath) {
-        return build(url, cachePath);
+    // @SeekBarTouchStop(R.id.progressBar)
+    void seekVideo() {
+        int videoPosition = videoView.getDuration() * progressBar.getProgress() / 100;
+        videoView.seekTo(videoPosition);
     }
-
-    // @AfterViews
-    void afterViewInjected() {
-        checkCachedState();
-        startVideo();
-    }
-
+    */
 
     @Override
     public void onResume() {
         super.onResume();
-        updater.start();
+        mUpdater.start();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        updater.stop();
+        mUpdater.stop();
     }
+
 
     @Override
     public void onDestroy() {
@@ -127,16 +116,6 @@ public class MyVideoFragment extends BaseFragment implements CacheListener {
         videoView.stopPlayback();
         CZSZApplication.getInstance().getProxyCacheServer().unregisterCacheListener(this);
     }
-
-
-    // @SeekBarTouchStop(R.id.progressBar)
-    void seekVideo() {
-        int videoPosition = videoView.getDuration() * progressBar.getProgress() / 100;
-        videoView.seekTo(videoPosition);
-    }
-
-    */
-
 
     private void updateVideoProgress() {
         int videoProgress = videoView.getCurrentPosition() * 100 / videoView.getDuration();
