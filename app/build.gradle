@@ -81,5 +81,7 @@ dependencies {
     compile project(':vitamio')
     compile project(':shsunframework')
     compile files('libs/crasheye_2.2.1.jar')
+    compile files('libs/unity-classes.jar')
+
     compile 'org.greenrobot:eventbus:3.0.0'
 }

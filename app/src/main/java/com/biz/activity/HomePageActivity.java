@@ -16,6 +16,7 @@ import com.biz.fragment.FindFragment;
 import com.biz.fragment.ImageFragment;
 import com.biz.fragment.MyVideoFragment;
 import com.biz.fragment.NewestFragment;
+import com.biz.fragment.U3DFragment;
 import com.shsunframework.app.BaseFragment;
 import com.shsunframework.app.BaseFragmentActivity;
 
@@ -97,7 +98,7 @@ public class HomePageActivity extends BaseFragmentActivity {
         allFragment.add(ImageFragment.newInstance(2));
         allFragment.add(new MyVideoFragment());
         allFragment.add(new FindFragment());
-        allFragment.add(new NewestFragment());
+        allFragment.add(new U3DFragment());
         //
         String[] titles = getResources().getStringArray(R.array.tab_titles);
         for (int i = 0; i < titles.length; i++) {
