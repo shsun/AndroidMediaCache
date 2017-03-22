@@ -23,7 +23,7 @@ public class UnityPlayerNativeActivity extends NativeActivity {
         super.onCreate(savedInstanceState);
 
         getWindow().takeSurface(null);
-        setTheme(android.R.style.Theme_NoTitleBar_Fullscreen);
+        //setTheme(android.R.style.Theme_NoTitleBar_Fullscreen);
         getWindow().setFormat(PixelFormat.RGBX_8888); // <--- This makes xperia play happy
 
         mUnityPlayer = new UnityPlayer(this);
