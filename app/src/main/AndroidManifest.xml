@@ -81,9 +81,7 @@
 
 
         <!--  -->
-        <activity android:screenOrientation="fullSensor"
-                    android:launchMode="singleTask"
-                    android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
+        <activity
                     android:name="com.ScottyB.JuggleThis.UnityPlayerNativeActivity">
             <meta-data android:name="unityplayer.UnityActivity" android:value="true" />
             <meta-data android:name="unityplayer.ForwardNativeEventsToDalvik" android:value="false" />
