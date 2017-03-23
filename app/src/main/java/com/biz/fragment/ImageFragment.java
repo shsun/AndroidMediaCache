@@ -11,9 +11,11 @@ import android.view.ViewGroup;
 
 import com.biz.R;
 import com.biz.adapter.ImageAdapter;
+import com.biz.entry.ImageEntry;
 import com.shsunframework.adapter.recyclerview.OnRecyclerViewItemListener;
 import com.shsunframework.app.BaseFragment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import me.kaede.frescosample.ImageApi;
@@ -31,6 +33,7 @@ public class ImageFragment extends BaseFragment {
     private String mType;
     // find view
     RecyclerView mRecyclerView;
+    private List<ImageEntry> mDatas = new ArrayList<ImageEntry>();
     private ImageAdapter mAdapter;
 
     private Handler mHandler;
@@ -54,16 +57,16 @@ public class ImageFragment extends BaseFragment {
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(mIndex + 1, StaggeredGridLayoutManager.VERTICAL);
         this.mRecyclerView.setLayoutManager(layoutManager);
         this.mRecyclerView.setHasFixedSize(false);
-//
+        //
         this.mAdapter = new ImageAdapter(this.getContext(), R.layout.item_pure_image_recyclerview);
-        this.mAdapter.setOnRecyclerViewItemListener(new OnRecyclerViewItemListener<String>() {
+        this.mAdapter.setOnRecyclerViewItemListener(new OnRecyclerViewItemListener<ImageEntry>() {
             @Override
-            public void onItemClick(ViewGroup parent, View view, String data, int position) {
+            public void onItemClick(ViewGroup parent, View view, ImageEntry data, int position) {
                 mAdapter.remove(position);
             }
 
             @Override
-            public boolean onItemLongClick(ViewGroup parent, View view, String data, int position) {
+            public boolean onItemLongClick(ViewGroup parent, View view, ImageEntry data, int position) {
                 return false;
             }
         });
@@ -71,9 +74,6 @@ public class ImageFragment extends BaseFragment {
         //
         return view;
     }
-
-
-
 
     @Override
     public void initData(Bundle bundle) {
@@ -93,14 +93,13 @@ public class ImageFragment extends BaseFragment {
                     datas = ImageApi.jk.getUrls();
                     break;
             }
-            mAdapter.setDataProvider(datas);
+            this.mDatas = convertURL2ImageEntry(datas);
+            mAdapter.setDataProvider(this.mDatas);
             this.mRecyclerView.setAdapter(mAdapter);
         }else {
             mAdapter.notifyDataSetChanged();
         }
-
-
-        mRefresher = new DataRefreshingRunnable(mAdapter);
+        mRefresher = new DataRefreshingRunnable(mAdapter, this.mDatas);
         mHandler = new Handler(this.getActivity().getMainLooper());
         mHandler.postDelayed(mRefresher, 1000*10);
     }
@@ -114,17 +113,26 @@ public class ImageFragment extends BaseFragment {
         }
     }
 
+    private List<ImageEntry> convertURL2ImageEntry(List<String> rawDatas) {
+        List<ImageEntry> datas = new ArrayList<ImageEntry>();
+        for (int i=0; i<rawDatas.size(); i++){
+            datas.add(new ImageEntry(i+"", rawDatas.get(i)));
+        }
+        return datas;
+    }
+
     class DataRefreshingRunnable implements Runnable {
 
         private ImageAdapter imageAdapter;
+        List<ImageEntry> mDatas;
 
-        public DataRefreshingRunnable(ImageAdapter adapter){
+        public DataRefreshingRunnable(ImageAdapter adapter, List<ImageEntry> datas){
             imageAdapter = adapter;
+            mDatas = datas;
         }
         @Override
         public void run() {
-            List<String> t = ImageApi.girly.getUrls();
-            imageAdapter.setDataProvider(t);
+            imageAdapter.setDataProvider(convertURL2ImageEntry(ImageApi.girly.getUrls()));
             imageAdapter.notifyDataSetChanged();
         }
     }

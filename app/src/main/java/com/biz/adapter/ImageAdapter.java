@@ -1,17 +1,15 @@
 package com.biz.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.drawable.Animatable;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.CardView;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.biz.CZSZMainActivity;
 import com.biz.R;
+import com.biz.entry.ImageEntry;
 import com.facebook.common.logging.FLog;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.controller.BaseControllerListener;
@@ -22,14 +20,12 @@ import com.facebook.imagepipeline.image.ImageInfo;
 import com.facebook.imagepipeline.image.QualityInfo;
 import com.shsunframework.adapter.BaseViewHolder;
 import com.shsunframework.adapter.recyclerview.BaseRecyclerViewAdapter;
-import com.shsunframework.app.VitamioVideoPlayerActivity;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
-public class ImageAdapter extends BaseRecyclerViewAdapter<String> {
+public class ImageAdapter extends BaseRecyclerViewAdapter<ImageEntry> {
 
     public static final String TAG = "ImageAdapter";
 
@@ -40,20 +36,20 @@ public class ImageAdapter extends BaseRecyclerViewAdapter<String> {
         super(context, layoutId);
     }
 
-    public BaseViewHolder doCreateViewHolder(BaseViewHolder holder){
-        return new ViewHolder(holder);
+    public BaseViewHolder doCreateViewHolder(BaseViewHolder pholder){
+        return new ViewHolder(pholder);
     }
 
     @Override
-    public void doBindViewHolder(com.shsunframework.adapter.BaseViewHolder pholder, final String url) {
+    public void doBindViewHolder(com.shsunframework.adapter.BaseViewHolder pholder, final ImageEntry pdata) {
 
         final ViewHolder holder = (ViewHolder)pholder;
 
-        if (heightMap.containsKey(url)) {
-            int height = heightMap.get(url);
+        if (heightMap.containsKey(pdata.getUrl())) {
+            int height = heightMap.get(pdata.getUrl());
             if (height > 0) {
                 updateItemtHeight(height, holder.itemView);
-                holder.draweeView.setImageURI(Uri.parse(url));
+                holder.draweeView.setImageURI(Uri.parse(pdata.getUrl()));
                 return;
             }
         }
@@ -66,11 +62,11 @@ public class ImageAdapter extends BaseRecyclerViewAdapter<String> {
                 }
                 QualityInfo qualityInfo = imageInfo.getQualityInfo();
                 if (qualityInfo.isOfGoodEnoughQuality()) {
-                    int heightTarget = (int) getTargetHeight(imageInfo.getWidth(), imageInfo.getHeight(), holder.itemView, url);
+                    int heightTarget = (int) getTargetHeight(imageInfo.getWidth(), imageInfo.getHeight(), holder.itemView, pdata.getUrl());
                     if (heightTarget <= 0) {
                         return;
                     }
-                    heightMap.put(url, heightTarget);
+                    heightMap.put(pdata.getUrl(), heightTarget);
                     updateItemtHeight(heightTarget, holder.itemView);
                 }
                 FLog.i(TAG, "onFinalImageSet, id="+id);
@@ -87,7 +83,7 @@ public class ImageAdapter extends BaseRecyclerViewAdapter<String> {
             }
         };
         DraweeController controller = Fresco.newDraweeControllerBuilder()
-                .setUri(Uri.parse(url))
+                .setUri(Uri.parse(pdata.getUrl()))
                 .setControllerListener(controllerListener)
                 .setTapToRetryEnabled(true)
                 .build();
