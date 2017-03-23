@@ -142,10 +142,25 @@ public abstract class BaseRecyclerViewAdapter<T> extends HeaderAndFooterAdapter<
     public void setDataProvider(List<T> datas) {
         this.mDatas.clear();
         this.mDatas.addAll(datas);
-        notifyDataSetChanged();
     }
 
     public List<T> getDataProvider() {
         return mDatas;
+    }
+
+
+    public void insert(int position, T item) {
+        this.mDatas.add(position, item);
+        notifyItemInserted(position);
+    }
+
+    public void remove(int position) {
+        this.mDatas.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    public void change(int position) {
+        this.mDatas.remove(position);
+        notifyItemChanged(position);
     }
 }

@@ -27,9 +27,10 @@ public class UnityPlayerNativeActivity extends NativeActivity {
         getWindow().setFormat(PixelFormat.RGBX_8888); // <--- This makes xperia play happy
 
         mUnityPlayer = new UnityPlayer(this);
-        if (mUnityPlayer.getSettings().getBoolean("hide_status_bar", true))
+        if (mUnityPlayer.getSettings().getBoolean("hide_status_bar", true)) {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
 
         setContentView(mUnityPlayer);
         mUnityPlayer.requestFocus();

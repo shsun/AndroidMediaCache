@@ -23,6 +23,8 @@ import com.shsunframework.app.BaseFragmentActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.kaede.frescosample.ImageApi;
+
 /**
  * Created by shsun on 17/1/9.
  */

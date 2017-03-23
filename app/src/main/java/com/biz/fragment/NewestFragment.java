@@ -30,6 +30,7 @@ public class NewestFragment extends BaseFragment {
 
     private RecyclerView mRecyclerView;
     private List<PersonEntry> mRecyclerViewItems = new ArrayList<PersonEntry>();
+    private PersonAdapter mAdapter;
 
     @Override
     public View initView(Bundle bundle, LayoutInflater inflater, ViewGroup container,
@@ -51,8 +52,8 @@ public class NewestFragment extends BaseFragment {
         addNativeExpressAds();
         setUpAndLoadNativeExpressAds();
 
-        PersonAdapter adapter = new PersonAdapter(this.getContext(), this.mRecyclerViewItems);
-        adapter.setOnRecyclerViewItemListener(new OnRecyclerViewItemListener<PersonEntry>() {
+        mAdapter = new PersonAdapter(this.getContext(), this.mRecyclerViewItems);
+        mAdapter.setOnRecyclerViewItemListener(new OnRecyclerViewItemListener<PersonEntry>() {
             @Override
             public void onItemClick(ViewGroup parent, View view, PersonEntry data, int position) {
                 Log.i(TAG, "onItemClick=" + position + ", " + data.getName());
@@ -71,7 +72,7 @@ public class NewestFragment extends BaseFragment {
 
 
 
-        mRecyclerView.setAdapter(adapter);
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     /**

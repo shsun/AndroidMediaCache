@@ -1,14 +1,17 @@
 package com.biz.fragment;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.biz.R;
 import com.biz.adapter.ImageAdapter;
+import com.shsunframework.adapter.recyclerview.OnRecyclerViewItemListener;
 import com.shsunframework.app.BaseFragment;
 
 import java.util.List;
@@ -25,6 +28,7 @@ public class ImageFragment extends BaseFragment {
 
     private int mIndex;
 
+    private String mType;
     // find view
     RecyclerView mRecyclerView;
     private ImageAdapter mAdapter;
@@ -45,32 +49,62 @@ public class ImageFragment extends BaseFragment {
         // init
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(mIndex + 1, StaggeredGridLayoutManager.VERTICAL);
         this.mRecyclerView.setLayoutManager(layoutManager);
+        this.mRecyclerView.setHasFixedSize(false);
+//
+        this.mAdapter = new ImageAdapter(this.getContext(), R.layout.item_pure_image_recyclerview);
+        this.mAdapter.setOnRecyclerViewItemListener(new OnRecyclerViewItemListener<String>() {
+            @Override
+            public void onItemClick(ViewGroup parent, View view, String data, int position) {
+                mAdapter.remove(position);
+            }
+
+            @Override
+            public boolean onItemLongClick(ViewGroup parent, View view, String data, int position) {
+                return false;
+            }
+        });
 
         //
-        this.mAdapter = new ImageAdapter(this.getContext(), R.layout.item_pure_image_recyclerview);
-        this.mRecyclerView.setHasFixedSize(false);
-        this.mRecyclerView.setAdapter(mAdapter);
-
         return view;
     }
 
     @Override
     public void initData(Bundle bundle) {
-        List<String> datas = null;
-        switch (mIndex) {
-            case 0:
-                datas = ImageApi.jk.getUrls();
-                break;
-            case 1:
-                datas = ImageApi.girly.getUrls();
-                break;
-            case 2:
-                datas = ImageApi.legs.getUrls();
-                break;
-            default:
-                datas = ImageApi.jk.getUrls();
-                break;
+        if(this.mRecyclerView.getAdapter() == null){
+            List<String> datas = null;
+            switch (mIndex) {
+                case 0:
+                    datas = ImageApi.jk.getUrls();
+                    break;
+                case 1:
+                    datas = ImageApi.girly.getUrls();
+                    break;
+                case 2:
+                    datas = ImageApi.legs.getUrls();
+                    break;
+                default:
+                    datas = ImageApi.jk.getUrls();
+                    break;
+            }
+            mAdapter.setDataProvider(datas);
+            this.mRecyclerView.setAdapter(mAdapter);
+        }else {
+            mAdapter.notifyDataSetChanged();
         }
-        this.mAdapter.setDataProvider(datas);
+
+        /*
+        (new Handler(this.getActivity().getMainLooper())).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Log.e("FKU", "after 5 s");
+                List<String> t = ImageApi.girly.getUrls();
+                mAdapter.setDataProvider(t);
+
+                //mRecyclerView.setAdapter(mAdapter);
+
+            }
+        }, 1000*10);
+        */
+
     }
 }

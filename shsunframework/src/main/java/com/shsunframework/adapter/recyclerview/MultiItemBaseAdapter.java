@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.ViewGroup;
 
 import com.shsunframework.adapter.BaseViewHolder;
+
+import java.util.List;
 //import com.hbung.adapter.BaseViewHolder;
 
 public abstract class MultiItemBaseAdapter<T> extends BaseRecyclerViewAdapter<T> {
