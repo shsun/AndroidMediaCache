@@ -39,4 +39,9 @@ public class ActivityFragment extends BaseFragment {
         mTextView.setText("活动视图");
     }
 
+
+    @Override
+    protected void onInvisible() {
+
+    }
 }

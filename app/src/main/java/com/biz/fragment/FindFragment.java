@@ -39,4 +39,8 @@ public class FindFragment extends BaseFragment {
         mTextView.setText("发现视图");
     }
 
+    @Override
+    protected void onInvisible() {
+
+    }
 }

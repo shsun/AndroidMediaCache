@@ -33,6 +33,9 @@ public class ImageFragment extends BaseFragment {
     RecyclerView mRecyclerView;
     private ImageAdapter mAdapter;
 
+
+    private Handler mHandler;
+
     public static ImageFragment newInstance(int index) {
         ImageFragment f = new ImageFragment();
         //f.setArguments(args);
@@ -68,6 +71,9 @@ public class ImageFragment extends BaseFragment {
         return view;
     }
 
+
+    ABC abc;
+
     @Override
     public void initData(Bundle bundle) {
         if(this.mRecyclerView.getAdapter() == null){
@@ -92,19 +98,37 @@ public class ImageFragment extends BaseFragment {
             mAdapter.notifyDataSetChanged();
         }
 
-        /*
-        (new Handler(this.getActivity().getMainLooper())).postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Log.e("FKU", "after 5 s");
-                List<String> t = ImageApi.girly.getUrls();
-                mAdapter.setDataProvider(t);
 
-                //mRecyclerView.setAdapter(mAdapter);
-
-            }
-        }, 1000*10);
-        */
-
+        abc = new ABC(mAdapter);
+        mHandler = new Handler(this.getActivity().getMainLooper());
+        mHandler.postDelayed(abc, 1000*10);
     }
+
+
+    @Override
+    protected void onInvisible() {
+        Log.d(TAG, "onInvisible");
+        if(abc != null){
+            // mHandler.removeCallbacks(abc);
+        }
+    }
+
+    class ABC implements Runnable {
+
+        private ImageAdapter mAdapter;
+
+        public ABC(ImageAdapter adapter){
+            mAdapter = adapter;
+        }
+        @Override
+        public void run() {
+            Log.e("FKU", "after 5 s");
+            List<String> t = ImageApi.girly.getUrls();
+            mAdapter.setDataProvider(t);
+            mAdapter.notifyDataSetChanged();
+        }
+    }
+
+
+
 }

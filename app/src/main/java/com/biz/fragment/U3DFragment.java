@@ -69,4 +69,10 @@ public class U3DFragment extends BaseFragment {
         });
         mRecyclerView.setAdapter(mAdapter);
     }
+
+
+    @Override
+    protected void onInvisible() {
+
+    }
 }

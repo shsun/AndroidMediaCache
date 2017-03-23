@@ -20,4 +20,9 @@ public class SystemVideoFragment extends BaseFragment {
     public void initData(Bundle bundle) {
 
     }
+
+    @Override
+    protected void onInvisible() {
+
+    }
 }

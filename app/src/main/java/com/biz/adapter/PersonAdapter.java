@@ -22,19 +22,18 @@ public class PersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private static final String TAG = PersonAdapter.class.getSimpleName();
 
     private final Context mContext;
-    private List<PersonEntry> mDataEntries;
+    private List<PersonEntry> mDatas;
 
     private OnRecyclerViewItemListener<PersonEntry> mOnRecyclerViewItemListener;
 
     /**
      * @param context
-     * @param list
+     * @param datas
      */
-    public PersonAdapter(Context context, List<PersonEntry> list) {
+    public PersonAdapter(Context context, List<PersonEntry> datas) {
         this.mContext = context;
-        this.mDataEntries = list;
+        this.mDatas = datas;
     }
-
 
     public void setOnRecyclerViewItemListener(OnRecyclerViewItemListener<PersonEntry> listener){
         this.mOnRecyclerViewItemListener = listener;
@@ -46,30 +45,34 @@ public class PersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         LinearLayout.LayoutParams lp =
                 new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         view.setLayoutParams(lp);
-        return new PersonViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
-        PersonViewHolder holder = (PersonViewHolder) viewHolder;
+        ViewHolder holder = (ViewHolder) viewHolder;
         holder.position = i;
-        PersonEntry person = mDataEntries.get(i);
+        PersonEntry person = mDatas.get(i);
         holder.mNameTextView.setText(person.getName());
         holder.mDesTextView.setText(person.getDescription());
     }
 
     @Override
     public int getItemCount() {
-        return mDataEntries.size();
+        return mDatas.size();
     }
 
-    class PersonViewHolder extends RecyclerView.ViewHolder {
+
+    /**
+     *
+     */
+    class ViewHolder extends RecyclerView.ViewHolder {
         public View mRootView;
         public TextView mNameTextView;
         public TextView mDesTextView;
         public int position;
 
-        public PersonViewHolder(final View itemView) {
+        public ViewHolder(final View itemView) {
             super(itemView);
 
             final ViewGroup parent = (ViewGroup) itemView.getParent();
@@ -83,7 +86,7 @@ public class PersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 @Override
                 public void onClick(View v) {
                     if (null != mOnRecyclerViewItemListener) {
-                        mOnRecyclerViewItemListener.onItemClick(parent, itemView, mDataEntries.get(position), position);
+                        mOnRecyclerViewItemListener.onItemClick(parent, itemView, mDatas.get(position), position);
                     }
                 }
             });
@@ -92,7 +95,7 @@ public class PersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 public boolean onLongClick(View v) {
                     if (null != mOnRecyclerViewItemListener) {
                         return mOnRecyclerViewItemListener
-                                .onItemLongClick(parent, itemView, mDataEntries.get(position), position);
+                                .onItemLongClick(parent, itemView, mDatas.get(position), position);
                     }
                     return false;
                 }

@@ -142,9 +142,7 @@ public abstract class BaseFragment extends Fragment {
         this.lazyLoad();
     }
 
-    protected void onInvisible() {
-
-    }
+    protected abstract void onInvisible();
 
     /**
      * lazy loading

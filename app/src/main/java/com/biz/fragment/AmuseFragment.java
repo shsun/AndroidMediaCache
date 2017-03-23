@@ -37,4 +37,9 @@ public class AmuseFragment extends BaseFragment {
         Toast.makeText(getActivity(), "加载了娱乐数据", Toast.LENGTH_SHORT).show();
         mTextView.setText("娱乐视图");
     }
+
+    @Override
+    protected void onInvisible() {
+
+    }
 }

@@ -105,7 +105,6 @@ public class MyVideoFragment extends BaseFragment {
     }
 
     protected void onInvisible() {
-        super.onInvisible();
         Log.d(TAG, "onInvisible");
         if (videoView != null && mUpdater != null) {
             videoView.pause();
