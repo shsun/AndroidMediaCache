@@ -11,12 +11,14 @@
         android:layout_height="fill_parent"
         android:layout_weight="1"
         android:background="@color/white"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:weightSum="1">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/blue"
+            android:layout_gravity="center_vertical"
             android:gravity="center|center_horizontal|center_vertical" >
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/iconView"
@@ -34,7 +36,6 @@
             android:layout_height="60.0dip"
             android:layout_marginLeft="5.0dip"
             android:background="@color/white"
-            android:gravity="center_horizontal|center_vertical"
             android:textColor="@color/black"
             android:text="nameTextView" />
 
@@ -50,7 +51,7 @@
     </LinearLayout>
 
     <Space android:layout_width="match_parent"
-            android:background="@color/darkgray"
+            android:background="@color/gray_8f"
             android:layout_height="1dp"/>
 
 </LinearLayout>
