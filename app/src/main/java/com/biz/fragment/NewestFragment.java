@@ -83,9 +83,9 @@ public class NewestFragment extends BaseFragment {
 
         // Add the menu items.
         mDatas.add(new PersonEntry("1", "Cherry Avocado", "cherries, garlic, serrano, mayo",
-                "http://news.qq.com/a/20170324/012029.htm", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item01.jpg"));
+                "http://www.163.com", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item01.jpg"));
         mDatas.add(new PersonEntry("2", "Fried Baby Onions", "maple syrup, walnut salsa, sauce",
-                "http://news.qq.com/a/20170324/030505.htm?pacclick=%2Fpac%2Fopenapi%3Fid%3D129", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item02.jpg"));
+                "http://news.qq.com", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item02.jpg"));
         mDatas.add(new PersonEntry("3", "Fried Rice", "red onion, kale, puffed wild rice",
                 "http://news.qq.com/a/20170323/023149.htm", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item03.jpg"));
         mDatas.add(new PersonEntry("4", "Beet Fries", "cilantro, raw beet, feta, sumac",
@@ -113,7 +113,7 @@ public class NewestFragment extends BaseFragment {
         mDatas.add(new PersonEntry("15", "Deep Fried Brussels Sprouts", "smoked yogurt and tea",
                 "http://fashion.qq.com/a/20170324/003742.htm", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item04.jpg"));
         mDatas.add(new PersonEntry("16", "Bread & Whipped Cream", "bread with whipped cream",
-                "http://fashion.qq.com/a/20170324/003757.htm", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item05.jpg"));
+                "http://www.baidu.com", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item05.jpg"));
     }
 
 
