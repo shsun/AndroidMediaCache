@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
+import android.widget.SeekBar;
 import android.widget.VideoView;
 
 import com.biz.CZSZApplication;
@@ -25,42 +25,56 @@ public class MyVideoFragment extends BaseFragment {
 
     public static final String TAG = MyVideoFragment.class.getSimpleName();
 
-    String url;
-    String cachePath;
+    private String mRemoteVideoURL;
+    private String mCachedVideoURL;
 
-    ImageView cacheStatusImageView;
-    VideoView videoView;
-    ProgressBar progressBar;
+    private ImageView mCacheStatusImageView;
+    private VideoView mVideoView;
+    private SeekBar mSeekBar;
 
     private final VideoProgressUpdater mUpdater = new VideoProgressUpdater();
 
     CacheListener mCacheListener = new CacheListener() {
         @Override
         public void onCacheAvailable(File file, String url, int percentsAvailable) {
-            progressBar.setSecondaryProgress(percentsAvailable);
+            mSeekBar.setSecondaryProgress(percentsAvailable);
             setCachedState(percentsAvailable == 100);
-            Log.d(TAG, String.format("onCacheAvailable. percents: %d, file: %s, url: %s", percentsAvailable, file, url));
+            Log.d(TAG, String.format("onCacheAvailable. percents: %d, file: %s, mRemoteVideoURL: %s", percentsAvailable, file, url));
         }
     };
-
 
     @SuppressLint("WrongViewCast")
     @Override
     public View initView(Bundle bundle, LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = LayoutInflater.from(this.getContext()).inflate(R.layout.my_fragment_video, null);
-        cacheStatusImageView = (ImageView)view.findViewById(R.id.cacheStatusImageView);
-        progressBar = (ProgressBar)view.findViewById(R.id.progressBar);
+        mCacheStatusImageView = (ImageView) view.findViewById(R.id.cacheStatusImageView);
+        mSeekBar = (SeekBar) view.findViewById(R.id.seekBar);
+        mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                seekVideo();
+            }
 
-        videoView =  (VideoView)view.findViewById(R.id.videoView);
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                ;
+            }
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress,
+                                          boolean fromUser) {
+                ;
+            }
+        });
+        mVideoView = (VideoView) view.findViewById(R.id.videoView);
         return view;
     }
-
 
     @Override
     public void initData(Bundle bundle) {
         //
-        url = "http://219.238.4.104/video07/2013/12/17/779163-102-067-2207_5.mp4";
-        cachePath = this.getContext().getExternalCacheDir().getAbsolutePath();
+        mRemoteVideoURL = "http://219.238.4.104/video07/2013/12/17/779163-102-067-2207_5.mp4";
+        mCachedVideoURL = this.getContext().getExternalCacheDir().getAbsolutePath();
 
         checkCachedState();
         startVideo();
@@ -69,36 +83,32 @@ public class MyVideoFragment extends BaseFragment {
 
     private void checkCachedState() {
         HttpProxyCacheServer proxy = CZSZApplication.getInstance().getProxyCacheServer();
-        boolean fullyCached = proxy.isCached(url);
+        boolean fullyCached = proxy.isCached(mRemoteVideoURL);
         setCachedState(fullyCached);
         if (fullyCached) {
-            progressBar.setSecondaryProgress(100);
+            mSeekBar.setSecondaryProgress(100);
         }
     }
 
     private void startVideo() {
         HttpProxyCacheServer proxy = CZSZApplication.getInstance().getProxyCacheServer();
-        proxy.registerCacheListener(mCacheListener, url);
-        String proxyUrl = proxy.getProxyUrl(url);
-        Log.d(TAG, "Use proxy url " + proxyUrl + " instead of original url " + url);
-        videoView.setVideoPath(proxyUrl);
-        videoView.start();
+        proxy.registerCacheListener(mCacheListener, mRemoteVideoURL);
+        String proxyUrl = proxy.getProxyUrl(mRemoteVideoURL);
+        Log.d(TAG, "Use proxy mRemoteVideoURL " + proxyUrl + " instead of original mRemoteVideoURL " + mRemoteVideoURL);
+        mVideoView.setVideoPath(proxyUrl);
+        mVideoView.start();
     }
 
     private void setCachedState(boolean cached) {
         int statusIconId = cached ? R.drawable.ic_cloud_done : R.drawable.ic_cloud_download;
-        cacheStatusImageView.setImageResource(statusIconId);
+        mCacheStatusImageView.setImageResource(statusIconId);
     }
 
-
-    /*
-
-    // @SeekBarTouchStop(R.id.progressBar)
-    void seekVideo() {
-        int videoPosition = videoView.getDuration() * progressBar.getProgress() / 100;
-        videoView.seekTo(videoPosition);
+    private void seekVideo() {
+        int videoPosition = mVideoView.getDuration() * mSeekBar.getProgress() / 100;
+        mVideoView.seekTo(videoPosition);
     }
-    */
+
 
     protected void onVisible() {
         super.onVisible();
@@ -106,8 +116,8 @@ public class MyVideoFragment extends BaseFragment {
 
     protected void onInvisible() {
         Log.d(TAG, "onInvisible");
-        if (videoView != null && mUpdater != null) {
-            videoView.pause();
+        if (mVideoView != null && mUpdater != null) {
+            mVideoView.pause();
             mUpdater.stop();
         }
     }
@@ -122,7 +132,7 @@ public class MyVideoFragment extends BaseFragment {
     @Override
     public void onPause() {
         super.onPause();
-        videoView.pause();
+        mVideoView.pause();
         mUpdater.stop();
     }
 
@@ -130,7 +140,7 @@ public class MyVideoFragment extends BaseFragment {
     @Override
     public void onStop() {
         super.onStop();
-        videoView.pause();
+        mVideoView.pause();
         mUpdater.stop();
     }
 
@@ -138,7 +148,7 @@ public class MyVideoFragment extends BaseFragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        videoView.pause();
+        mVideoView.pause();
         mUpdater.stop();
     }
 
@@ -146,13 +156,13 @@ public class MyVideoFragment extends BaseFragment {
     public void onDestroy() {
         super.onDestroy();
 
-        videoView.stopPlayback();
+        mVideoView.stopPlayback();
         CZSZApplication.getInstance().getProxyCacheServer().unregisterCacheListener(mCacheListener);
     }
 
     private void updateVideoProgress() {
-        int videoProgress = videoView.getCurrentPosition() * 100 / videoView.getDuration();
-        progressBar.setProgress(videoProgress);
+        int videoProgress = mVideoView.getCurrentPosition() * 100 / mVideoView.getDuration();
+        mSeekBar.setProgress(videoProgress);
     }
 
 
