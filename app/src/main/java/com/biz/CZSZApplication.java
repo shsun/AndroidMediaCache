@@ -1,7 +1,6 @@
 package com.biz;
 
-import java.io.File;
-import java.util.Stack;
+import android.os.Environment;
 
 import com.danikula.videocache.HttpProxyCacheServer;
 import com.facebook.cache.disk.DiskCacheConfig;
@@ -10,9 +9,7 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.shsunframework.BaseApplication;
 
-import android.app.Activity;
-import android.app.Application;
-import android.os.Environment;
+import java.io.File;
 
 /**
  *

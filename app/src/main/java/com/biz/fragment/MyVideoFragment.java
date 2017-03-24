@@ -20,7 +20,13 @@ import com.shsunframework.app.BaseFragment;
 
 import java.io.File;
 
-
+/**
+ *     ORANGE_1("http://219.238.4.104/video07/2013/12/17/779163-102-067-2207_1.mp4"),
+ ORANGE_2("http://219.238.4.104/video07/2013/12/17/779163-102-067-2207_2.mp4"),
+ ORANGE_3("http://219.238.4.104/video07/2013/12/17/779163-102-067-2207_3.mp4"),
+ ORANGE_4("http://219.238.4.104/video07/2013/12/17/779163-102-067-2207_4.mp4"),
+ ORANGE_5("http://219.238.4.104/video07/2013/12/17/779163-102-067-2207_5.mp4");
+ */
 public class MyVideoFragment extends BaseFragment {
 
     public static final String TAG = MyVideoFragment.class.getSimpleName();
