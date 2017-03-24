@@ -42,9 +42,7 @@ public class ImageAdapter extends BaseRecyclerViewAdapter<ImageEntry> {
 
     @Override
     public void doBindViewHolder(com.shsunframework.adapter.BaseViewHolder pholder, final ImageEntry pdata) {
-
         final ViewHolder holder = (ViewHolder)pholder;
-
         if (heightMap.containsKey(pdata.getUrl())) {
             int height = heightMap.get(pdata.getUrl());
             if (height > 0) {
@@ -97,11 +95,9 @@ public class ImageAdapter extends BaseRecyclerViewAdapter<ImageEntry> {
                 intent.putExtra(VitamioVideoPlayerActivity.VIDEO_PLAYER_KEY_URL, url);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 ImageAdapter.this.mContext.startActivity(intent);
-
             }
         });
         */
-
     }
 
     private float getTargetHeight(float width, float height, View view, String url) {
