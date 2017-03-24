@@ -7,12 +7,14 @@ import com.biz.entry.PersonEntry;
 import com.shsunframework.adapter.recyclerview.OnRecyclerViewItemListener;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 /**
  * Created by shsun on 17/1/18.
@@ -53,8 +55,9 @@ public class PersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         ViewHolder holder = (ViewHolder) viewHolder;
         holder.position = i;
         PersonEntry person = mDatas.get(i);
+        holder.mImageView.setImageURI(Uri.parse(person.getImageUrl()));
         holder.mNameTextView.setText(person.getName());
-        holder.mDesTextView.setText(person.getDescription());
+        // holder.mDesTextView.setText(person.getDescription());
     }
 
     @Override
@@ -68,8 +71,11 @@ public class PersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
      */
     class ViewHolder extends RecyclerView.ViewHolder {
         public View mRootView;
+
+        public SimpleDraweeView mImageView;
         public TextView mNameTextView;
-        public TextView mDesTextView;
+        // public TextView mDesTextView;
+
         public int position;
 
         public ViewHolder(final View itemView) {
@@ -77,9 +83,6 @@ public class PersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
             final ViewGroup parent = (ViewGroup) itemView.getParent();
 
-            // TODO
-            mNameTextView = (TextView) itemView.findViewById(R.id.nameTextView);
-            mDesTextView = (TextView) itemView.findViewById(R.id.desTextView);
             //
             mRootView = itemView.findViewById(R.id.contentView);
             mRootView.setOnClickListener(new View.OnClickListener() {
@@ -100,6 +103,10 @@ public class PersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                     return false;
                 }
             });
+
+            mImageView = (SimpleDraweeView) itemView.findViewById(R.id.iconView);
+            mNameTextView = (TextView) itemView.findViewById(R.id.nameTextView);
+            //mDesTextView = (TextView) itemView.findViewById(R.id.desTextView);
         }
     }
 }

@@ -78,9 +78,6 @@ public class CZSZMainActivity extends BaseActivity {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 Log.i(TAG, "onPageScrolled-i:" + position + "," + positionOffset + "," + positionOffsetPixels);
-
-
-
                 EventBus.getDefault().post(new BaseEvent<String>("go"));
             }
 
@@ -93,7 +90,6 @@ public class CZSZMainActivity extends BaseActivity {
                 } else {
                     CZSZMainActivity.this.mGoHomePageButton.setVisibility(View.INVISIBLE);
                 }
-
             }
 
             @Override

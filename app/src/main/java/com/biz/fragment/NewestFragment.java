@@ -83,37 +83,37 @@ public class NewestFragment extends BaseFragment {
 
         // Add the menu items.
         mDatas.add(new PersonEntry("1", "Cherry Avocado", "cherries, garlic, serrano, mayo",
-                "$7.00", "Dinner - Salads", "menu_item_image"));
+                "$7.00", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item01.jpg"));
         mDatas.add(new PersonEntry("2", "Fried Baby Onions", "maple syrup, walnut salsa, sauce",
-                "$11.00", "Dinner - Salads", "menu_item_image"));
+                "$11.00", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item02.jpg"));
         mDatas.add(new PersonEntry("3", "Fried Rice", "red onion, kale, puffed wild rice",
-                "$10.00", "Dinner - Salads", "menu_item_image"));
+                "$10.00", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item03.jpg"));
         mDatas.add(new PersonEntry("4", "Beet Fries", "cilantro, raw beet, feta, sumac",
-                "$9.00", "Dinner - Salads", "menu_item_image"));
+                "$9.00", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item04.jpg"));
         mDatas.add(new PersonEntry("5", "Sautéed Spaghetti", "garlic, poached egg, almonds",
-                "$12.00", "Dinner - Salads", "menu_item_image"));
+                "$12.00", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item05.jpg"));
         mDatas.add(new PersonEntry("6", "Grape Toast", "red cabbage, sweet onion, beef",
-                "$14.00", "Dinner - Salads", "menu_item_image"));
+                "$14.00", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item06.jpg"));
         mDatas.add(new PersonEntry("7", "Fresh Acorn Squash", "pumplin mole, pomegranate, seed",
-                "$11.00", "Dinner - Salads", "menu_item_image"));
+                "$11.00", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item07.jpg"));
         mDatas.add(new PersonEntry("8", "Quad Burgers", "biscuits, bacon, honey butter",
-                "$7.00", "Dinner", "menu_item_image"));
+                "$7.00", "Dinner", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item02.jpg"));
         mDatas.add(new PersonEntry("9", "The Mister Burger", "pepperoni, cheese, lettuce fries",
-                "$16.00", "Dinner", "menu_item_image"));
+                "$16.00", "Dinner", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item02.jpg"));
         mDatas.add(new PersonEntry("10", "Deep Fried String Cheese", "dipped in a honey mustard"
-                + " aioli", "$7.00", "Dinner", "menu_item_image"));
+                + " aioli", "$7.00", "Dinner", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item07.jpg"));
         mDatas.add(new PersonEntry("11", "Cheese Plate", "a bunch of different types of cheeses",
-                "$16.00", "Dinner", "menu_item_image"));
+                "$16.00", "Dinner", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item07.jpg"));
         mDatas.add(new PersonEntry("12", "Pear and Jicama", "cheese, chardonnay vinaigrette",
-                "$12.00", "Dinner - Salads", "menu_item_image"));
+                "$12.00", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item06.jpg"));
         mDatas.add(new PersonEntry("13", "The Caesar", "garlic dressing, egg, olive oil, walnut"
-                + " breadcrumbs", "$10.00", "Dinner - Veggies, Grains, Salads", "menu_item_image"));
+                + " breadcrumbs", "$10.00", "Dinner - Veggies, Grains, Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item01.jpg"));
         mDatas.add(new PersonEntry("14", "Cold Brussels Sprouts", "shaved, raisins", "$10.00",
-                "Dinner - Salads", "menu_item_image"));
+                "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item03.jpg"));
         mDatas.add(new PersonEntry("15", "Deep Fried Brussels Sprouts", "smoked yogurt and tea",
-                "$12.00", "Dinner - Salads", "menu_item_image"));
+                "$12.00", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item04.jpg"));
         mDatas.add(new PersonEntry("16", "Bread & Whipped Cream", "bread with whipped cream",
-                "$3.00", "Dinner - Salads", "menu_item_image"));
+                "$3.00", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item05.jpg"));
     }
 
 
