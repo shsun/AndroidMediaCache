@@ -13,16 +13,16 @@ public class PersonEntry extends BaseEntry {
 
     private final String mName;
     private final String mDescription;
-    private final String mPrice;
+    private final String mLandingPageUrl;
     private final String mCategory;
     private final String mImageUrl;
 
-    public PersonEntry(String id, String name, String description, String price, String category,
+    public PersonEntry(String id, String name, String description, String landingPageUrl, String category,
                        String imageUrl) {
         super(id);
         this.mName = name;
         this.mDescription = description;
-        this.mPrice = price;
+        this.mLandingPageUrl = landingPageUrl;
         this.mCategory = category;
         this.mImageUrl = imageUrl;
     }
@@ -31,7 +31,7 @@ public class PersonEntry extends BaseEntry {
         super(in);
         mName = in.readString();
         mDescription = in.readString();
-        mPrice = in.readString();
+        mLandingPageUrl = in.readString();
         mCategory = in.readString();
         mImageUrl = in.readString();
     }
@@ -41,7 +41,7 @@ public class PersonEntry extends BaseEntry {
         super.writeToParcel(out, flags);
         out.writeString(mName);
         out.writeString(mDescription);
-        out.writeString(mPrice);
+        out.writeString(mLandingPageUrl);
         out.writeString(mCategory);
         out.writeString(mImageUrl);
     }
@@ -54,8 +54,8 @@ public class PersonEntry extends BaseEntry {
         return mDescription;
     }
 
-    public String getPrice() {
-        return mPrice;
+    public String getLandingPageUrl() {
+        return mLandingPageUrl;
     }
 
     public String getCategory() {

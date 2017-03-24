@@ -56,7 +56,7 @@ public class NewestFragment extends BaseFragment {
             public void onItemClick(ViewGroup parent, View view, PersonEntry data, int position) {
                 Log.i(TAG, "onItemClick=" + position + ", " + data.getName());
                 Intent intent = new Intent(NewestFragment.this.getActivity(), QQX5BrowserActivity.class);
-                intent.putExtra(QQX5BrowserActivity.QQ_X5_BROWSER_KEY_URL, "http://www.qq.com");
+                intent.putExtra(QQX5BrowserActivity.QQ_X5_BROWSER_KEY_URL, data.getLandingPageUrl());
                 intent.putExtra(QQX5BrowserActivity.QQ_X5_BROWSER_KEY_CACHE_MODE, WebSettings.LOAD_NO_CACHE);
                 NewestFragment.this.getActivity().startActivity(intent);
             }
@@ -83,37 +83,37 @@ public class NewestFragment extends BaseFragment {
 
         // Add the menu items.
         mDatas.add(new PersonEntry("1", "Cherry Avocado", "cherries, garlic, serrano, mayo",
-                "$7.00", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item01.jpg"));
+                "http://news.qq.com/a/20170324/012029.htm", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item01.jpg"));
         mDatas.add(new PersonEntry("2", "Fried Baby Onions", "maple syrup, walnut salsa, sauce",
-                "$11.00", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item02.jpg"));
+                "http://news.qq.com/a/20170324/030505.htm?pacclick=%2Fpac%2Fopenapi%3Fid%3D129", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item02.jpg"));
         mDatas.add(new PersonEntry("3", "Fried Rice", "red onion, kale, puffed wild rice",
-                "$10.00", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item03.jpg"));
+                "http://news.qq.com/a/20170323/023149.htm", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item03.jpg"));
         mDatas.add(new PersonEntry("4", "Beet Fries", "cilantro, raw beet, feta, sumac",
-                "$9.00", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item04.jpg"));
+                "http://news.qq.com/a/20170322/044117.htm", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item04.jpg"));
         mDatas.add(new PersonEntry("5", "Sautéed Spaghetti", "garlic, poached egg, almonds",
-                "$12.00", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item05.jpg"));
+                "http://news.qq.com/a/20170324/027284.htm", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item05.jpg"));
         mDatas.add(new PersonEntry("6", "Grape Toast", "red cabbage, sweet onion, beef",
-                "$14.00", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item06.jpg"));
+                "http://news.qq.com/a/20170324/030505.htm?pacclick=%2Fpac%2Fopenapi%3Fid%3D129", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item06.jpg"));
         mDatas.add(new PersonEntry("7", "Fresh Acorn Squash", "pumplin mole, pomegranate, seed",
-                "$11.00", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item07.jpg"));
+                "http://news.qq.com/a/20170324/030505.htm?pacclick=%2Fpac%2Fopenapi%3Fid%3D129", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item07.jpg"));
         mDatas.add(new PersonEntry("8", "Quad Burgers", "biscuits, bacon, honey butter",
-                "$7.00", "Dinner", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item02.jpg"));
+                "http://news.qq.com/a/20170324/030505.htm?pacclick=%2Fpac%2Fopenapi%3Fid%3D129", "Dinner", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item02.jpg"));
         mDatas.add(new PersonEntry("9", "The Mister Burger", "pepperoni, cheese, lettuce fries",
-                "$16.00", "Dinner", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item02.jpg"));
+                "http://news.qq.com/a/20170324/030505.htm?pacclick=%2Fpac%2Fopenapi%3Fid%3D129", "Dinner", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item02.jpg"));
         mDatas.add(new PersonEntry("10", "Deep Fried String Cheese", "dipped in a honey mustard"
-                + " aioli", "$7.00", "Dinner", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item07.jpg"));
+                + " aioli", "http://news.qq.com/a/20170324/030505.htm?pacclick=%2Fpac%2Fopenapi%3Fid%3D129", "Dinner", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item07.jpg"));
         mDatas.add(new PersonEntry("11", "Cheese Plate", "a bunch of different types of cheeses",
-                "$16.00", "Dinner", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item07.jpg"));
+                "http://news.qq.com/a/20170324/030505.htm?pacclick=%2Fpac%2Fopenapi%3Fid%3D129", "Dinner", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item07.jpg"));
         mDatas.add(new PersonEntry("12", "Pear and Jicama", "cheese, chardonnay vinaigrette",
-                "$12.00", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item06.jpg"));
+                "http://fashion.qq.com/a/20170324/003751.htm#p=1", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item06.jpg"));
         mDatas.add(new PersonEntry("13", "The Caesar", "garlic dressing, egg, olive oil, walnut"
-                + " breadcrumbs", "$10.00", "Dinner - Veggies, Grains, Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item01.jpg"));
-        mDatas.add(new PersonEntry("14", "Cold Brussels Sprouts", "shaved, raisins", "$10.00",
+                + " breadcrumbs", "http://fashion.qq.com/a/20170324/003742.htm", "Dinner - Veggies, Grains, Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item01.jpg"));
+        mDatas.add(new PersonEntry("14", "Cold Brussels Sprouts", "shaved, raisins", "http://fashion.qq.com/a/20170324/003742.htm",
                 "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item03.jpg"));
         mDatas.add(new PersonEntry("15", "Deep Fried Brussels Sprouts", "smoked yogurt and tea",
-                "$12.00", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item04.jpg"));
+                "http://fashion.qq.com/a/20170324/003742.htm", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item04.jpg"));
         mDatas.add(new PersonEntry("16", "Bread & Whipped Cream", "bread with whipped cream",
-                "$3.00", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item05.jpg"));
+                "http://fashion.qq.com/a/20170324/003757.htm", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item05.jpg"));
     }
 
 
