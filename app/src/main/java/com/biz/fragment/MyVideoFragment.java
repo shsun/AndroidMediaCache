@@ -100,7 +100,7 @@ public class MyVideoFragment extends BaseFragment {
     }
 
     private void setCachedState(boolean cached) {
-        int statusIconId = cached ? R.drawable.ic_cloud_done : R.drawable.ic_cloud_download;
+        final int statusIconId = cached ? R.drawable.ic_cloud_done : R.drawable.ic_cloud_download;
         mCacheStatusImageView.setImageResource(statusIconId);
     }
 
