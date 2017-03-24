@@ -13,9 +13,12 @@
         android:background="@color/white"
         android:orientation="horizontal" >
 
-        <com.facebook.drawee.view.SimpleDraweeView android:id="@+id/iconView"
-            android:layout_width="40.0dip"
-            android:layout_height="60.0dip"
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/iconView"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_width="60.0dip"
+            android:layout_height="40.0dip"
             fresco:placeholderImage="@drawable/image_loading"
             />
 
@@ -40,6 +43,8 @@
         -->
     </LinearLayout>
 
-    <Space android:layout_width="match_parent" android:layout_height="4dp"/>
+    <Space android:layout_width="match_parent"
+            android:background="@color/darkgray"
+            android:layout_height="1dp"/>
 
 </LinearLayout>
