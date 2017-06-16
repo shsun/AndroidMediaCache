@@ -1,5 +1,7 @@
 buildscript {
     repositories {
+
+        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
         jcenter()
     }
     dependencies {
@@ -8,7 +10,14 @@ buildscript {
 }
 
 repositories {
-    maven { url 'https://github.com/dahlgren/vpi-aar/raw/master' }
+    // maven库
+    def cn = 'http://maven.aliyun.com/nexus/content/groups/public/'
+    def abroad = 'https://github.com/dahlgren/vpi-aar/raw/master'
+    // 先从url中下载jar若没有找到，则在artifactUrls中寻找
+    maven {
+        url cn
+        artifactUrls abroad
+    }
 }
 
 apply plugin: 'com.android.application'
@@ -31,6 +40,20 @@ android {
     lintOptions {
         abortOnError false
     }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LGPL2.1'
+    }
+
 }
 
 apt {
@@ -84,4 +107,5 @@ dependencies {
     compile files('libs/unity-classes.jar')
 
     compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'com.android.support:support-annotations:25.3.1'
 }

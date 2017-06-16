@@ -2,9 +2,10 @@ buildscript {
     repositories {
         // mavenCentral()
         // maven{ url 'http://maven.oschina.net/content/groups/public/'}
+
         // maven库
-        def cn = "http://maven.aliyun.com/nexus/content/groups/public/"
-        def abroad = "http://central.maven.org/maven2/"
+        def cn = 'http://maven.aliyun.com/nexus/content/groups/public/'
+        def abroad = 'http://central.maven.org/maven2/'
         // 先从url中下载jar若没有找到，则在artifactUrls中寻找
         maven {
             url cn
@@ -12,12 +13,14 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'com.android.tools.build:gradle:2.3.3'
     }
 }
 
 allprojects {
     repositories {
+
+        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
         jcenter()
     }
     // options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
