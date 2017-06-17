@@ -54,12 +54,31 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
         this.initData(savedInstanceState, bundle);
     }
 
+    /**
+     *
+     * @param savedInstanceState
+     * @param prevInstanceState
+     */
     protected abstract void initVariables(Bundle savedInstanceState, Bundle prevInstanceState);
 
+    /**
+     *
+     * @param savedInstanceState
+     * @param prevInstanceState
+     */
     protected abstract void initView(Bundle savedInstanceState, Bundle prevInstanceState);
 
+    /**
+     *
+     * @param savedInstanceState
+     * @param prevInstanceState
+     */
     protected abstract void initData(Bundle savedInstanceState, Bundle prevInstanceState);
 
+
+    /**
+     *
+     */
     @Override
     protected void onDestroy() {
         super.onDestroy();

@@ -15,6 +15,9 @@
         <activity
                 android:name="com.base.app.QQX5BrowserActivity"
                 android:theme="@style/NoTitleFullscreen" />
+        <activity
+            android:name="com.base.app.PDFActivity"
+            android:theme="@style/NoTitleFullscreen" />
 
     </application>
 

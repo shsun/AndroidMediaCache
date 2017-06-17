@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.base.app.PDFActivity;
 import com.biz.adapter.PersonAdapter;
 import com.biz.entry.PersonEntry;
 import com.base.adapter.recyclerview.OnRecyclerViewItemListener;
@@ -19,7 +20,6 @@ import com.tencent.smtt.sdk.WebSettings;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 /**
  * Created by shsun on 17/1/12.
@@ -55,14 +55,18 @@ public class NewestFragment extends BaseFragment {
             @Override
             public void onItemClick(ViewGroup parent, View view, PersonEntry data, int position) {
                 Log.i(TAG, "onItemClick=" + position + ", " + data.getName());
-                Intent intent = new Intent(NewestFragment.this.getActivity(), QQX5BrowserActivity.class);
-                intent.putExtra(QQX5BrowserActivity.QQ_X5_BROWSER_KEY_URL, data.getLandingPageUrl());
-                intent.putExtra(QQX5BrowserActivity.QQ_X5_BROWSER_KEY_CACHE_MODE, WebSettings.LOAD_NO_CACHE);
+
+                Intent intent;
+                if (position % 2 == 0) {
+                    intent = new Intent(NewestFragment.this.getActivity(), QQX5BrowserActivity.class);
+                    intent.putExtra(QQX5BrowserActivity.QQ_X5_BROWSER_KEY_URL, data.getLandingPageUrl());
+                    intent.putExtra(QQX5BrowserActivity.QQ_X5_BROWSER_KEY_CACHE_MODE, WebSettings.LOAD_NO_CACHE);
+                } else {
+                    intent = new Intent(NewestFragment.this.getActivity(), PDFActivity.class);
+                    intent.putExtra(PDFActivity.PDF_READER_KEY_URL, data.getLandingPageUrl());
+                    intent.putExtra(PDFActivity.PDF_READER_KEY_TITLE, WebSettings.LOAD_NO_CACHE);
+                }
                 NewestFragment.this.getActivity().startActivity(intent);
-
-
-
-
             }
 
             @Override
@@ -87,7 +91,7 @@ public class NewestFragment extends BaseFragment {
 
         // Add the menu items.
         mDatas.add(new PersonEntry("1", "Cherry Avocado", "cherries, garlic, serrano, mayo",
-                "http://www.163.com", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item01.jpg"));
+                "http://www.263.com", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item01.jpg"));
         mDatas.add(new PersonEntry("2", "Fried Baby Onions", "maple syrup, walnut salsa, sauce",
                 "http://news.qq.com", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item02.jpg"));
         mDatas.add(new PersonEntry("3", "Fried Rice", "red onion, kale, puffed wild rice",
