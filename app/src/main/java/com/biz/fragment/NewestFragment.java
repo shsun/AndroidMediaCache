@@ -91,11 +91,11 @@ public class NewestFragment extends BaseFragment {
 
         // Add the menu items.
         mDatas.add(new PersonEntry("1", "Cherry Avocado", "cherries, garlic, serrano, mayo",
-                "http://www.263.com", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item01.jpg"));
+                "http://news.qq.com/a/20170617/004997.htm", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item01.jpg"));
         mDatas.add(new PersonEntry("2", "Fried Baby Onions", "maple syrup, walnut salsa, sauce",
-                "http://news.qq.com", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item02.jpg"));
+                "http://news.qq.com/a/20170617/004997.htm", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item02.jpg"));
         mDatas.add(new PersonEntry("3", "Fried Rice", "red onion, kale, puffed wild rice",
-                "http://news.qq.com/a/20170323/023149.htm", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item03.jpg"));
+                "http://news.qq.com/a/20170617/004997.htm", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item03.jpg"));
         mDatas.add(new PersonEntry("4", "Beet Fries", "cilantro, raw beet, feta, sumac",
                 "http://news.qq.com/a/20170322/044117.htm", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item04.jpg"));
         mDatas.add(new PersonEntry("5", "Sautéed Spaghetti", "garlic, poached egg, almonds",
