@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 import com.biz.R;
 import com.biz.adapter.ImageAdapter;
 import com.biz.entry.ImageEntry;
-import com.shsunframework.adapter.recyclerview.OnRecyclerViewItemListener;
-import com.shsunframework.app.BaseFragment;
+import com.base.adapter.recyclerview.OnRecyclerViewItemListener;
+import com.base.app.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;

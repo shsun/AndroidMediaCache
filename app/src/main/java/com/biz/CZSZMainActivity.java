@@ -10,9 +10,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.biz.adapter.WelcomeViewPagerAdapter;
-import com.shsunframework.app.BaseActivity;
+import com.base.app.BaseActivity;
 
-import com.shsunframework.eventbus.BaseEvent;
+import com.base.eventbus.BaseEvent;
 import com.viewpagerindicator.CirclePageIndicator;
 
 import org.greenrobot.eventbus.EventBus;

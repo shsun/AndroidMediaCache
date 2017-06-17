@@ -16,7 +16,7 @@ import com.biz.CZSZApplication;
 import com.biz.R;
 import com.danikula.videocache.CacheListener;
 import com.danikula.videocache.HttpProxyCacheServer;
-import com.shsunframework.app.BaseFragment;
+import com.base.app.BaseFragment;
 
 import java.io.File;
 

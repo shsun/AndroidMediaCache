@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.shsunframework.app.BaseFragment;
+import com.base.app.BaseFragment;
 
 
 /**

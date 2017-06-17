@@ -45,4 +45,7 @@ dependencies {
     compile project(':lib_videocache')
     compile project(':vitamio')
     compile 'org.greenrobot:eventbus:3.0.0'
+
+    compile 'com.github.barteksc:android-pdf-viewer:2.6.1'
+
 }

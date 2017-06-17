@@ -20,7 +20,7 @@ import com.viewpagerindicator.TabPageIndicator;
 
 import android.support.v4.view.ViewPager;
 
-import com.shsunframework.utils.MathUtils;
+import com.base.utils.MathUtils;
 import com.biz.net.BMServer;
 
 import com.biz.R;

@@ -11,7 +11,7 @@ import android.support.v7.widget.Toolbar;
 import com.biz.R;
 import com.biz.entry.ChannelEntry;
 import com.biz.fragment.ImageFragment;
-import com.shsunframework.app.BaseAppCompatActivity;
+import com.base.app.BaseAppCompatActivity;
 
 
 /**

@@ -17,13 +17,11 @@ import com.biz.fragment.ImageFragment;
 import com.biz.fragment.MyVideoFragment;
 import com.biz.fragment.NewestFragment;
 import com.biz.fragment.U3DFragment;
-import com.shsunframework.app.BaseFragment;
-import com.shsunframework.app.BaseFragmentActivity;
+import com.base.app.BaseFragment;
+import com.base.app.BaseFragmentActivity;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import me.kaede.frescosample.ImageApi;
 
 /**
  * Created by shsun on 17/1/9.

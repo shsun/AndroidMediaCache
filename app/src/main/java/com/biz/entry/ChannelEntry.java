@@ -3,7 +3,7 @@ package com.biz.entry;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.shsunframework.entry.BaseEntry;
+import com.base.entry.BaseEntry;
 
 /**
  * Created by shsun on 17/2/19.

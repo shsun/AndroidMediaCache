@@ -1,6 +1,6 @@
 package com.biz.entry;
 
-import com.shsunframework.entry.BaseEntry;
+import com.base.entry.BaseEntry;
 
 import android.os.Parcel;
 import android.os.Parcelable;

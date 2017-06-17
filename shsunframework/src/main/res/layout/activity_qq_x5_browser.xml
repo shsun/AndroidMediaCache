@@ -4,9 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.shsunframework.view.BaseQQX5WebView
+    <com.base.view.BaseQQX5WebView
         android:id="@+id/webView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></com.shsunframework.view.BaseQQX5WebView>
+        android:layout_height="match_parent"></com.base.view.BaseQQX5WebView>
 
 </FrameLayout>

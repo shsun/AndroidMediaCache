@@ -7,7 +7,7 @@ import com.facebook.cache.disk.DiskCacheConfig;
 import com.facebook.common.logging.FLog;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
-import com.shsunframework.BaseApplication;
+import com.base.BaseApplication;
 
 import java.io.File;
 

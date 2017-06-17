@@ -3,7 +3,7 @@ package com.biz.activity;
 import android.os.Bundle;
 
 import com.biz.R;
-import com.shsunframework.app.BaseAppCompatActivity;
+import com.base.app.BaseAppCompatActivity;
 
 /**
  * Created by shsun on 17/1/9.

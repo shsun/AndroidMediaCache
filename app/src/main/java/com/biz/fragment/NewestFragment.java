@@ -12,9 +12,9 @@ import android.widget.Toast;
 
 import com.biz.adapter.PersonAdapter;
 import com.biz.entry.PersonEntry;
-import com.shsunframework.adapter.recyclerview.OnRecyclerViewItemListener;
-import com.shsunframework.app.BaseFragment;
-import com.shsunframework.app.QQX5BrowserActivity;
+import com.base.adapter.recyclerview.OnRecyclerViewItemListener;
+import com.base.app.BaseFragment;
+import com.base.app.QQX5BrowserActivity;
 import com.tencent.smtt.sdk.WebSettings;
 
 import java.util.ArrayList;
@@ -59,6 +59,10 @@ public class NewestFragment extends BaseFragment {
                 intent.putExtra(QQX5BrowserActivity.QQ_X5_BROWSER_KEY_URL, data.getLandingPageUrl());
                 intent.putExtra(QQX5BrowserActivity.QQ_X5_BROWSER_KEY_CACHE_MODE, WebSettings.LOAD_NO_CACHE);
                 NewestFragment.this.getActivity().startActivity(intent);
+
+
+
+
             }
 
             @Override

@@ -10,7 +10,6 @@ buildscript {
             artifactUrls abroad
         }
 
-
         jcenter()
     }
     dependencies {
@@ -77,6 +76,9 @@ dependencies {
     //    compile project(':library')
     //compile files('libs/tbs_sdk_thirdapp_v3.0.0.1038_43000_sharewithdownload_obfs_20170110_144724.jar')
     compile fileTree(include: '*.jar', dir: 'libs')
+
+
+
     compile 'com.android.support:support-v4:25.1.0'
     //compile 'com.android.support:appcompat-v7:23.1.0+'
     compile 'com.android.support:appcompat-v7:25.2.1'
