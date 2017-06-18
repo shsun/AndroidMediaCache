@@ -1,10 +1,9 @@
-package com.infrastructure.net;
-
+package com.base.net;
 
 /**
  * @author shsun
  */
-public class URLData {
+public class XHttpURLData {
 
     private String key;
     private long expires;
@@ -12,7 +11,7 @@ public class URLData {
     private String url;
     private String mockClass;
 
-    public URLData() {
+    public XHttpURLData() {
     }
 
     public String getKey() {

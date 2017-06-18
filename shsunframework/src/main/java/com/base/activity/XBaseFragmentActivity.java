@@ -3,8 +3,8 @@ package com.base.activity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
-import com.base.BaseApplication;
-import com.base.net.RequestManager;
+import com.base.XBaseApplication;
+import com.base.net.XRequestManager;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -16,15 +16,15 @@ public abstract class XBaseFragmentActivity extends FragmentActivity implements 
     /**
      *
      */
-    protected RequestManager requestManager = null;
+    protected XRequestManager requestManager = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        this.requestManager = new RequestManager();
+        this.requestManager = new XRequestManager();
         EventBus.getDefault().register(this);
-        ((BaseApplication) this.getApplication()).addActivity(this);
+        ((XBaseApplication) this.getApplication()).addActivity(this);
 
         Bundle bundle = this.getIntent().getExtras();
         initVariables(savedInstanceState, bundle);
@@ -48,14 +48,14 @@ public abstract class XBaseFragmentActivity extends FragmentActivity implements 
     protected void onDestroy() {
         this.cancelAllRequest();
         EventBus.getDefault().unregister(this);
-        ((BaseApplication) this.getApplication()).finishActivity(this);
+        ((XBaseApplication) this.getApplication()).finishActivity(this);
 
         super.onDestroy();
     }
 
 
     @Override
-    public RequestManager getRequestManager() {
+    public XRequestManager getRequestManager() {
         return requestManager;
     }
 

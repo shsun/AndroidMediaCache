@@ -1,28 +1,23 @@
 package com.base.net;
 
-import com.infrastructure.net.HttpRequest;
-import com.infrastructure.net.RequestCallback;
-import com.infrastructure.net.RequestParameter;
-import com.infrastructure.net.URLData;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  */
-public class RequestManager {
-    ArrayList<HttpRequest> requestList = null;
+public class XRequestManager {
+    ArrayList<XHttpRequest> requestList = null;
 
-    public RequestManager() {
+    public XRequestManager() {
         // 异步请求列表
-        requestList = new ArrayList<HttpRequest>();
+        requestList = new ArrayList<XHttpRequest>();
     }
 
     /**
      * 添加Request到列表
      */
-    public void addRequest(final HttpRequest request) {
+    public void addRequest(final XHttpRequest request) {
         requestList.add(request);
     }
 
@@ -31,7 +26,7 @@ public class RequestManager {
      */
     public void cancelRequest() {
         if ((requestList != null) && (requestList.size() > 0)) {
-            for (final HttpRequest request : requestList) {
+            for (final XHttpRequest request : requestList) {
                 if (request.getRequest() != null) {
                     try {
                         request.getRequest().abort();
@@ -47,9 +42,9 @@ public class RequestManager {
     /**
      * 无参数调用
      */
-    public HttpRequest createRequest(final URLData urlData,
-                                     final RequestCallback requestCallback) {
-        final HttpRequest request = new HttpRequest(urlData, null,
+    public XHttpRequest createRequest(final XHttpURLData urlData,
+                                      final XHttpRequestCallback requestCallback) {
+        final XHttpRequest request = new XHttpRequest(urlData, null,
                 requestCallback);
         addRequest(request);
         return request;
@@ -58,10 +53,10 @@ public class RequestManager {
     /**
      * 有参数调用
      */
-    public HttpRequest createRequest(final URLData urlData,
-                                     final List<RequestParameter> params,
-                                     final RequestCallback requestCallback) {
-        final HttpRequest request = new HttpRequest(urlData, params,
+    public XHttpRequest createRequest(final XHttpURLData urlData,
+                                      final List<XHttpRequestParameter> params,
+                                      final XHttpRequestCallback requestCallback) {
+        final XHttpRequest request = new XHttpRequest(urlData, params,
                 requestCallback);
 
         addRequest(request);

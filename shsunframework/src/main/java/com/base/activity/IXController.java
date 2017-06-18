@@ -1,6 +1,6 @@
 package com.base.activity;
 
-import com.base.net.RequestManager;
+import com.base.net.XRequestManager;
 
 /**
  * Created by shsun on 6/18/17.
@@ -11,5 +11,5 @@ public interface IXController {
     /**
      * @return
      */
-    RequestManager getRequestManager();
+    XRequestManager getRequestManager();
 }

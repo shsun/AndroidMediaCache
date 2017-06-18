@@ -1,11 +1,11 @@
-package com.infrastructure.cache;
+package com.base.cache;
 
 import java.io.Serializable;
 
 /**
  *
  */
-public class CacheItem implements Serializable {
+public class XCacheItem implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -23,7 +23,7 @@ public class CacheItem implements Serializable {
      */
     private long timeStamp = 0L;
 
-    public CacheItem(final String key, final String data, final long expiredTime) {
+    public XCacheItem(final String key, final String data, final long expiredTime) {
         this.key = key;
         this.timeStamp = System.currentTimeMillis() + expiredTime * 1000;
         this.data = data;

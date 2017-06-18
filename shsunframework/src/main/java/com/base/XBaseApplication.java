@@ -5,7 +5,7 @@ import java.util.Stack;
 import android.app.Activity;
 import android.app.Application;
 
-public class BaseApplication extends Application {
+public class XBaseApplication extends Application {
 
     private Stack<Activity> mActivityStack;
 

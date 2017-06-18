@@ -1,7 +1,7 @@
 package com.base.activity;
 
-import com.base.BaseApplication;
-import com.base.net.RequestManager;
+import com.base.XBaseApplication;
+import com.base.net.XRequestManager;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -17,16 +17,16 @@ public abstract class XBaseActivity extends Activity implements IXController {
     /**
      *
      */
-    protected RequestManager requestManager = null;
+    protected XRequestManager requestManager = null;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        this.requestManager = new RequestManager();
+        this.requestManager = new XRequestManager();
         EventBus.getDefault().register(this);
-        ((BaseApplication) this.getApplication()).addActivity(this);
+        ((XBaseApplication) this.getApplication()).addActivity(this);
 
         Bundle bundle = this.getIntent().getExtras();
         //
@@ -47,7 +47,7 @@ public abstract class XBaseActivity extends Activity implements IXController {
         this.cancelAllRequest();
 
         EventBus.getDefault().unregister(this);
-        ((BaseApplication) this.getApplication()).finishActivity(this);
+        ((XBaseApplication) this.getApplication()).finishActivity(this);
 
         super.onDestroy();
     }
@@ -59,7 +59,7 @@ public abstract class XBaseActivity extends Activity implements IXController {
     }
 
     @Override
-    public RequestManager getRequestManager() {
+    public XRequestManager getRequestManager() {
         return requestManager;
     }
 

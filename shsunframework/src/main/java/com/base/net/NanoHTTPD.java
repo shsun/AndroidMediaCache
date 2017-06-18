@@ -314,10 +314,10 @@ public abstract class NanoHTTPD {
 
         /**
          * Internally used by the webserver to add all queued cookies into the
-         * Response's HTTP Headers.
+         * XHttpResponse's HTTP Headers.
          *
          * @param response
-         *            The Response object to which headers the queued cookies
+         *            The XHttpResponse object to which headers the queued cookies
          *            will be added.
          */
         public void unloadQueue(Response response) {
@@ -1850,7 +1850,7 @@ public abstract class NanoHTTPD {
      *
      * @param session
      *            The HTTP session
-     * @return HTTP response, see class Response for details
+     * @return HTTP response, see class XHttpResponse for details
      */
     public Response serve(IHTTPSession session) {
         Map<String, String> files = new HashMap<String, String>();
@@ -1886,7 +1886,7 @@ public abstract class NanoHTTPD {
      *            POST, data.
      * @param headers
      *            Header entries, percent decoded
-     * @return HTTP response, see class Response for details
+     * @return HTTP response, see class XHttpResponse for details
      */
     @Deprecated
     public Response serve(String uri, Method method, Map<String, String> headers, Map<String, String> parms, Map<String, String> files) {

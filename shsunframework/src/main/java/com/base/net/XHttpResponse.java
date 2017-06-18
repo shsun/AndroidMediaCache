@@ -1,6 +1,6 @@
-package com.infrastructure.net;
+package com.base.net;
 
-public class Response {
+public class XHttpResponse {
     private boolean error;
     // 1为Cookie失效
     private int errorType;

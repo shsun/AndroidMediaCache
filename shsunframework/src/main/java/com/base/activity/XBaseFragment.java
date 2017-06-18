@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.base.net.RequestManager;
+import com.base.net.XRequestManager;
 
 /**
  * Created by shsun on 17/1/12.
@@ -21,7 +21,7 @@ public abstract class XBaseFragment extends Fragment implements IXController {
     /**
      *
      */
-    protected RequestManager requestManager = null;
+    protected XRequestManager requestManager = null;
 
     // by ms
     protected int mTimeoutOfHttpRequest = 1000 * 5;
@@ -47,7 +47,7 @@ public abstract class XBaseFragment extends Fragment implements IXController {
         Log.i(TAG, "before onCreate");
         super.onCreate(savedInstanceState);
 
-        this.requestManager = new RequestManager();
+        this.requestManager = new XRequestManager();
 
         mContext = getActivity();
         setHasOptionsMenu(true);
@@ -170,7 +170,7 @@ public abstract class XBaseFragment extends Fragment implements IXController {
 
 
     @Override
-    public RequestManager getRequestManager() {
+    public XRequestManager getRequestManager() {
         return requestManager;
     }
 

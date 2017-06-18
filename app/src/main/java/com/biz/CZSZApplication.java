@@ -7,14 +7,14 @@ import com.facebook.cache.disk.DiskCacheConfig;
 import com.facebook.common.logging.FLog;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
-import com.base.BaseApplication;
+import com.base.XBaseApplication;
 
 import java.io.File;
 
 /**
  *
  */
-public class CZSZApplication extends BaseApplication {
+public class CZSZApplication extends XBaseApplication {
 
     private HttpProxyCacheServer mProxyServer;
 

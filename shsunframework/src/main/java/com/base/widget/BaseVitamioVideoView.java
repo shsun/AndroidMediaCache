@@ -9,6 +9,7 @@ import io.vov.vitamio.widget.VideoView;
  */
 
 public class BaseVitamioVideoView extends VideoView {
+
     public BaseVitamioVideoView(Context context) {
         super(context);
     }

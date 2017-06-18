@@ -25,8 +25,7 @@ public class SystemMediaController implements android.widget.MediaController.Med
      * @param view
      * @param player
      */
-    public SystemMediaController(BaseSystemVideoView.VideoAdViewListener hostRenderer, BaseSystemVideoView view,
-                                 MediaPlayer player) {
+    public SystemMediaController(BaseSystemVideoView.VideoAdViewListener hostRenderer, BaseSystemVideoView view, MediaPlayer player) {
         this.mVideoAdRenderer = hostRenderer;
         this.mVideoAdView = view;
         this.mMediaPlayer = player;
@@ -100,7 +99,7 @@ public class SystemMediaController implements android.widget.MediaController.Med
 
     protected void onImprTimer() {
 
-        //mAdLogger.i(CLASSTAG, "onImprTimer");
+        // mAdLogger.i(CLASSTAG, "onImprTimer");
     }
 
     @Override

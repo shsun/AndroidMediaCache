@@ -106,9 +106,8 @@ public class BaseQQX5WebView extends com.tencent.smtt.sdk.WebView {
     private void addJavascriptInterface() {
         if (!addedJavascriptInterface) {
             // Add javascript interface to be called when the video ends (must be done before page load)
-            //noinspection all
-            addJavascriptInterface(new JavascriptInterface(),
-                    "_VideoEnabledWebView"); // Must match Javascript interface name of VideoEnabledWebChromeClient
+            // noinspection all
+            addJavascriptInterface(new JavascriptInterface(), "_VideoEnabledWebView"); // Must match Javascript interface name of VideoEnabledWebChromeClient
 
             addedJavascriptInterface = true;
         }

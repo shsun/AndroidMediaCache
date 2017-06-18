@@ -4,9 +4,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 //import com.biz.entry.PersonEntry;
-import com.base.net.RequestManager;
+import com.base.net.XRequestManager;
 import com.google.gson.Gson;
-import com.base.BaseApplication;
+import com.base.XBaseApplication;
 import com.zhy.http.okhttp.OkHttpUtils;
 
 import org.greenrobot.eventbus.EventBus;
@@ -19,15 +19,15 @@ public abstract class XBaseAppCompatActivity extends AppCompatActivity implement
     /**
      *
      */
-    protected RequestManager requestManager = null;
+    protected XRequestManager requestManager = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        this.requestManager = new RequestManager();
+        this.requestManager = new XRequestManager();
         EventBus.getDefault().register(this);
-        ((BaseApplication) this.getApplication()).addActivity(this);
+        ((XBaseApplication) this.getApplication()).addActivity(this);
 
 
         Bundle bundle = this.getIntent().getExtras();
@@ -85,14 +85,14 @@ public abstract class XBaseAppCompatActivity extends AppCompatActivity implement
         this.cancelAllRequest();
 
         EventBus.getDefault().unregister(this);
-        ((BaseApplication) this.getApplication()).finishActivity(this);
+        ((XBaseApplication) this.getApplication()).finishActivity(this);
 
         super.onDestroy();
     }
 
 
     @Override
-    public RequestManager getRequestManager() {
+    public XRequestManager getRequestManager() {
         return requestManager;
     }
 

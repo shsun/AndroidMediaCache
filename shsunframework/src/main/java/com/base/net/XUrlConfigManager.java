@@ -1,4 +1,4 @@
-package com.infrastructure.net;
+package com.base.net;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,12 +13,12 @@ import android.content.res.XmlResourceParser;
 /**
  * @author shsun
  */
-public class UrlConfigManager {
+public class XUrlConfigManager {
 
-    private static ArrayList<URLData> urlList;
+    private static ArrayList<XHttpURLData> urlList;
 
     private static void fetchUrlDataFromXml(final Activity activity, XmlResourceParser xmlParser) {
-        urlList = new ArrayList<URLData>();
+        urlList = new ArrayList<XHttpURLData>();
 
 //        final XmlResourceParser xmlParser = activity.getApplication()
 //                .getResources().getXml(R.xml.url);
@@ -35,7 +35,7 @@ public class UrlConfigManager {
                         if ("Node".equals(xmlParser.getName())) {
                             final String key = xmlParser.getAttributeValue(null,
                                     "Key");
-                            final URLData urlData = new URLData();
+                            final XHttpURLData urlData = new XHttpURLData();
                             urlData.setKey(key);
                             urlData.setExpires(Long.parseLong(xmlParser
                                     .getAttributeValue(null, "Expires")));
@@ -63,18 +63,18 @@ public class UrlConfigManager {
         }
     }
 
-    public static URLData findURL(final Activity activity,
-                                  final String findKey,
-                                  final XmlResourceParser xmlParser) {
+    public static XHttpURLData findURL(final Activity activity,
+                                       final String findKey,
+                                       final XmlResourceParser xmlParser) {
 
-        URLData result = null;
+        XHttpURLData result = null;
 
         // 如果urlList还没有数据（第一次），或者被回收了，那么（重新）加载xml
         if (urlList == null || urlList.isEmpty()) {
             fetchUrlDataFromXml(activity, xmlParser);
         }
 
-        for (URLData data : urlList) {
+        for (XHttpURLData data : urlList) {
             if (findKey.equals(data.getKey())) {
                 result = data;
                 break;

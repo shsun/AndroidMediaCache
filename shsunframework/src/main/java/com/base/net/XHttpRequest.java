@@ -1,4 +1,4 @@
-package com.infrastructure.net;
+package com.base.net;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -31,15 +31,14 @@ import org.apache.http.protocol.HTTP;
 import android.os.Handler;
 
 import com.alibaba.fastjson.JSON;
-import com.infrastructure.cache.CacheManager;
-import com.infrastructure.utils.BaseUtils;
-import com.infrastructure.utils.FrameConstants;
-
+import com.base.cache.XCacheItemManager;
+import com.base.utils.XBaseUtils;
+import com.base.utils.XFrameConstants;
 
 /**
  * @author shsun
  */
-public class HttpRequest implements Runnable {
+public class XHttpRequest implements Runnable {
 
     private final static String cookiePath = "/data/data/com.youngheart/cache/cookie";
 
@@ -48,9 +47,9 @@ public class HttpRequest implements Runnable {
     public static final String REQUEST_POST = "post";
 
     private HttpUriRequest request = null;
-    private URLData urlData = null;
-    private RequestCallback requestCallback = null;
-    private List<RequestParameter> parameter = null;
+    private XHttpURLData urlData = null;
+    private XHttpRequestCallback requestCallback = null;
+    private List<XHttpRequestParameter> parameter = null;
     private String url = null; // 原始url
     private String newUrl = null; // 拼接key-value后的url
     private HttpResponse response = null;
@@ -67,7 +66,7 @@ public class HttpRequest implements Runnable {
     // 服务器时间和客户端时间的差值
     static long deltaBetweenServerAndClientTime;
 
-    public HttpRequest(final URLData data, final List<RequestParameter> params, final RequestCallback callBack) {
+    public XHttpRequest(final XHttpURLData data, final List<XHttpRequestParameter> params, final XHttpRequestCallback callBack) {
         urlData = data;
 
         url = urlData.getUrl();
@@ -102,13 +101,11 @@ public class HttpRequest implements Runnable {
                     // 这里要对key进行排序
                     sortKeys();
 
-                    for (final RequestParameter p : parameter) {
+                    for (final XHttpRequestParameter p : parameter) {
                         if (paramBuffer.length() == 0) {
-                            paramBuffer.append(p.getName() + "="
-                                    + BaseUtils.UrlEncodeUnicode(p.getValue()));
+                            paramBuffer.append(p.getName() + "=" + XBaseUtils.UrlEncodeUnicode(p.getValue()));
                         } else {
-                            paramBuffer.append("&" + p.getName() + "="
-                                    + BaseUtils.UrlEncodeUnicode(p.getValue()));
+                            paramBuffer.append("&" + p.getName() + "=" + XBaseUtils.UrlEncodeUnicode(p.getValue()));
                         }
                     }
 
@@ -119,8 +116,7 @@ public class HttpRequest implements Runnable {
 
                 // 如果这个get的API有缓存时间（大于0）
                 if (urlData.getExpires() > 0) {
-                    final String content = CacheManager.getInstance()
-                            .getFileCache(newUrl);
+                    final String content = XCacheItemManager.getInstance().getFileCache(newUrl);
                     if (content != null) {
                         handler.post(new Runnable() {
 
@@ -140,21 +136,17 @@ public class HttpRequest implements Runnable {
                 // 添加参数
                 if ((parameter != null) && (parameter.size() > 0)) {
                     final List<BasicNameValuePair> list = new ArrayList<BasicNameValuePair>();
-                    for (final RequestParameter p : parameter) {
-                        list.add(new BasicNameValuePair(p.getName(), p
-                                .getValue()));
+                    for (final XHttpRequestParameter p : parameter) {
+                        list.add(new BasicNameValuePair(p.getName(), p.getValue()));
                     }
-                    ((HttpPost) request).setEntity(new UrlEncodedFormEntity(
-                            list, HTTP.UTF_8));
+                    ((HttpPost) request).setEntity(new UrlEncodedFormEntity(list, HTTP.UTF_8));
                 }
             } else {
                 return;
             }
 
-            request.getParams().setParameter(
-                    CoreConnectionPNames.CONNECTION_TIMEOUT, 30000);
-            request.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT,
-                    30000);
+            request.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 30000);
+            request.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT, 30000);
 
             /**
              * 添加必要的头信息
@@ -178,15 +170,11 @@ public class HttpRequest implements Runnable {
 
                     // 根据是否支持gzip来使用不同的解析方式
                     String strResponse = "";
-                    if ((response.getEntity().getContentEncoding() != null)
-                            && (response.getEntity().getContentEncoding()
-                            .getValue() != null)) {
-                        if (response.getEntity().getContentEncoding()
-                                .getValue().contains("gzip")) {
-                            final InputStream in = response.getEntity()
-                                    .getContent();
+                    if ((response.getEntity().getContentEncoding() != null) && (response.getEntity().getContentEncoding().getValue() != null)) {
+                        if (response.getEntity().getContentEncoding().getValue().contains("gzip")) {
+                            final InputStream in = response.getEntity().getContent();
                             final InputStream is = new GZIPInputStream(in);
-                            strResponse = HttpRequest.inputStreamToString(is);
+                            strResponse = XHttpRequest.inputStreamToString(is);
                             is.close();
                         } else {
                             response.getEntity().writeTo(content);
@@ -195,10 +183,11 @@ public class HttpRequest implements Runnable {
                     } else {
                         response.getEntity().writeTo(content);
                         strResponse = new String(content.toByteArray()).trim();
-                        strResponse = "{'isError':false,'errorType':0,'errorMessage':'','result':{'city':'北京','cityid':'101010100','temp':'17','WD':'西南风','WS':'2级','SD':'54%','WSE':'2','time':'23:15','isRadar':'1','Radar':'JC_RADAR_AZ9010_JB','njd':'暂无实况','qy':'1016'}}";
+                        strResponse =
+                                "{'isError':false,'errorType':0,'errorMessage':'','result':{'city':'北京','cityid':'101010100','temp':'17','WD':'西南风','WS':'2级','SD':'54%','WSE':'2','time':'23:15','isRadar':'1','Radar':'JC_RADAR_AZ9010_JB','njd':'暂无实况','qy':'1016'}}";
                     }
 
-                    final Response responseInJson = JSON.parseObject(strResponse, Response.class);
+                    final XHttpResponse responseInJson = JSON.parseObject(strResponse, XHttpResponse.class);
                     if (responseInJson.hasError()) {
                         if (responseInJson.getErrorType() == 1) {
                             handler.post(new Runnable() {
@@ -212,19 +201,15 @@ public class HttpRequest implements Runnable {
                         }
                     } else {
                         // 把成功获取到的数据记录到缓存
-                        if (urlData.getNetType().equals(REQUEST_GET)
-                                && urlData.getExpires() > 0) {
-                            CacheManager.getInstance().putFileCache(newUrl,
-                                    responseInJson.getResult(),
-                                    urlData.getExpires());
+                        if (urlData.getNetType().equals(REQUEST_GET) && urlData.getExpires() > 0) {
+                            XCacheItemManager.getInstance().putFileCache(newUrl, responseInJson.getResult(), urlData.getExpires());
                         }
 
                         handler.post(new Runnable() {
 
                             @Override
                             public void run() {
-                                requestCallback.onSuccess(responseInJson
-                                        .getResult());
+                                requestCallback.onSuccess(responseInJson.getResult());
                             }
 
                         });
@@ -270,8 +255,8 @@ public class HttpRequest implements Runnable {
     void sortKeys() {
         for (int i = 1; i < parameter.size(); i++) {
             for (int j = i; j > 0; j--) {
-                RequestParameter p1 = parameter.get(j - 1);
-                RequestParameter p2 = parameter.get(j);
+                XHttpRequestParameter p1 = parameter.get(j - 1);
+                XHttpRequestParameter p2 = parameter.get(j);
                 if (compare(p1.getName(), p2.getName())) {
                     // 交互p1和p2这两个对象，写的超级恶心
                     String name = p1.getName();
@@ -327,17 +312,17 @@ public class HttpRequest implements Runnable {
         // 获取本次访问的cookie
         final List<Cookie> cookies = httpClient.getCookieStore().getCookies();
         // 将普通cookie转换为可序列化的cookie
-        List<SerializableCookie> serializableCookies = null;
+        List<XSerializableCookie> serializableCookies = null;
 
         if ((cookies != null) && (cookies.size() > 0)) {
-            serializableCookies = new ArrayList<SerializableCookie>();
+            serializableCookies = new ArrayList<XSerializableCookie>();
 
             for (final Cookie c : cookies) {
-                serializableCookies.add(new SerializableCookie(c));
+                serializableCookies.add(new XSerializableCookie(c));
             }
         }
 
-        BaseUtils.saveObject(cookiePath, serializableCookies);
+        XBaseUtils.saveObject(cookiePath, serializableCookies);
     }
 
     /**
@@ -347,15 +332,15 @@ public class HttpRequest implements Runnable {
      */
     @SuppressWarnings("unchecked")
     public void addCookie() {
-        List<SerializableCookie> cookieList = null;
-        Object cookieObj = BaseUtils.restoreObject(cookiePath);
+        List<XSerializableCookie> cookieList = null;
+        Object cookieObj = XBaseUtils.restoreObject(cookiePath);
         if (cookieObj != null) {
-            cookieList = (ArrayList<SerializableCookie>) cookieObj;
+            cookieList = (ArrayList<XSerializableCookie>) cookieObj;
         }
 
         if ((cookieList != null) && (cookieList.size() > 0)) {
             final BasicCookieStore cs = new BasicCookieStore();
-            cs.addCookies(cookieList.toArray(new Cookie[]{}));
+            cs.addCookies(cookieList.toArray(new Cookie[] {}));
             httpClient.setCookieStore(cs);
         } else {
             httpClient.setCookieStore(null);
@@ -364,9 +349,9 @@ public class HttpRequest implements Runnable {
 
     void setHttpHeaders(final HttpUriRequest httpMessage) {
         headers.clear();
-        headers.put(FrameConstants.ACCEPT_CHARSET, "UTF-8,*");
-        headers.put(FrameConstants.USER_AGENT, "Young Heart Android App ");
-        headers.put(FrameConstants.ACCEPT_ENCODING, "gzip");
+        headers.put(XFrameConstants.ACCEPT_CHARSET, "UTF-8,*");
+        headers.put(XFrameConstants.USER_AGENT, "Young Heart Android App ");
+        headers.put(XFrameConstants.ACCEPT_ENCODING, "gzip");
 
         if ((httpMessage != null) && (headers != null)) {
             for (final Entry<String, String> entry : headers.entrySet()) {
@@ -387,16 +372,10 @@ public class HttpRequest implements Runnable {
                 final String strServerDate = header.getValue();
                 try {
                     if ((strServerDate != null) && !strServerDate.equals("")) {
-                        final SimpleDateFormat sdf = new SimpleDateFormat(
-                                "EEE, d MMM yyyy HH:mm:ss z", Locale.ENGLISH);
+                        final SimpleDateFormat sdf = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss z", Locale.ENGLISH);
                         TimeZone.setDefault(TimeZone.getTimeZone("GMT+8"));
-
                         Date serverDateUAT = sdf.parse(strServerDate);
-
-                        deltaBetweenServerAndClientTime = serverDateUAT
-                                .getTime()
-                                + 8 * 60 * 60 * 1000
-                                - System.currentTimeMillis();
+                        deltaBetweenServerAndClientTime = serverDateUAT.getTime() + 8 * 60 * 60 * 1000 - System.currentTimeMillis();
                     }
                 } catch (java.text.ParseException e) {
                     e.printStackTrace();
@@ -406,7 +385,6 @@ public class HttpRequest implements Runnable {
     }
 
     public static Date getServerTime() {
-        return new Date(System.currentTimeMillis()
-                + deltaBetweenServerAndClientTime);
+        return new Date(System.currentTimeMillis() + deltaBetweenServerAndClientTime);
     }
 }
