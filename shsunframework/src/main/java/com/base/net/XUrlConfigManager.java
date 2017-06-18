@@ -9,7 +9,6 @@ import org.xmlpull.v1.XmlPullParserException;
 import android.app.Activity;
 import android.content.res.XmlResourceParser;
 
-
 /**
  * @author shsun
  */
@@ -20,9 +19,8 @@ public class XUrlConfigManager {
     private static void fetchUrlDataFromXml(final Activity activity, XmlResourceParser xmlParser) {
         urlList = new ArrayList<XHttpURLData>();
 
-//        final XmlResourceParser xmlParser = activity.getApplication()
-//                .getResources().getXml(R.xml.url);
-
+        // final XmlResourceParser xmlParser = activity.getApplication()
+        // .getResources().getXml(R.xml.url);
 
         int eventCode;
         try {
@@ -33,16 +31,12 @@ public class XUrlConfigManager {
                         break;
                     case XmlPullParser.START_TAG:
                         if ("Node".equals(xmlParser.getName())) {
-                            final String key = xmlParser.getAttributeValue(null,
-                                    "Key");
+                            final String key = xmlParser.getAttributeValue(null, "Key");
                             final XHttpURLData urlData = new XHttpURLData();
                             urlData.setKey(key);
-                            urlData.setExpires(Long.parseLong(xmlParser
-                                    .getAttributeValue(null, "Expires")));
-                            urlData.setNetType(xmlParser.getAttributeValue(null,
-                                    "NetType"));
-                            urlData.setMockClass(xmlParser.getAttributeValue(null,
-                                    "MockClass"));
+                            urlData.setExpires(Long.parseLong(xmlParser.getAttributeValue(null, "Expires")));
+                            urlData.setRequestMethod(xmlParser.getAttributeValue(null, "NetType"));
+                            urlData.setMockClass(xmlParser.getAttributeValue(null, "MockClass"));
                             urlData.setUrl(xmlParser.getAttributeValue(null, "Url"));
                             urlList.add(urlData);
                         }
@@ -63,9 +57,7 @@ public class XUrlConfigManager {
         }
     }
 
-    public static XHttpURLData findURL(final Activity activity,
-                                       final String findKey,
-                                       final XmlResourceParser xmlParser) {
+    public static XHttpURLData findURL(final Activity activity, final String findKey, final XmlResourceParser xmlParser) {
 
         XHttpURLData result = null;
 

@@ -7,7 +7,7 @@ public class XHttpURLData {
 
     private String key;
     private long expires;
-    private String netType;
+    private String requestMethod = XHttpRequest.RequestMethod.GET.getMethod();
     private String url;
     private String mockClass;
 
@@ -30,12 +30,12 @@ public class XHttpURLData {
         this.expires = expires;
     }
 
-    public String getNetType() {
-        return netType;
+    public String getRequestMethod() {
+        return requestMethod;
     }
 
-    public void setNetType(String netType) {
-        this.netType = netType;
+    public void setRequestMethod(String method) {
+        this.requestMethod = method;
     }
 
     public String getUrl() {

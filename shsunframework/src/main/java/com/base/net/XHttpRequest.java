@@ -42,18 +42,31 @@ public class XHttpRequest implements Runnable {
 
     private final static String cookiePath = "/data/data/com.youngheart/cache/cookie";
 
-    /**
-     * 
-     */
-    public static final String REQUEST_GET = "GET";
-    public static final String REQUEST_POST = "POST";
+    public enum RequestMethod {
+        GET("get"), POST("post"), DELETE("delete"), PUT("put");
+
+        private String method;
+
+        private RequestMethod(String method) {
+            this.method = method;
+        }
+
+        public String getMethod() {
+            return method;
+        }
+    }
+
+    private RequestMethod method;
 
     private HttpUriRequest request = null;
-    private XHttpURLData urlData = null;
+    private XHttpURLData data = null;
+
     private XHttpRequestCallback requestCallback = null;
     private List<XHttpRequestParameter> parameter = null;
+
     private String url = null; // 原始url
     private String newUrl = null; // 拼接key-value后的url
+
     private HttpResponse response = null;
     private DefaultHttpClient httpClient;
 
@@ -75,9 +88,9 @@ public class XHttpRequest implements Runnable {
      * @param callBack
      */
     public XHttpRequest(final XHttpURLData data, final List<XHttpRequestParameter> params, final XHttpRequestCallback callBack) {
-        urlData = data;
+        this.data = data;
 
-        url = urlData.getUrl();
+        url = this.data.getUrl();
         this.parameter = params;
         requestCallback = callBack;
 
@@ -101,7 +114,7 @@ public class XHttpRequest implements Runnable {
     @Override
     public void run() {
         try {
-            if (urlData.getNetType().equals(REQUEST_GET)) {
+            if (RequestMethod.GET.getMethod().equalsIgnoreCase(data.getRequestMethod())) {
                 // 添加参数
                 final StringBuffer paramBuffer = new StringBuffer();
                 if ((parameter != null) && (parameter.size() > 0)) {
@@ -116,18 +129,15 @@ public class XHttpRequest implements Runnable {
                             paramBuffer.append("&" + p.getName() + "=" + XBaseUtils.UrlEncodeUnicode(p.getValue()));
                         }
                     }
-
                     newUrl = url + "?" + paramBuffer.toString();
                 } else {
                     newUrl = url;
                 }
-
                 // 如果这个get的API有缓存时间（大于0）
-                if (urlData.getExpires() > 0) {
+                if (data.getExpires() > 0) {
                     final String content = XCacheItemManager.getInstance().getFileCache(newUrl);
                     if (content != null) {
                         handler.post(new Runnable() {
-
                             @Override
                             public void run() {
                                 requestCallback.onSuccess(content);
@@ -139,7 +149,7 @@ public class XHttpRequest implements Runnable {
                     }
                 }
                 request = new HttpGet(newUrl);
-            } else if (urlData.getNetType().equals(REQUEST_POST)) {
+            } else if (RequestMethod.POST.getMethod().equalsIgnoreCase(data.getRequestMethod())) {
                 request = new HttpPost(url);
                 // 添加参数
                 if ((parameter != null) && (parameter.size() > 0)) {
@@ -209,12 +219,11 @@ public class XHttpRequest implements Runnable {
                         }
                     } else {
                         // 把成功获取到的数据记录到缓存
-                        if (urlData.getNetType().equals(REQUEST_GET) && urlData.getExpires() > 0) {
-                            XCacheItemManager.getInstance().putFileCache(newUrl, responseInJson.getResult(), urlData.getExpires());
+                        if (RequestMethod.GET.getMethod().equalsIgnoreCase(data.getRequestMethod()) && data.getExpires() > 0) {
+                            XCacheItemManager.getInstance().putFileCache(newUrl, responseInJson.getResult(), data.getExpires());
                         }
 
                         handler.post(new Runnable() {
-
                             @Override
                             public void run() {
                                 requestCallback.onSuccess(responseInJson.getResult());
@@ -358,9 +367,8 @@ public class XHttpRequest implements Runnable {
     void setHttpHeaders(final HttpUriRequest httpMessage) {
         headers.clear();
         headers.put(XFrameConstants.ACCEPT_CHARSET, "UTF-8,*");
-        headers.put(XFrameConstants.USER_AGENT, "Young Heart Android App ");
+        headers.put(XFrameConstants.USER_AGENT, "shsun-android-app");
         headers.put(XFrameConstants.ACCEPT_ENCODING, "gzip");
-
         if ((httpMessage != null) && (headers != null)) {
             for (final Entry<String, String> entry : headers.entrySet()) {
                 if (entry.getKey() != null) {

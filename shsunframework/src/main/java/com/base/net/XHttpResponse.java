@@ -15,12 +15,16 @@ public class XHttpResponse {
     /**
      *
      */
-    private String errorMessage;
+    private String message;
     /**
      *
      */
     private String result;
 
+    /**
+     * 
+     * @return
+     */
     public boolean hasError() {
         return error;
     }
@@ -30,11 +34,11 @@ public class XHttpResponse {
     }
 
     public String getErrorMessage() {
-        return errorMessage;
+        return message;
     }
 
-    public void setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
+    public void setErrorMessage(String message) {
+        this.message = message;
     }
 
     public String getResult() {

@@ -2,22 +2,23 @@ package com.base.net;
 
 /**
  * @author shsun
+ *
+ *         run on UI thread
  */
-public interface XHttpRequestCallback {
+public interface XHttpRequestCallback<T> {
     /**
      *
      * @param content
      */
-    public void onSuccess(String content);
+    void onSuccess(T content);
 
     /**
      *
-     * @param errorMessage
+     * @param message
      */
-    public void onFail(String errorMessage);
+    void onFail(String message);
 
     /**
-     * 
      */
-    public void onCookieExpired();
+    void onCookieExpired();
 }
