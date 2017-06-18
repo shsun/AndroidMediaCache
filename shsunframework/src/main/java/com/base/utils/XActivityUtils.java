@@ -5,7 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.view.WindowManager;
 
-public class XAdActivityUtils {
+public class XActivityUtils {
 
     /**
      * @param activity
