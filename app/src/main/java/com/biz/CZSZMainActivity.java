@@ -1,6 +1,7 @@
 package com.biz;
 
 import android.content.Intent;
+import android.content.res.XmlResourceParser;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.base.net.XUrlConfigManager;
 import com.biz.adapter.WelcomeViewPagerAdapter;
 import com.base.activity.XBaseActivity;
 
@@ -22,16 +24,15 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class CZSZMainActivity extends XBaseActivity {
-
 
     private static final String TAG = "CZSZMainActivity";
 
     // 图片资源id
-    private static int[] theViewPagerImageIds = new int[]{R.drawable.item01, R.drawable.item02, R.drawable.item03/*, R.drawable.item04,
-                R.drawable.item05, R.drawable.item06, R.drawable.item07, R.drawable.item08*/};
-
+    private static int[] theViewPagerImageIds = new int[] { R.drawable.item01, R.drawable.item02,
+            R.drawable.item03/*
+                              * , R.drawable.item04, R.drawable.item05, R.drawable.item06, R.drawable.item07, R.drawable.item08
+                              */ };
 
     private ViewPager mViewPager;
     private List<View> mViewPageItems = new ArrayList<View>();
@@ -44,6 +45,8 @@ public class CZSZMainActivity extends XBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        XUrlConfigManager.findURL(this, "login", this.getApplication().getResources().getXml(R.xml.url));
     }
 
     protected void initVariables(Bundle savedInstanceState, Bundle prevInstanceState) {
@@ -59,8 +62,8 @@ public class CZSZMainActivity extends XBaseActivity {
             public void onClick(View view) {
                 // Intent intent = new Intent(CZSZMainActivity.this, RecyclerViewActivity.class);
                 Intent intent = new Intent(CZSZMainActivity.this, com.biz.activity.HomePageActivity.class);
-                //Intent intent = new Intent(CZSZMainActivity.this, XVitamioVideoPlayerActivity.class);
-                //Intent intent = new Intent(CZSZMainActivity.this, XSystemVideoPlayerActivity.class);
+                // Intent intent = new Intent(CZSZMainActivity.this, XVitamioVideoPlayerActivity.class);
+                // Intent intent = new Intent(CZSZMainActivity.this, XSystemVideoPlayerActivity.class);
                 CZSZMainActivity.this.startActivity(intent);
             }
         });

@@ -1,5 +1,7 @@
 package com.base.net;
 
+import android.content.res.XmlResourceParser;
+
 /**
  * @author shsun
  */
@@ -11,7 +13,12 @@ public class XHttpURLData {
     private String url;
     private String mockClass;
 
-    public XHttpURLData() {
+    public XHttpURLData(XmlResourceParser parser) {
+        this.setKey(parser.getAttributeValue(null, "Key"));
+        this.setExpires(Long.parseLong(parser.getAttributeValue(null, "Expires")));
+        this.setRequestMethod(parser.getAttributeValue(null, "NetType"));
+        this.setMockClass(parser.getAttributeValue(null, "MockClass"));
+        this.setUrl(parser.getAttributeValue(null, "Url"));
     }
 
     public String getKey() {

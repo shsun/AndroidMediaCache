@@ -14,10 +14,11 @@ import android.content.res.XmlResourceParser;
  */
 public class XUrlConfigManager {
 
-    private static ArrayList<XHttpURLData> urlList;
+    private static ArrayList<XHttpURLData> theURLList;
 
     private static void fetchUrlDataFromXml(final Activity activity, XmlResourceParser xmlParser) {
-        urlList = new ArrayList<XHttpURLData>();
+
+        theURLList = new ArrayList<XHttpURLData>();
 
         // final XmlResourceParser xmlParser = activity.getApplication()
         // .getResources().getXml(R.xml.url);
@@ -31,14 +32,7 @@ public class XUrlConfigManager {
                         break;
                     case XmlPullParser.START_TAG:
                         if ("Node".equals(xmlParser.getName())) {
-                            final String key = xmlParser.getAttributeValue(null, "Key");
-                            final XHttpURLData urlData = new XHttpURLData();
-                            urlData.setKey(key);
-                            urlData.setExpires(Long.parseLong(xmlParser.getAttributeValue(null, "Expires")));
-                            urlData.setRequestMethod(xmlParser.getAttributeValue(null, "NetType"));
-                            urlData.setMockClass(xmlParser.getAttributeValue(null, "MockClass"));
-                            urlData.setUrl(xmlParser.getAttributeValue(null, "Url"));
-                            urlList.add(urlData);
+                            theURLList.add(new XHttpURLData(xmlParser));
                         }
                         break;
                     case XmlPullParser.END_TAG:
@@ -62,11 +56,11 @@ public class XUrlConfigManager {
         XHttpURLData result = null;
 
         // 如果urlList还没有数据（第一次），或者被回收了，那么（重新）加载xml
-        if (urlList == null || urlList.isEmpty()) {
+        if (theURLList == null || theURLList.isEmpty()) {
             fetchUrlDataFromXml(activity, xmlParser);
         }
 
-        for (XHttpURLData data : urlList) {
+        for (XHttpURLData data : theURLList) {
             if (findKey.equals(data.getKey())) {
                 result = data;
                 break;
