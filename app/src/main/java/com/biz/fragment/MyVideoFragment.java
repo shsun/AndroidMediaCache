@@ -16,7 +16,7 @@ import com.biz.CZSZApplication;
 import com.biz.R;
 import com.danikula.videocache.CacheListener;
 import com.danikula.videocache.HttpProxyCacheServer;
-import com.base.app.BaseFragment;
+import com.base.activity.XBaseFragment;
 
 import java.io.File;
 
@@ -27,7 +27,7 @@ import java.io.File;
  ORANGE_4("http://219.238.4.104/video07/2013/12/17/779163-102-067-2207_4.mp4"),
  ORANGE_5("http://219.238.4.104/video07/2013/12/17/779163-102-067-2207_5.mp4");
  */
-public class MyVideoFragment extends BaseFragment {
+public class MyVideoFragment extends XBaseFragment {
 
     public static final String TAG = MyVideoFragment.class.getSimpleName();
 

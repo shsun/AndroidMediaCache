@@ -1,4 +1,4 @@
-package com.base.app;
+package com.base.activity;
 
 import java.util.Map;
 
@@ -12,9 +12,9 @@ import android.view.WindowManager;
 /**
  *
  */
-public class SystemVideoPlayerActivity extends BaseActivity {
+public class XSystemVideoPlayerActivity extends XBaseActivity {
 
-    public static final String TAG = "SystemVideoPlayerActivity";
+    public static final String TAG = "XSystemVideoPlayerActivity";
 
     public static final String VIDEO_PLAYER_KEY_URL = "VIDEO_PLAYER_KEY_URL";
 

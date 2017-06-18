@@ -11,13 +11,13 @@ import android.support.v7.widget.Toolbar;
 import com.biz.R;
 import com.biz.entry.ChannelEntry;
 import com.biz.fragment.ImageFragment;
-import com.base.app.BaseAppCompatActivity;
+import com.base.activity.XBaseAppCompatActivity;
 
 
 /**
  *
  */
-public class RecyclerViewActivity extends BaseAppCompatActivity {
+public class RecyclerViewActivity extends XBaseAppCompatActivity {
 
     private Toolbar mToolbar;
     private TabLayout mTabLayout;

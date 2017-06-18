@@ -13,7 +13,7 @@ import com.biz.R;
 import com.biz.adapter.ImageAdapter;
 import com.biz.entry.ImageEntry;
 import com.base.adapter.recyclerview.OnRecyclerViewItemListener;
-import com.base.app.BaseFragment;
+import com.base.activity.XBaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ import me.kaede.frescosample.ImageApi;
 /**
  *
  */
-public class ImageFragment extends BaseFragment {
+public class ImageFragment extends XBaseFragment {
 
     public static final String TAG = ImageFragment.class.getSimpleName();
 

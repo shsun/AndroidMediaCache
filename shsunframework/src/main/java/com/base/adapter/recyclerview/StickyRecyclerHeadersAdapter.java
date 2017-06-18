@@ -5,6 +5,7 @@ import android.view.ViewGroup;
 
 /**
  * @param <VH>
+ * @author shsun
  */
 public interface StickyRecyclerHeadersAdapter<VH extends RecyclerView.ViewHolder> {
     /**

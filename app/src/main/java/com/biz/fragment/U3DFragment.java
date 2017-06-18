@@ -14,7 +14,7 @@ import com.ScottyB.JuggleThis.UnityPlayerNativeActivity;
 import com.biz.adapter.PersonAdapter;
 import com.biz.entry.PersonEntry;
 import com.base.adapter.recyclerview.OnRecyclerViewItemListener;
-import com.base.app.BaseFragment;
+import com.base.activity.XBaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ import java.util.List;
 /**
  * Created by shsun on 17/1/12.
  */
-public class U3DFragment extends BaseFragment {
+public class U3DFragment extends XBaseFragment {
 
     public static final String TAG = U3DFragment.class.getSimpleName();
 

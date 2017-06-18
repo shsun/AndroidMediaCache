@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- *
+ * @author shsun
  */
 public abstract class BaseRecyclerViewAdapter<T> extends HeaderAndFooterAdapter<BaseViewHolder> {
 
@@ -128,7 +128,7 @@ public abstract class BaseRecyclerViewAdapter<T> extends HeaderAndFooterAdapter<
     }
 
 
-    public int getItemIndex(T data){
+    public int getItemIndex(T data) {
         return mDatas.indexOf(data);
     }
 

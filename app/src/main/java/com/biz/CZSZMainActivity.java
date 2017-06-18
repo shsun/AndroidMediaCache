@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.biz.adapter.WelcomeViewPagerAdapter;
-import com.base.app.BaseActivity;
+import com.base.activity.XBaseActivity;
 
 import com.base.eventbus.BaseEvent;
 import com.viewpagerindicator.CirclePageIndicator;
@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class CZSZMainActivity extends BaseActivity {
+public class CZSZMainActivity extends XBaseActivity {
 
 
     private static final String TAG = "CZSZMainActivity";
@@ -59,8 +59,8 @@ public class CZSZMainActivity extends BaseActivity {
             public void onClick(View view) {
                 // Intent intent = new Intent(CZSZMainActivity.this, RecyclerViewActivity.class);
                 Intent intent = new Intent(CZSZMainActivity.this, com.biz.activity.HomePageActivity.class);
-                //Intent intent = new Intent(CZSZMainActivity.this, VitamioVideoPlayerActivity.class);
-                //Intent intent = new Intent(CZSZMainActivity.this, SystemVideoPlayerActivity.class);
+                //Intent intent = new Intent(CZSZMainActivity.this, XVitamioVideoPlayerActivity.class);
+                //Intent intent = new Intent(CZSZMainActivity.this, XSystemVideoPlayerActivity.class);
                 CZSZMainActivity.this.startActivity(intent);
             }
         });

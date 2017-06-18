@@ -12,7 +12,9 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * 功能介绍：有头部的adapter
+ * @author shsun
+ *         <p>
+ *         功能介绍：有头部的adapter
  */
 public abstract class SectionAdapter<T> extends MultiItemBaseAdapter<T> {
 

@@ -29,12 +29,12 @@
             android:theme="@style/Theme.AppCompat"></activity>
 
 
+        <!--
         <activity android:name="com.danikula.videocache.demo.SingleVideoActivity_" />
         <activity android:name="com.danikula.videocache.demo.MultipleVideosActivity_" />
         <activity android:name="com.danikula.videocache.demo.VideoGalleryActivity_" />
         <activity android:name="com.danikula.videocache.demo.SharedCacheActivity_" />
         <activity android:name="com.danikula.videocache.demo.MenuActivity_" />
-        <!--
         <activity
             android:name="me.kaede.frescosample.samplelist.SampleListActivity"
             android:label="Fresco GO!"
@@ -76,8 +76,8 @@
 
 
 
-        <activity android:name="com.base.app.VitamioVideoPlayerActivity" />
-        <activity android:name="com.base.app.SystemVideoPlayerActivity" />
+        <activity android:name="com.base.activity.XVitamioVideoPlayerActivity" />
+        <activity android:name="com.base.activity.XSystemVideoPlayerActivity" />
 
 
         <!--  -->

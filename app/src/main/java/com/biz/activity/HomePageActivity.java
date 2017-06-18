@@ -17,8 +17,8 @@ import com.biz.fragment.ImageFragment;
 import com.biz.fragment.MyVideoFragment;
 import com.biz.fragment.NewestFragment;
 import com.biz.fragment.U3DFragment;
-import com.base.app.BaseFragment;
-import com.base.app.BaseFragmentActivity;
+import com.base.activity.XBaseFragment;
+import com.base.activity.XBaseFragmentActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * Created by shsun on 17/1/9.
  */
-public class HomePageActivity extends BaseFragmentActivity {
+public class HomePageActivity extends XBaseFragmentActivity {
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
 
@@ -62,7 +62,7 @@ public class HomePageActivity extends BaseFragmentActivity {
             @Override
             public void onPageSelected(int position) {
                 // 方案二：页面选中时才去加载数据
-                BaseFragment fragment = (BaseFragment)allFragment.get(position);
+                XBaseFragment fragment = (XBaseFragment)allFragment.get(position);
                 // fragment.initData();
             }
 

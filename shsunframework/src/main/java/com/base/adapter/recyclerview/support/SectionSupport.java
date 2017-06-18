@@ -1,7 +1,7 @@
 package com.base.adapter.recyclerview.support;
 
 /**
- *
+ * @author shsun
  */
 public interface SectionSupport<T> {
     /**

@@ -6,6 +6,11 @@ import android.view.ViewGroup;
 import com.base.adapter.BaseViewHolder;
 //import com.hbung.adapter.BaseViewHolder;
 
+
+/**
+ * @param <T>
+ * @author shsun
+ */
 public abstract class MultiItemBaseAdapter<T> extends BaseRecyclerViewAdapter<T> {
 
 

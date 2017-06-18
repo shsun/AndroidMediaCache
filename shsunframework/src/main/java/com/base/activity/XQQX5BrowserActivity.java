@@ -1,4 +1,4 @@
-package com.base.app;
+package com.base.activity;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -16,9 +16,9 @@ import com.tencent.smtt.sdk.WebViewClient;
 /**
  *
  */
-public class QQX5BrowserActivity extends BaseAppCompatActivity {
+public class XQQX5BrowserActivity extends XBaseAppCompatActivity {
 
-    private static final String TAG = "QQX5BrowserActivity";
+    private static final String TAG = "XQQX5BrowserActivity";
 
 
     public static final String QQ_X5_BROWSER_KEY_TITLE = "QQ_X5_BROWSER_KEY_TITLE";
@@ -74,7 +74,7 @@ public class QQX5BrowserActivity extends BaseAppCompatActivity {
 
             @Override
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-                Log.i(TAG, "onReceivedError");
+                Log.i(TAG, "onReceivedError," + description + ", " + failingUrl);
                 super.onReceivedError(view, errorCode, description, failingUrl);
             }
 

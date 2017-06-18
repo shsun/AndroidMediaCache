@@ -9,12 +9,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.base.app.BaseFragment;
+import com.base.activity.XBaseFragment;
 
 /**
  * Created by shsun on 17/1/12.
  */
-public class AmuseFragment extends BaseFragment {
+public class AmuseFragment extends XBaseFragment {
 
     public static final String TAG = AmuseFragment.class.getSimpleName();
 

@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * @param <T>
+ * @author shsun
  */
 public abstract class SwipeAdapter<T> extends BaseAbListViewAdapter<T> {
     public SwipeAdapter(Context context, int layoutId, List<T> datas) {

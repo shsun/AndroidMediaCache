@@ -3,7 +3,9 @@ package com.base.adapter.recyclerview;
 import android.support.v7.widget.RecyclerView;
 
 /**
- * Created by shsun on 17/2/19.
+ * @author shsun
+ *         <p>
+ *         Created by shsun on 17/2/19.
  */
 public abstract class HeaderAndFooterAdapter<H extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<H> {
 

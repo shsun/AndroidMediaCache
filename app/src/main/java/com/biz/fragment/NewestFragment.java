@@ -10,12 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.base.app.PDFActivity;
+import com.base.activity.PDFActivity;
 import com.biz.adapter.PersonAdapter;
 import com.biz.entry.PersonEntry;
 import com.base.adapter.recyclerview.OnRecyclerViewItemListener;
-import com.base.app.BaseFragment;
-import com.base.app.QQX5BrowserActivity;
+import com.base.activity.XBaseFragment;
+import com.base.activity.XQQX5BrowserActivity;
 import com.tencent.smtt.sdk.WebSettings;
 
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ import java.util.List;
 /**
  * Created by shsun on 17/1/12.
  */
-public class NewestFragment extends BaseFragment {
+public class NewestFragment extends XBaseFragment {
 
     public static final String TAG = NewestFragment.class.getSimpleName();
 
@@ -57,10 +57,10 @@ public class NewestFragment extends BaseFragment {
                 Log.i(TAG, "onItemClick=" + position + ", " + data.getName());
 
                 Intent intent;
-                if (position % 2 == 0) {
-                    intent = new Intent(NewestFragment.this.getActivity(), QQX5BrowserActivity.class);
-                    intent.putExtra(QQX5BrowserActivity.QQ_X5_BROWSER_KEY_URL, data.getLandingPageUrl());
-                    intent.putExtra(QQX5BrowserActivity.QQ_X5_BROWSER_KEY_CACHE_MODE, WebSettings.LOAD_NO_CACHE);
+                if (position % 2 != 0) {
+                    intent = new Intent(NewestFragment.this.getActivity(), XQQX5BrowserActivity.class);
+                    intent.putExtra(XQQX5BrowserActivity.QQ_X5_BROWSER_KEY_URL, data.getLandingPageUrl());
+                    intent.putExtra(XQQX5BrowserActivity.QQ_X5_BROWSER_KEY_CACHE_MODE, WebSettings.LOAD_DEFAULT);
                 } else {
                     intent = new Intent(NewestFragment.this.getActivity(), PDFActivity.class);
                     intent.putExtra(PDFActivity.PDF_READER_KEY_URL, data.getLandingPageUrl());
@@ -123,7 +123,4 @@ public class NewestFragment extends BaseFragment {
         mDatas.add(new PersonEntry("16", "Bread & Whipped Cream", "bread with whipped cream",
                 "http://www.baidu.com", "Dinner - Salads", "https://raw.githubusercontent.com/shsun/AndroidMediaCache/master/app/src/main/res/drawable-hdpi/item05.jpg"));
     }
-
-
-
 }

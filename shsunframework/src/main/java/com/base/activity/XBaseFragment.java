@@ -1,4 +1,4 @@
-package com.base.app;
+package com.base.activity;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -9,13 +9,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.base.net.RequestManager;
+
 /**
  * Created by shsun on 17/1/12.
  */
-public abstract class BaseFragment extends Fragment {
+public abstract class XBaseFragment extends Fragment implements IXController {
 
-    public String TAG = BaseFragment.class.getSimpleName();
+    public String TAG = XBaseFragment.class.getSimpleName();
 
+    /**
+     *
+     */
+    protected RequestManager requestManager = null;
 
     // by ms
     protected int mTimeoutOfHttpRequest = 1000 * 5;
@@ -25,7 +31,6 @@ public abstract class BaseFragment extends Fragment {
 
     protected boolean isUIViewVisible;
     private boolean isUIViewControllerCreated;
-
 
 
     @Override
@@ -41,6 +46,9 @@ public abstract class BaseFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         Log.i(TAG, "before onCreate");
         super.onCreate(savedInstanceState);
+
+        this.requestManager = new RequestManager();
+
         mContext = getActivity();
         setHasOptionsMenu(true);
         Log.i(TAG, "after onCreate");
@@ -97,6 +105,7 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onPause() {
         Log.i(TAG, "before onPause");
+        this.cancelAllRequest();
 
         super.onPause();
         Log.i(TAG, "after onPause");
@@ -124,6 +133,7 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onDestroy() {
         Log.i(TAG, "before onDestroy");
+        this.cancelAllRequest();
 
         super.onDestroy();
         Log.i(TAG, "after onDestroy");
@@ -153,16 +163,20 @@ public abstract class BaseFragment extends Fragment {
         }
     }
 
-    /**
-     * creeate UIViewComponent here
-     *
-     * @return
-     */
     public abstract View initView(Bundle bundle, LayoutInflater inflater, ViewGroup container,
                                   Bundle savedInstanceState);
 
-    /**
-     * fetch data here
-     */
     public abstract void initData(Bundle bundle);
+
+
+    @Override
+    public RequestManager getRequestManager() {
+        return requestManager;
+    }
+
+    private void cancelAllRequest() {
+        if (requestManager != null) {
+            requestManager.cancelRequest();
+        }
+    }
 }

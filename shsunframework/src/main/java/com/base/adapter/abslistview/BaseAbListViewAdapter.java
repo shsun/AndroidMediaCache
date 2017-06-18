@@ -9,6 +9,8 @@ import com.base.adapter.BaseViewHolder;
 import java.util.List;
 
 /**
+ * @author shsun
+ *
  * @param <T>
  */
 public abstract class BaseAbListViewAdapter<T> extends android.widget.BaseAdapter {

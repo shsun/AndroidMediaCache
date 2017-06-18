@@ -8,8 +8,9 @@ import java.util.List;
 
 /**
  * Created by shsun on 17/3/2.
+ *
+ * @author shsun
  */
-
 public class BaseViewPagerAdapter extends PagerAdapter {
 
     protected List<View> mDatas;

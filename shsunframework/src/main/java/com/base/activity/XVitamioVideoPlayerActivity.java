@@ -1,4 +1,4 @@
-package com.base.app;
+package com.base.activity;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -32,9 +32,9 @@ import io.vov.vitamio.widget.VideoView;
 /**
  *
  */
-public class VitamioVideoPlayerActivity extends Activity {
+public class XVitamioVideoPlayerActivity extends Activity {
 
-    public static final String TAG = "VitamioVideoPlayerActivity";
+    public static final String TAG = "XVitamioVideoPlayerActivity";
 
     public static final String VIDEO_PLAYER_KEY_URL = "VIDEO_PLAYER_KEY_URL";
 
@@ -94,7 +94,7 @@ public class VitamioVideoPlayerActivity extends Activity {
                     qualityChange(view);
                 }
                 if (view.getId() == R.id.mediacontroller_play_next) {
-                    VitamioVideoPlayerActivity.this.finish();
+                    XVitamioVideoPlayerActivity.this.finish();
                 }
             }
         });
@@ -221,7 +221,7 @@ public class VitamioVideoPlayerActivity extends Activity {
     }
 
     private void qualityChange(View view) {
-        View contentView = LayoutInflater.from(VitamioVideoPlayerActivity.this)
+        View contentView = LayoutInflater.from(XVitamioVideoPlayerActivity.this)
                 .inflate(R.layout.ui_video_player_popuplayout, null);
         popupWindow = new PopupWindow(this);
         popupWindow.setContentView(contentView);

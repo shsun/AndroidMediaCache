@@ -91,8 +91,8 @@ public class ImageAdapter extends BaseRecyclerViewAdapter<ImageEntry> {
             @Override
             public void onClick(View v) {
                 final String url = "http://219.238.4.104/video07/2013/12/17/779163-102-067-2207_5.mp4";
-                Intent intent = new Intent(ImageAdapter.this.mContext, VitamioVideoPlayerActivity.class);
-                intent.putExtra(VitamioVideoPlayerActivity.VIDEO_PLAYER_KEY_URL, url);
+                Intent intent = new Intent(ImageAdapter.this.mContext, XVitamioVideoPlayerActivity.class);
+                intent.putExtra(XVitamioVideoPlayerActivity.VIDEO_PLAYER_KEY_URL, url);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 ImageAdapter.this.mContext.startActivity(intent);
             }

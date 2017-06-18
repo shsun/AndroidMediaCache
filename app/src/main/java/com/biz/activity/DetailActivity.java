@@ -3,12 +3,12 @@ package com.biz.activity;
 import android.os.Bundle;
 
 import com.biz.R;
-import com.base.app.BaseAppCompatActivity;
+import com.base.activity.XBaseAppCompatActivity;
 
 /**
  * Created by shsun on 17/1/9.
  */
-public class DetailActivity extends BaseAppCompatActivity {
+public class DetailActivity extends XBaseAppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,24 +1,34 @@
-package com.base.app;
+package com.base.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 //import com.biz.entry.PersonEntry;
+import com.base.net.RequestManager;
 import com.google.gson.Gson;
 import com.base.BaseApplication;
 import com.zhy.http.okhttp.OkHttpUtils;
+
+import org.greenrobot.eventbus.EventBus;
 
 /**
  * Created by shsun on 17/2/18.
  */
 
-public abstract class BaseAppCompatActivity extends AppCompatActivity {
+public abstract class XBaseAppCompatActivity extends AppCompatActivity implements IXController {
+    /**
+     *
+     */
+    protected RequestManager requestManager = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        this.requestManager = new RequestManager();
+        EventBus.getDefault().register(this);
         ((BaseApplication) this.getApplication()).addActivity(this);
+
 
         Bundle bundle = this.getIntent().getExtras();
 
@@ -54,34 +64,41 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
         this.initData(savedInstanceState, bundle);
     }
 
-    /**
-     *
-     * @param savedInstanceState
-     * @param prevInstanceState
-     */
     protected abstract void initVariables(Bundle savedInstanceState, Bundle prevInstanceState);
 
-    /**
-     *
-     * @param savedInstanceState
-     * @param prevInstanceState
-     */
     protected abstract void initView(Bundle savedInstanceState, Bundle prevInstanceState);
 
-    /**
-     *
-     * @param savedInstanceState
-     * @param prevInstanceState
-     */
     protected abstract void initData(Bundle savedInstanceState, Bundle prevInstanceState);
 
+    @Override
+    protected void onPause() {
+        this.cancelAllRequest();
+
+        super.onPause();
+    }
 
     /**
      *
      */
     @Override
     protected void onDestroy() {
-        super.onDestroy();
+        this.cancelAllRequest();
+
+        EventBus.getDefault().unregister(this);
         ((BaseApplication) this.getApplication()).finishActivity(this);
+
+        super.onDestroy();
+    }
+
+
+    @Override
+    public RequestManager getRequestManager() {
+        return requestManager;
+    }
+
+    private void cancelAllRequest() {
+        if (requestManager != null) {
+            requestManager.cancelRequest();
+        }
     }
 }

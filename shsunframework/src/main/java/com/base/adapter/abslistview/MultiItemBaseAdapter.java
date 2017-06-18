@@ -8,6 +8,10 @@ import com.base.adapter.BaseViewHolder;
 
 import java.util.List;
 
+/**
+ * @param <T>
+ * @author shsun
+ */
 public abstract class MultiItemBaseAdapter<T> extends BaseAbListViewAdapter<T> {
 
     protected MultiItemTypeSupport<T> mMultiItemTypeSupport;

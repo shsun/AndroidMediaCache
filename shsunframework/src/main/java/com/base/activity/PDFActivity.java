@@ -1,4 +1,4 @@
-package com.base.app;
+package com.base.activity;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,7 +17,7 @@ import com.github.barteksc.pdfviewer.PDFView;
 /**
  * Created by shsun on 6/17/17.
  */
-public class PDFActivity extends BaseAppCompatActivity {
+public class PDFActivity extends XBaseAppCompatActivity {
 
     private static final String TAG = "PDFActivity";
 

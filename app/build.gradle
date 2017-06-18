@@ -21,6 +21,8 @@ repositories {
     // maven库
     def cn = 'http://maven.aliyun.com/nexus/content/groups/public/'
     def abroad = 'https://github.com/dahlgren/vpi-aar/raw/master'
+    //def sfa = 'https://repo.spring.io/libs-milestone'
+    //def sfa = 'http://repo.spring.io/milestone'
     // 先从url中下载jar若没有找到，则在artifactUrls中寻找
     maven {
         url cn
@@ -78,8 +80,6 @@ dependencies {
     //compile files('libs/tbs_sdk_thirdapp_v3.0.0.1038_43000_sharewithdownload_obfs_20170110_144724.jar')
     compile fileTree(include: '*.jar', dir: 'libs')
 
-
-
     compile 'com.android.support:support-v4:25.1.0'
     //compile 'com.android.support:appcompat-v7:23.1.0+'
     compile 'com.android.support:appcompat-v7:25.2.1'
@@ -96,7 +96,6 @@ dependencies {
     // compile 'com.viewpagerindicator:library:2.4.1'
     //compile 'fr.baloomba:viewpagerindicator:2.4.2'
     compile 'com.mcxiaoke.viewpagerindicator:library:2.4.1@aar'
-
     // fresco
     // fresco
     compile 'com.facebook.fresco:fresco:1.1.0'
@@ -122,5 +121,7 @@ dependencies {
     compile files('libs/unity-classes.jar')
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.android.support:support-annotations:25.3.1'
+
+    // compile 'org.springframework.android:spring-android-rest-template:2.0.0.M3'
 }
 apply plugin: 'build-announcements'
