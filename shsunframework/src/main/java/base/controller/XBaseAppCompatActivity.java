@@ -4,12 +4,15 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 //import com.biz.entry.PersonEntry;
+import base.eventbus.XBaseEvent;
 import base.net.XRequestManager;
 import com.google.gson.Gson;
 import base.XBaseApplication;
 import com.zhy.http.okhttp.OkHttpUtils;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * Created by shsun on 17/2/18.
@@ -100,5 +103,21 @@ public abstract class XBaseAppCompatActivity extends AppCompatActivity implement
         if (requestManager != null) {
             requestManager.cancelRequest();
         }
+    }
+
+    @Subscribe(threadMode = ThreadMode.POSTING)
+    public void onEvent(XBaseEvent event) {
+    }
+
+    @Subscribe(threadMode = ThreadMode.ASYNC)
+    public void onEventAsync(XBaseEvent event) {
+    }
+
+    @Subscribe(threadMode = ThreadMode.BACKGROUND)
+    public void onEventBackgroundThread(XBaseEvent event) {
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventMainThread(XBaseEvent event) {
     }
 }
