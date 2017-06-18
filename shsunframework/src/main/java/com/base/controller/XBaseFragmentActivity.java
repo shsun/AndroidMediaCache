@@ -1,10 +1,10 @@
-package com.base.activity;
+package com.base.controller;
+
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 
 import com.base.XBaseApplication;
 import com.base.net.XRequestManager;
-
-import android.app.Activity;
-import android.os.Bundle;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -12,13 +12,11 @@ import org.greenrobot.eventbus.EventBus;
  * Created by shsun on 17/2/18.
  */
 
-public abstract class XBaseActivity extends Activity implements IXController {
-
+public abstract class XBaseFragmentActivity extends FragmentActivity implements IXController {
     /**
      *
      */
     protected XRequestManager requestManager = null;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +27,6 @@ public abstract class XBaseActivity extends Activity implements IXController {
         ((XBaseApplication) this.getApplication()).addActivity(this);
 
         Bundle bundle = this.getIntent().getExtras();
-        //
         initVariables(savedInstanceState, bundle);
         initView(savedInstanceState, bundle);
         initData(savedInstanceState, bundle);
@@ -41,22 +38,21 @@ public abstract class XBaseActivity extends Activity implements IXController {
 
     protected abstract void initData(Bundle savedInstanceState, Bundle prevInstanceState);
 
+    @Override
+    protected void onPause() {
+        this.cancelAllRequest();
+        super.onPause();
+    }
 
     @Override
     protected void onDestroy() {
         this.cancelAllRequest();
-
         EventBus.getDefault().unregister(this);
         ((XBaseApplication) this.getApplication()).finishActivity(this);
 
         super.onDestroy();
     }
 
-    @Override
-    protected void onPause() {
-        this.cancelAllRequest();
-        super.onPause();
-    }
 
     @Override
     public XRequestManager getRequestManager() {

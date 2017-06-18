@@ -13,11 +13,11 @@
 
         <!-- for sshframework -->
         <activity
-                android:name="com.base.activity.XQQX5BrowserActivity"
+                android:name="com.base.controller.XQQX5BrowserActivity"
                 android:theme="@style/NoTitleFullscreen" />
 
         <activity
-            android:name="com.base.activity.PDFActivity"
+            android:name="com.base.controller.PDFActivity"
             android:theme="@style/NoTitleFullscreen" />
 
     </application>

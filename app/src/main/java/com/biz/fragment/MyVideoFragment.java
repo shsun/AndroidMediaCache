@@ -16,7 +16,7 @@ import com.biz.CZSZApplication;
 import com.biz.R;
 import com.danikula.videocache.CacheListener;
 import com.danikula.videocache.HttpProxyCacheServer;
-import com.base.activity.XBaseFragment;
+import com.base.controller.XBaseFragment;
 
 import java.io.File;
 

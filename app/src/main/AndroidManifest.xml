@@ -76,8 +76,8 @@
 
 
 
-        <activity android:name="com.base.activity.XVitamioVideoPlayerActivity" />
-        <activity android:name="com.base.activity.XSystemVideoPlayerActivity" />
+        <activity android:name="com.base.controller.XVitamioVideoPlayerActivity" />
+        <activity android:name="com.base.controller.XSystemVideoPlayerActivity" />
 
 
         <!--  -->

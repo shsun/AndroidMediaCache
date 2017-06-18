@@ -1,7 +1,6 @@
 package com.biz;
 
 import android.content.Intent;
-import android.content.res.XmlResourceParser;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -12,7 +11,7 @@ import android.widget.ImageView;
 
 import com.base.net.XUrlConfigManager;
 import com.biz.adapter.WelcomeViewPagerAdapter;
-import com.base.activity.XBaseActivity;
+import com.base.controller.XBaseActivity;
 
 import com.base.eventbus.XBaseEvent;
 import com.viewpagerindicator.CirclePageIndicator;

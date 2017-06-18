@@ -14,7 +14,7 @@ import com.ScottyB.JuggleThis.UnityPlayerNativeActivity;
 import com.biz.adapter.PersonAdapter;
 import com.biz.entry.PersonEntry;
 import com.base.adapter.recyclerview.OnRecyclerViewItemListener;
-import com.base.activity.XBaseFragment;
+import com.base.controller.XBaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -13,7 +13,7 @@ import com.biz.R;
 import com.biz.adapter.ImageAdapter;
 import com.biz.entry.ImageEntry;
 import com.base.adapter.recyclerview.OnRecyclerViewItemListener;
-import com.base.activity.XBaseFragment;
+import com.base.controller.XBaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;

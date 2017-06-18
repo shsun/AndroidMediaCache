@@ -1,4 +1,4 @@
-package com.base.activity;
+package com.base.controller;
 
 import android.net.Uri;
 import android.os.Bundle;
