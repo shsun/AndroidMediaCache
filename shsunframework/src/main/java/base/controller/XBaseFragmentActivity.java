@@ -23,6 +23,7 @@ public abstract class XBaseFragmentActivity extends FragmentActivity implements 
         super.onCreate(savedInstanceState);
 
         this.requestManager = new XRequestManager();
+
         EventBus.getDefault().register(this);
         ((XBaseApplication) this.getApplication()).addActivity(this);
 
