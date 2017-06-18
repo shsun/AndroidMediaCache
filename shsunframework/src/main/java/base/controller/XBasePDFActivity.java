@@ -43,7 +43,6 @@ public class XBasePDFActivity extends XBaseAppCompatActivity {
         mTitle = this.getIntent().getStringExtra(PDF_READER_KEY_TITLE);
         mUrl = this.getIntent().getStringExtra(PDF_READER_KEY_URL);
 
-        mUrl = "http://pg.jrj.com.cn/acc/Res/CN_RES/MAC/2012/5/21/01bf002b-035e-4697-bf44-4225949f12c2.pdf";
     }
 
     @Override
@@ -52,11 +51,12 @@ public class XBasePDFActivity extends XBaseAppCompatActivity {
 
         // Toast.makeText(this, TAG, Toast.LENGTH_SHORT).show();
         mPDFView = (PDFView) this.findViewById(R.id.pdfView);
-        mPDFView.fromUri(Uri.parse(mUrl));
     }
 
     @Override
     protected void initData(Bundle savedInstanceState, Bundle prevInstanceState) {
+        mUrl = "http://pg.jrj.com.cn/acc/Res/CN_RES/MAC/2012/5/21/01bf002b-035e-4697-bf44-4225949f12c2.pdf";
 
+        mPDFView.fromUri(Uri.parse(mUrl));
     }
 }
