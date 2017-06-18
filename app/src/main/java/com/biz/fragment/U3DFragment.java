@@ -13,8 +13,8 @@ import android.widget.Toast;
 import com.ScottyB.JuggleThis.UnityPlayerNativeActivity;
 import com.biz.adapter.PersonAdapter;
 import com.biz.entry.PersonEntry;
-import com.base.adapter.recyclerview.OnRecyclerViewItemListener;
-import com.base.controller.XBaseFragment;
+import base.adapter.recyclerview.OnRecyclerViewItemListener;
+import base.controller.XBaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;

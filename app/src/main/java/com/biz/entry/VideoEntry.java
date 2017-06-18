@@ -1,6 +1,6 @@
 package com.biz.entry;
 
-import com.base.entry.XBaseEntry;
+import base.entry.XBaseEntry;
 
 import android.os.Parcel;
 import android.os.Parcelable;

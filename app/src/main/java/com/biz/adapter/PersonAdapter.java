@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.biz.R;
 import com.biz.entry.PersonEntry;
-import com.base.adapter.recyclerview.OnRecyclerViewItemListener;
+import base.adapter.recyclerview.OnRecyclerViewItemListener;
 
 import android.content.Context;
 import android.net.Uri;

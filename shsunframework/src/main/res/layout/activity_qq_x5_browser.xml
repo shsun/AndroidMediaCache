@@ -5,9 +5,9 @@
     android:layout_height="match_parent"
     android:background="@color/bisque">
 
-    <com.base.view.XBaseQQX5WebView
+    <base.view.XBaseQQX5WebView
         android:id="@+id/webView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></com.base.view.XBaseQQX5WebView>
+        android:layout_height="match_parent"></base.view.XBaseQQX5WebView>
 
 </FrameLayout>

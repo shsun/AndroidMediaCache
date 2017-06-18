@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.base.controller.XBaseFragment;
+import base.controller.XBaseFragment;
 
 /**
  * Created by shsun on 17/1/12.

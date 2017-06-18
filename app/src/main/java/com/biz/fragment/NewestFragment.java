@@ -10,12 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.base.controller.PDFActivity;
+import base.controller.PDFActivity;
 import com.biz.adapter.PersonAdapter;
 import com.biz.entry.PersonEntry;
-import com.base.adapter.recyclerview.OnRecyclerViewItemListener;
-import com.base.controller.XBaseFragment;
-import com.base.controller.XQQX5BrowserActivity;
+import base.adapter.recyclerview.OnRecyclerViewItemListener;
+import base.controller.XBaseFragment;
+import base.controller.XQQX5BrowserActivity;
 import com.tencent.smtt.sdk.WebSettings;
 
 import java.util.ArrayList;

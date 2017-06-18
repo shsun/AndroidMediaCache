@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
 import com.biz.entry.ChannelEntry;
-import com.base.adapter.SectionsPagerAdapter;
+import base.adapter.SectionsPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

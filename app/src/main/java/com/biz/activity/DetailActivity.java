@@ -3,7 +3,7 @@ package com.biz.activity;
 import android.os.Bundle;
 
 import com.biz.R;
-import com.base.controller.XBaseAppCompatActivity;
+import base.controller.XBaseAppCompatActivity;
 
 /**
  * Created by shsun on 17/1/9.

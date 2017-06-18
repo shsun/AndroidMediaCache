@@ -3,7 +3,7 @@ package com.biz.entry;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.base.entry.XBaseEntry;
+import base.entry.XBaseEntry;
 
 /**
  * Created by shsun on 23/3/2017.

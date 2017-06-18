@@ -9,7 +9,7 @@ import java.util.List;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.base.adapter.viewpager.BaseViewPagerAdapter;
+import base.adapter.viewpager.BaseViewPagerAdapter;
 
 /**
  *

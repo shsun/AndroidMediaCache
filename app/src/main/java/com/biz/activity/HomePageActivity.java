@@ -17,8 +17,8 @@ import com.biz.fragment.ImageFragment;
 import com.biz.fragment.MyVideoFragment;
 import com.biz.fragment.NewestFragment;
 import com.biz.fragment.U3DFragment;
-import com.base.controller.XBaseFragment;
-import com.base.controller.XBaseFragmentActivity;
+import base.controller.XBaseFragment;
+import base.controller.XBaseFragmentActivity;
 
 import java.util.ArrayList;
 import java.util.List;

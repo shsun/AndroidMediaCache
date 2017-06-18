@@ -18,8 +18,8 @@ import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.imagepipeline.image.ImageInfo;
 import com.facebook.imagepipeline.image.QualityInfo;
-import com.base.adapter.BaseViewHolder;
-import com.base.adapter.recyclerview.BaseRecyclerViewAdapter;
+import base.adapter.BaseViewHolder;
+import base.adapter.recyclerview.BaseRecyclerViewAdapter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -41,7 +41,7 @@ public class ImageAdapter extends BaseRecyclerViewAdapter<ImageEntry> {
     }
 
     @Override
-    public void doBindViewHolder(com.base.adapter.BaseViewHolder pholder, final ImageEntry pdata) {
+    public void doBindViewHolder(base.adapter.BaseViewHolder pholder, final ImageEntry pdata) {
         final ViewHolder holder = (ViewHolder)pholder;
         if (heightMap.containsKey(pdata.getUrl())) {
             int height = heightMap.get(pdata.getUrl());
@@ -125,7 +125,7 @@ public class ImageAdapter extends BaseRecyclerViewAdapter<ImageEntry> {
     /**
      *
      */
-    static class ViewHolder extends com.base.adapter.BaseViewHolder {
+    static class ViewHolder extends base.adapter.BaseViewHolder {
 
         public SimpleDraweeView draweeView;
 

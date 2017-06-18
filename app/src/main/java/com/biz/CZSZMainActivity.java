@@ -9,11 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.base.net.XUrlConfigManager;
+import base.net.XUrlConfigManager;
 import com.biz.adapter.WelcomeViewPagerAdapter;
-import com.base.controller.XBaseActivity;
+import base.controller.XBaseActivity;
 
-import com.base.eventbus.XBaseEvent;
+import base.eventbus.XBaseEvent;
 import com.viewpagerindicator.CirclePageIndicator;
 
 import org.greenrobot.eventbus.EventBus;
