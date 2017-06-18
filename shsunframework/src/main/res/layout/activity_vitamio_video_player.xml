@@ -4,7 +4,7 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <com.base.widget.BaseVitamioVideoView
+    <com.base.widget.XBaseVitamioVideoView
             android:id="@+id/vitamio_video_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

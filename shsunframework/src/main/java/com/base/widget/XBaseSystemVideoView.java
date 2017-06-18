@@ -24,7 +24,7 @@ import android.widget.MediaController;
  * 
  */
 @TargetApi(Build.VERSION_CODES.CUPCAKE)
-public class BaseSystemVideoView extends SurfaceView implements SurfaceHolder.Callback, MediaPlayer.OnCompletionListener,
+public class XBaseSystemVideoView extends SurfaceView implements SurfaceHolder.Callback, MediaPlayer.OnCompletionListener,
         MediaPlayer.OnVideoSizeChangedListener, View.OnClickListener {
 
     public interface VideoAdViewListener {
@@ -106,7 +106,7 @@ public class BaseSystemVideoView extends SurfaceView implements SurfaceHolder.Ca
      */
     private MediaPlayer mediaPlayer;
     private MediaController mediaController;
-    //private SystemMediaController videoAdController;
+    //private XSystemMediaController videoAdController;
     /**
      * default
      * 
@@ -156,10 +156,10 @@ public class BaseSystemVideoView extends SurfaceView implements SurfaceHolder.Ca
     private MediaPlayer.OnErrorListener errorListener = new MediaPlayer.OnErrorListener() {
         @Override
         public boolean onError(MediaPlayer mp, int what, int extra) {
-            BaseSystemVideoView.this.mCurrentState = VideoState.ERROR;
-            BaseSystemVideoView.this.mTargetState = VideoState.ERROR;
-            if (BaseSystemVideoView.this.mediaController != null) {
-                BaseSystemVideoView.this.mediaController.hide();
+            XBaseSystemVideoView.this.mCurrentState = VideoState.ERROR;
+            XBaseSystemVideoView.this.mTargetState = VideoState.ERROR;
+            if (XBaseSystemVideoView.this.mediaController != null) {
+                XBaseSystemVideoView.this.mediaController.hide();
             }
 
             //
@@ -192,49 +192,49 @@ public class BaseSystemVideoView extends SurfaceView implements SurfaceHolder.Ca
             }
             errMap.put("INFO_KEY_ERROR_INFO", msg);
 
-            BaseSystemVideoView.this.hostRenderer.onAdVideoViewError(errMap);
+            XBaseSystemVideoView.this.hostRenderer.onAdVideoViewError(errMap);
             return true;
         }
     };
     MediaPlayer.OnPreparedListener preparedListener = new MediaPlayer.OnPreparedListener() {
         @Override
         public void onPrepared(MediaPlayer mp) {
-            BaseSystemVideoView.this.mCurrentState = VideoState.PREPARED;
-            if (BaseSystemVideoView.this.preloading) {
-                BaseSystemVideoView.this.hostRenderer.onAdViewLoaded();
+            XBaseSystemVideoView.this.mCurrentState = VideoState.PREPARED;
+            if (XBaseSystemVideoView.this.preloading) {
+                XBaseSystemVideoView.this.hostRenderer.onAdViewLoaded();
                 return;
             }
 
-            int seekToPosition = BaseSystemVideoView.this.mSeekWhenPrepared;
+            int seekToPosition = XBaseSystemVideoView.this.mSeekWhenPrepared;
             if (seekToPosition != 0) {
-                BaseSystemVideoView.this.seekTo(seekToPosition);
+                XBaseSystemVideoView.this.seekTo(seekToPosition);
             }
-            if (BaseSystemVideoView.this.mediaController != null) {
-                BaseSystemVideoView.this.mediaController.setEnabled(true);
+            if (XBaseSystemVideoView.this.mediaController != null) {
+                XBaseSystemVideoView.this.mediaController.setEnabled(true);
             }
-            if ((BaseSystemVideoView.this.mAdWidth != 0) && (BaseSystemVideoView.this.mAdHeight != 0)) {
-                int width = BaseSystemVideoView.this.mAdWidth;
-                int height = BaseSystemVideoView.this.mAdHeight;
-                BaseSystemVideoView.this.getHolder().setFixedSize(width, height);
-                if ((BaseSystemVideoView.this.mSurfaceWidth == BaseSystemVideoView.this.mAdWidth)
-                        && (BaseSystemVideoView.this.mSurfaceHeight == BaseSystemVideoView.this.mAdHeight)) {
-                    if (BaseSystemVideoView.this.mTargetState == VideoState.PLAYING) {
-                        BaseSystemVideoView.this.start();
-                        if (BaseSystemVideoView.this.mediaController != null) {
-                            BaseSystemVideoView.this.mediaController.show();
+            if ((XBaseSystemVideoView.this.mAdWidth != 0) && (XBaseSystemVideoView.this.mAdHeight != 0)) {
+                int width = XBaseSystemVideoView.this.mAdWidth;
+                int height = XBaseSystemVideoView.this.mAdHeight;
+                XBaseSystemVideoView.this.getHolder().setFixedSize(width, height);
+                if ((XBaseSystemVideoView.this.mSurfaceWidth == XBaseSystemVideoView.this.mAdWidth)
+                        && (XBaseSystemVideoView.this.mSurfaceHeight == XBaseSystemVideoView.this.mAdHeight)) {
+                    if (XBaseSystemVideoView.this.mTargetState == VideoState.PLAYING) {
+                        XBaseSystemVideoView.this.start();
+                        if (XBaseSystemVideoView.this.mediaController != null) {
+                            XBaseSystemVideoView.this.mediaController.show();
                         }
-                    } else if ((!BaseSystemVideoView.this.isInPlaybackState()) && (!BaseSystemVideoView.this.mediaPlayer.isPlaying())
-                            && ((seekToPosition != 0) || (BaseSystemVideoView.this.getPlayheadTime() > 0.0D))) {
-                        if (BaseSystemVideoView.this.mediaController != null) {
-                            BaseSystemVideoView.this.mediaController.show(0);
+                    } else if ((!XBaseSystemVideoView.this.isInPlaybackState()) && (!XBaseSystemVideoView.this.mediaPlayer.isPlaying())
+                            && ((seekToPosition != 0) || (XBaseSystemVideoView.this.getPlayheadTime() > 0.0D))) {
+                        if (XBaseSystemVideoView.this.mediaController != null) {
+                            XBaseSystemVideoView.this.mediaController.show(0);
                         }
                     }
                 }
-            } else if (BaseSystemVideoView.this.mTargetState == VideoState.PLAYING) {
-                BaseSystemVideoView.this.start();
+            } else if (XBaseSystemVideoView.this.mTargetState == VideoState.PLAYING) {
+                XBaseSystemVideoView.this.start();
             }
 
-            BaseSystemVideoView.this.hostRenderer.onAdViewMediaPrepared();
+            XBaseSystemVideoView.this.hostRenderer.onAdViewMediaPrepared();
         }
     };
     
@@ -244,22 +244,22 @@ public class BaseSystemVideoView extends SurfaceView implements SurfaceHolder.Ca
      * @param context
      */
     @TargetApi(Build.VERSION_CODES.DONUT)
-    private BaseSystemVideoView(Context context) {
+    private XBaseSystemVideoView(Context context) {
         super(context);
         init();
     }
-    public BaseSystemVideoView(Context context, AttributeSet attrs) {
+    public XBaseSystemVideoView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public BaseSystemVideoView(Context context, AttributeSet attrs, int defStyle) {
+    public XBaseSystemVideoView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init();
     }
 
-    public BaseSystemVideoView(Context context, ViewGroup.LayoutParams lp,
-                               boolean withMediaController) {
+    public XBaseSystemVideoView(Context context, ViewGroup.LayoutParams lp,
+                                boolean withMediaController) {
         this(context);
         init();
 
@@ -339,7 +339,7 @@ public class BaseSystemVideoView extends SurfaceView implements SurfaceHolder.Ca
     private void prepareMediaController() {
         if (this.mediaController != null) {
             // TODO
-            //this.videoAdController = new SystemMediaController(this.hostRenderer, this, this.mediaPlayer);
+            //this.videoAdController = new XSystemMediaController(this.hostRenderer, this, this.mediaPlayer);
             //this.mediaController.setMediaPlayer(this.videoAdController);
             this.mediaController.setAnchorView(this);
             this.mediaController.setEnabled(isInPlaybackState());

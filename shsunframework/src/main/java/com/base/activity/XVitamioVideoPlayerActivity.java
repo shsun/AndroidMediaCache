@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.base.R;
-import com.base.widget.VitamioMediaController;
+import com.base.widget.XVitamioMediaController;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -44,7 +44,7 @@ public class XVitamioVideoPlayerActivity extends Activity {
 
     private VideoView mVideoView;
     private MediaController mMediaController;
-    private VitamioMediaController mVitamioMediaController;
+    private XVitamioMediaController mVitamioMediaController;
     private PopupWindow popupWindow;
 
     //    String vieoPath = "rtsp://218.204.223.237:554/live/1/66251FC11353191F/e7ooqwcfbqjoo80j.sdp";
@@ -86,8 +86,8 @@ public class XVitamioVideoPlayerActivity extends Activity {
         mVideoView = (VideoView) findViewById(R.id.vitamio_video_view);
         mVideoView.setVideoPath(vieoPath);
         mMediaController = new MediaController(this);
-        mVitamioMediaController = new VitamioMediaController(this, mVideoView, this);
-        mVitamioMediaController.setOnItemClickListener(new VitamioMediaController.OnItemClickListener() {
+        mVitamioMediaController = new XVitamioMediaController(this, mVideoView, this);
+        mVitamioMediaController.setOnItemClickListener(new XVitamioMediaController.OnItemClickListener() {
             @Override
             public void itemClick(View view) {
                 if (view.getId() == R.id.mediacontroller_quality1) {

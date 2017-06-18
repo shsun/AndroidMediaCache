@@ -12,7 +12,7 @@ import android.widget.FrameLayout;
 /**
  *
  */
-public class VideoEnabledWebChromeClient extends WebChromeClient
+public class XVideoEnabledWebChromeClient extends WebChromeClient
         implements MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener, MediaPlayer.OnErrorListener {
     public interface ToggledFullscreenCallback {
         public void toggledFullscreen(boolean fullscreen);
@@ -21,7 +21,7 @@ public class VideoEnabledWebChromeClient extends WebChromeClient
     private View activityNonVideoView;
     private ViewGroup activityVideoView;
     private View loadingView;
-    private BaseQQX5WebView webView;
+    private XBaseQQX5WebView webView;
 
     private boolean isVideoFullscreen;
     // Indicates if the video is being displayed using a custom view (typically full-screen)
@@ -34,7 +34,7 @@ public class VideoEnabledWebChromeClient extends WebChromeClient
      * Never use this constructor alone. This constructor allows this class to be defined as an inline inner class in which the user can override methods
      */
     @SuppressWarnings("unused")
-    public VideoEnabledWebChromeClient() {
+    public XVideoEnabledWebChromeClient() {
     }
 
     /**
@@ -44,7 +44,7 @@ public class VideoEnabledWebChromeClient extends WebChromeClient
      * @param activityVideoView A ViewGroup in the activity's layout that will display the video. Typically you would like this to fill the whole layout.
      */
     @SuppressWarnings("unused")
-    public VideoEnabledWebChromeClient(View activityNonVideoView, ViewGroup activityVideoView) {
+    public XVideoEnabledWebChromeClient(View activityNonVideoView, ViewGroup activityVideoView) {
         this.activityNonVideoView = activityNonVideoView;
         this.activityVideoView = activityVideoView;
         this.loadingView = null;
@@ -61,7 +61,7 @@ public class VideoEnabledWebChromeClient extends WebChromeClient
      *            parent view.
      */
     @SuppressWarnings("unused")
-    public VideoEnabledWebChromeClient(View activityNonVideoView, ViewGroup activityVideoView, View loadingView) {
+    public XVideoEnabledWebChromeClient(View activityNonVideoView, ViewGroup activityVideoView, View loadingView) {
         this.activityNonVideoView = activityNonVideoView;
         this.activityVideoView = activityVideoView;
         this.loadingView = loadingView;
@@ -76,12 +76,12 @@ public class VideoEnabledWebChromeClient extends WebChromeClient
      * @param activityVideoView A ViewGroup in the activity's layout that will display the video. Typically you would like this to fill the whole layout.
      * @param loadingView A View to be shown while the video is loading (typically only used in API level <11). Must be already inflated and not attached to a
      *            parent view.
-     * @param webView The owner VideoEnabledWebView. Passing it will enable the VideoEnabledWebChromeClient to detect the HTML5 video ended event and exit
+     * @param webView The owner VideoEnabledWebView. Passing it will enable the XVideoEnabledWebChromeClient to detect the HTML5 video ended event and exit
      *            full-screen. Note: The web page must only contain one video tag in order for the HTML5 video ended event to work. This could be improved if
      *            needed (see Javascript code).
      */
     @SuppressWarnings("unused")
-    public VideoEnabledWebChromeClient(View activityNonVideoView, ViewGroup activityVideoView, View loadingView, BaseQQX5WebView webView) {
+    public XVideoEnabledWebChromeClient(View activityNonVideoView, ViewGroup activityVideoView, View loadingView, XBaseQQX5WebView webView) {
         this.activityNonVideoView = activityNonVideoView;
         this.activityVideoView = activityVideoView;
         this.loadingView = loadingView;
@@ -101,7 +101,7 @@ public class VideoEnabledWebChromeClient extends WebChromeClient
     /**
      * Set a callback that will be fired when the video starts or finishes displaying using a custom view (typically full-screen)
      *
-     * @param callback A VideoEnabledWebChromeClient.ToggledFullscreenCallback callback
+     * @param callback A XVideoEnabledWebChromeClient.ToggledFullscreenCallback callback
      */
     @SuppressWarnings("unused")
     public void setOnToggledFullscreen(ToggledFullscreenCallback callback) {

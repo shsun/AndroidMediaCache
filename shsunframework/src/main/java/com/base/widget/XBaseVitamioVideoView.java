@@ -8,17 +8,17 @@ import io.vov.vitamio.widget.VideoView;
  * Created by shsun on 17/2/25.
  */
 
-public class BaseVitamioVideoView extends VideoView {
+public class XBaseVitamioVideoView extends VideoView {
 
-    public BaseVitamioVideoView(Context context) {
+    public XBaseVitamioVideoView(Context context) {
         super(context);
     }
 
-    public BaseVitamioVideoView(Context context, AttributeSet attrs) {
+    public XBaseVitamioVideoView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public BaseVitamioVideoView(Context context, AttributeSet attrs, int defStyle) {
+    public XBaseVitamioVideoView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 

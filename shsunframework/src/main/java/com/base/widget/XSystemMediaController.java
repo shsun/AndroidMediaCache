@@ -8,12 +8,12 @@ import android.os.SystemClock;
  *
  * @author shsun
  */
-public class SystemMediaController implements android.widget.MediaController.MediaPlayerControl {
+public class XSystemMediaController implements android.widget.MediaController.MediaPlayerControl {
 
-    private static String CLASSTAG = "SystemMediaController";
+    private static String CLASSTAG = "XSystemMediaController";
 
-    private BaseSystemVideoView.VideoAdViewListener mVideoAdRenderer;
-    private BaseSystemVideoView mVideoAdView;
+    private XBaseSystemVideoView.VideoAdViewListener mVideoAdRenderer;
+    private XBaseSystemVideoView mVideoAdView;
     private MediaPlayer mMediaPlayer;
     private boolean pausedByController = false;
 
@@ -25,7 +25,7 @@ public class SystemMediaController implements android.widget.MediaController.Med
      * @param view
      * @param player
      */
-    public SystemMediaController(BaseSystemVideoView.VideoAdViewListener hostRenderer, BaseSystemVideoView view, MediaPlayer player) {
+    public XSystemMediaController(XBaseSystemVideoView.VideoAdViewListener hostRenderer, XBaseSystemVideoView view, MediaPlayer player) {
         this.mVideoAdRenderer = hostRenderer;
         this.mVideoAdView = view;
         this.mMediaPlayer = player;

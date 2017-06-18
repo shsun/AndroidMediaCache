@@ -14,11 +14,11 @@ import android.util.Log;
 /**
  * Created by shsun on 16/11/10.
  */
-public class BaseQQX5WebView extends com.tencent.smtt.sdk.WebView {
+public class XBaseQQX5WebView extends com.tencent.smtt.sdk.WebView {
     public class JavascriptInterface {
         @android.webkit.JavascriptInterface
         @SuppressWarnings("unused")
-        public void notifyVideoEnd() // Must match Javascript interface method of VideoEnabledWebChromeClient
+        public void notifyVideoEnd() // Must match Javascript interface method of XVideoEnabledWebChromeClient
         {
             Log.d("___", "GOT IT");
             // This code is not executed in the UI thread, so we must force that to happen
@@ -33,23 +33,23 @@ public class BaseQQX5WebView extends com.tencent.smtt.sdk.WebView {
         }
     }
 
-    private VideoEnabledWebChromeClient videoEnabledWebChromeClient;
+    private XVideoEnabledWebChromeClient videoEnabledWebChromeClient;
     private boolean addedJavascriptInterface;
 
     @SuppressWarnings("unused")
-    public BaseQQX5WebView(Context context) {
+    public XBaseQQX5WebView(Context context) {
         super(context);
         addedJavascriptInterface = false;
     }
 
     @SuppressWarnings("unused")
-    public BaseQQX5WebView(Context context, AttributeSet attrs) {
+    public XBaseQQX5WebView(Context context, AttributeSet attrs) {
         super(context, attrs);
         addedJavascriptInterface = false;
     }
 
     @SuppressWarnings("unused")
-    public BaseQQX5WebView(Context context, AttributeSet attrs, int defStyle) {
+    public XBaseQQX5WebView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         addedJavascriptInterface = false;
     }
@@ -65,15 +65,15 @@ public class BaseQQX5WebView extends com.tencent.smtt.sdk.WebView {
     }
 
     /**
-     * Pass only a VideoEnabledWebChromeClient instance.
+     * Pass only a XVideoEnabledWebChromeClient instance.
      */
     @Override
     @SuppressLint("SetJavaScriptEnabled")
     public void setWebChromeClient(WebChromeClient client) {
         getSettings().setJavaScriptEnabled(true);
 
-        if (client instanceof VideoEnabledWebChromeClient) {
-            this.videoEnabledWebChromeClient = (VideoEnabledWebChromeClient) client;
+        if (client instanceof XVideoEnabledWebChromeClient) {
+            this.videoEnabledWebChromeClient = (XVideoEnabledWebChromeClient) client;
         }
 
         super.setWebChromeClient(client);
@@ -107,7 +107,7 @@ public class BaseQQX5WebView extends com.tencent.smtt.sdk.WebView {
         if (!addedJavascriptInterface) {
             // Add javascript interface to be called when the video ends (must be done before page load)
             // noinspection all
-            addJavascriptInterface(new JavascriptInterface(), "_VideoEnabledWebView"); // Must match Javascript interface name of VideoEnabledWebChromeClient
+            addJavascriptInterface(new JavascriptInterface(), "_VideoEnabledWebView"); // Must match Javascript interface name of XVideoEnabledWebChromeClient
 
             addedJavascriptInterface = true;
         }

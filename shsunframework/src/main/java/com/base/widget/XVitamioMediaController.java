@@ -29,7 +29,7 @@ import io.vov.vitamio.widget.VideoView;
 /**
  *
  */
-public class VitamioMediaController extends MediaController {
+public class XVitamioMediaController extends MediaController {
 
     private static final int HIDEFRAM = 0;
     private static final int SHOW_PROGRESS = 2;
@@ -149,7 +149,7 @@ public class VitamioMediaController extends MediaController {
     };
 
     // videoview 用于对视频进行控制的等，activity为了退出
-    public VitamioMediaController(Context context, VideoView videoView, Activity activity) {
+    public XVitamioMediaController(Context context, VideoView videoView, Activity activity) {
         super(context);
         this.context = context;
         this.videoView = videoView;

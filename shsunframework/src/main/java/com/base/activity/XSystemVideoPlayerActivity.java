@@ -3,7 +3,7 @@ package com.base.activity;
 import java.util.Map;
 
 import com.base.R;
-import com.base.widget.BaseSystemVideoView;
+import com.base.widget.XBaseSystemVideoView;
 
 import android.os.Bundle;
 import android.view.Window;
@@ -21,7 +21,7 @@ public class XSystemVideoPlayerActivity extends XBaseActivity {
     String vieoPath = "http://219.238.4.104/video07/2013/12/17/779163-102-067-2207_5.mp4";
 
 
-    protected BaseSystemVideoView videoAdView;
+    protected XBaseSystemVideoView videoAdView;
 
 
     @Override
@@ -35,8 +35,8 @@ public class XSystemVideoPlayerActivity extends XBaseActivity {
         Window window = this.getWindow();
         window.setFlags(flag, flag);
         setContentView(R.layout.activity_system_video_player);
-        videoAdView = (BaseSystemVideoView) findViewById(R.id.system_video_view);
-        videoAdView.setVideoAdViewListener(new BaseSystemVideoView.VideoAdViewListener() {
+        videoAdView = (XBaseSystemVideoView) findViewById(R.id.system_video_view);
+        videoAdView.setVideoAdViewListener(new XBaseSystemVideoView.VideoAdViewListener() {
             @Override
             public void onAdViewStart() {
 
