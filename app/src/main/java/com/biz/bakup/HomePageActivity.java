@@ -20,7 +20,7 @@ import com.viewpagerindicator.TabPageIndicator;
 
 import android.support.v4.view.ViewPager;
 
-import com.base.utils.MathUtils;
+import com.base.utils.XMathUtils;
 import com.biz.net.BMServer;
 
 import com.biz.R;
@@ -116,7 +116,7 @@ public class HomePageActivity extends AppCompatActivity {
         try {
             if (mBMServerStartCounter < 10) {
                 mBMServerStartCounter += 1;
-                this.mServer = new BMServer(MathUtils.random(1000, 9999));
+                this.mServer = new BMServer(XMathUtils.random(1000, 9999));
             } else {
                 this.mServer = null;
             }

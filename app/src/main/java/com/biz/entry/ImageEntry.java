@@ -3,13 +3,13 @@ package com.biz.entry;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.base.entry.BaseEntry;
+import com.base.entry.XBaseEntry;
 
 /**
  * Created by shsun on 23/3/2017.
  */
 
-public class ImageEntry extends BaseEntry {
+public class ImageEntry extends XBaseEntry {
 
     private final String mUrl;
     private boolean mCanDisplay;

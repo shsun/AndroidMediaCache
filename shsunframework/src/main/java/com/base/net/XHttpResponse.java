@@ -1,10 +1,24 @@
 package com.base.net;
 
+/**
+ * @author shsun
+ */
 public class XHttpResponse {
+    /**
+     *
+     */
     private boolean error;
-    // 1为Cookie失效
+    /**
+     * 1为Cookie失效
+     */
     private int errorType;
+    /**
+     *
+     */
     private String errorMessage;
+    /**
+     *
+     */
     private String result;
 
     public boolean hasError() {

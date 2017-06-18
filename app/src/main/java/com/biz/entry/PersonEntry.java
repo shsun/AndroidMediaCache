@@ -1,6 +1,6 @@
 package com.biz.entry;
 
-import com.base.entry.BaseEntry;
+import com.base.entry.XBaseEntry;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,7 +9,7 @@ import android.os.Parcelable;
  * Created by shsun on 17/1/18.
  */
 
-public class PersonEntry extends BaseEntry {
+public class PersonEntry extends XBaseEntry {
 
     private final String mName;
     private final String mDescription;

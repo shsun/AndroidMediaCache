@@ -1,23 +1,22 @@
 package com.base.os;
 
-
 import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
  * Created by shsun on 17/1/18.
  */
-public abstract class AbstractExtraInfo implements Parcelable {
+public abstract class XAbstractExtraInfo implements Parcelable {
 
     public int mIntTesting4;
     public String mStringTesting4;
 
-    public AbstractExtraInfo(String prodType) {
+    public XAbstractExtraInfo(String prodType) {
         this.mIntTesting4 = 999;
         this.mStringTesting4 = "this is the test string";
     }
 
-    protected AbstractExtraInfo(Parcel in) {
+    protected XAbstractExtraInfo(Parcel in) {
         // 注意顺序和writeToParcel 保持一致，因为是按顺序读写的
         mIntTesting4 = in.readInt();
         mStringTesting4 = in.readString();

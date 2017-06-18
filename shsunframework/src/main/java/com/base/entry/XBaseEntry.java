@@ -7,20 +7,20 @@ import android.os.Parcelable;
  * Created by shsun on 17/2/19.
  */
 
-public abstract class BaseEntry implements Parcelable {
+public abstract class XBaseEntry implements Parcelable {
 
     public String mId;
 
     public int mIntTesting4LM;
     public String mStringTesting4LM;
 
-    public BaseEntry(String id) {
+    public XBaseEntry(String id) {
         this.mIntTesting4LM = 999;
         this.mStringTesting4LM = "this is the test string";
         this.mId = id;
     }
 
-    protected BaseEntry(Parcel in) {
+    protected XBaseEntry(Parcel in) {
         // 注意顺序和writeToParcel 保持一致，因为是按顺序读写的
         mId = in.readString();
         mIntTesting4LM = in.readInt();

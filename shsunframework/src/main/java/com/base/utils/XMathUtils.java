@@ -6,7 +6,7 @@ import java.util.Random;
  * Created by shsun on 17/1/10.
  */
 
-public class MathUtils {
+public class XMathUtils {
     /**
      * @param min
      * @param max

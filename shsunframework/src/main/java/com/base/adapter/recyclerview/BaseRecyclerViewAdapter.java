@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.base.adapter.BaseViewHolder;
-import com.base.data.OnAdapterChangedListener;
+import com.base.data.XOnAdapterChangedListener;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -22,7 +22,7 @@ public abstract class BaseRecyclerViewAdapter<T> extends HeaderAndFooterAdapter<
 
     protected OnRecyclerViewItemListener mOnRecyclerViewItemListener;
 
-    protected OnAdapterChangedListener mOnAdapterChangedListener;
+    protected XOnAdapterChangedListener mOnAdapterChangedListener;
 
     /**
      * onCreateViewHolder

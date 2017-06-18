@@ -9,11 +9,11 @@ import android.view.ViewGroup;
  * Created by shsun on 17/2/25.
  */
 
-public class DataProvider<T> {
+public class XDataProvider<T> {
 
     private List<T> mList;
 
-    public DataProvider(List<T> list){
+    public XDataProvider(List<T> list){
         this.mList = list;
     }
 
@@ -39,7 +39,7 @@ public class DataProvider<T> {
     }
 
     /**
-     *     Appends multiple items to the end of the DataProvider and dispatches a DataChangeType.ADD event.
+     *     Appends multiple items to the end of the XDataProvider and dispatches a DataChangeType.ADD event.
      * @param items
      */
     public void addItems(List<T> items){
@@ -72,7 +72,7 @@ public class DataProvider<T> {
     public int getItemIndex(T item){return this.mList.indexOf(item);}
 
     /**
-     *     Invalidates all the data items that the DataProvider contains and dispatches a DataChangeEvent.INVALIDATE_ALL event.
+     *     Invalidates all the data items that the XDataProvider contains and dispatches a DataChangeEvent.INVALIDATE_ALL event.
      */
     public void invalidate(){
         this.mList.clear();;

@@ -42,9 +42,11 @@ public class XHttpRequest implements Runnable {
 
     private final static String cookiePath = "/data/data/com.youngheart/cache/cookie";
 
-    // 区分get还是post的枚举
-    public static final String REQUEST_GET = "get";
-    public static final String REQUEST_POST = "post";
+    /**
+     * 
+     */
+    public static final String REQUEST_GET = "GET";
+    public static final String REQUEST_POST = "POST";
 
     private HttpUriRequest request = null;
     private XHttpURLData urlData = null;
@@ -61,11 +63,17 @@ public class XHttpRequest implements Runnable {
     protected boolean cacheRequestData = true;
 
     // 头信息
-    HashMap<String, String> headers;
+    protected HashMap<String, String> headers;
 
     // 服务器时间和客户端时间的差值
     static long deltaBetweenServerAndClientTime;
 
+    /**
+     * 
+     * @param data
+     * @param params
+     * @param callBack
+     */
     public XHttpRequest(final XHttpURLData data, final List<XHttpRequestParameter> params, final XHttpRequestCallback callBack) {
         urlData = data;
 

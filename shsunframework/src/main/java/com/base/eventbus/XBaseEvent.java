@@ -6,12 +6,12 @@ import java.util.Date;
 /**
  * @author shsun
  */
-public class BaseEvent<T> {
+public class XBaseEvent<T> {
 
     private T mData;
 
 
-    public BaseEvent(T data) {
+    public XBaseEvent(T data) {
         this.setData(data);
     }
 

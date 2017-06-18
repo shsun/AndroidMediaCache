@@ -7,18 +7,25 @@ import java.util.List;
  *
  */
 public class XRequestManager {
-    ArrayList<XHttpRequest> requestList = null;
+
+    protected ArrayList<XHttpRequest> requestList = null;
 
     public XRequestManager() {
-        // 异步请求列表
         requestList = new ArrayList<XHttpRequest>();
     }
 
     /**
-     * 添加Request到列表
+     *
+     * @param request
+     * @return true indicate add success, otherwise there is duplicate request.
      */
-    public void addRequest(final XHttpRequest request) {
-        requestList.add(request);
+    public Boolean addRequest(final XHttpRequest request) {
+        Boolean result = false;
+        if (!this.requestList.contains(request)) {
+            requestList.add(request);
+            result = true;
+        }
+        return result;
     }
 
     /**
@@ -42,24 +49,16 @@ public class XRequestManager {
     /**
      * 无参数调用
      */
-    public XHttpRequest createRequest(final XHttpURLData urlData,
-                                      final XHttpRequestCallback requestCallback) {
-        final XHttpRequest request = new XHttpRequest(urlData, null,
-                requestCallback);
-        addRequest(request);
-        return request;
+    public XHttpRequest createHttpRequest(final XHttpURLData data, final XHttpRequestCallback callback) {
+        return this.createHttpRequest(data, null, callback);
     }
 
     /**
      * 有参数调用
      */
-    public XHttpRequest createRequest(final XHttpURLData urlData,
-                                      final List<XHttpRequestParameter> params,
-                                      final XHttpRequestCallback requestCallback) {
-        final XHttpRequest request = new XHttpRequest(urlData, params,
-                requestCallback);
-
-        addRequest(request);
+    public XHttpRequest createHttpRequest(final XHttpURLData data, final List<XHttpRequestParameter> params, final XHttpRequestCallback callback) {
+        final XHttpRequest request = new XHttpRequest(data, params, callback);
+        this.addRequest(request);
         return request;
     }
 }

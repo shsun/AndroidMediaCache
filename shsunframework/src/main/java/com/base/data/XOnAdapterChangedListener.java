@@ -7,7 +7,7 @@ import android.view.ViewGroup;
  * Created by shsun on 17/2/25.
  */
 
-public interface OnAdapterChangedListener<T> {
+public interface XOnAdapterChangedListener<T> {
 
     void onItemAdd(ViewGroup parent, View view, T data, int position);
 

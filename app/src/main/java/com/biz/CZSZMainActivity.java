@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import com.biz.adapter.WelcomeViewPagerAdapter;
 import com.base.activity.XBaseActivity;
 
-import com.base.eventbus.BaseEvent;
+import com.base.eventbus.XBaseEvent;
 import com.viewpagerindicator.CirclePageIndicator;
 
 import org.greenrobot.eventbus.EventBus;
@@ -78,7 +78,7 @@ public class CZSZMainActivity extends XBaseActivity {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 Log.i(TAG, "onPageScrolled-i:" + position + "," + positionOffset + "," + positionOffsetPixels);
-                EventBus.getDefault().post(new BaseEvent<String>("go"));
+                EventBus.getDefault().post(new XBaseEvent<String>("go"));
             }
 
             @Override
@@ -115,7 +115,7 @@ public class CZSZMainActivity extends XBaseActivity {
     }
 
     @Subscribe(threadMode = ThreadMode.POSTING, priority = 0, sticky = true)
-    public void handleEvent(BaseEvent<String> event) {
+    public void handleEvent(XBaseEvent<String> event) {
         Log.d(TAG, event.getData());
     }
 }
