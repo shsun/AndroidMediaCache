@@ -10,7 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import base.controller.PDFActivity;
+import base.controller.XBasePDFActivity;
+
 import com.biz.adapter.PersonAdapter;
 import com.biz.entry.PersonEntry;
 import base.adapter.recyclerview.OnRecyclerViewItemListener;
@@ -62,9 +63,9 @@ public class NewestFragment extends XBaseFragment {
                     intent.putExtra(XQQX5BrowserActivity.QQ_X5_BROWSER_KEY_URL, data.getLandingPageUrl());
                     intent.putExtra(XQQX5BrowserActivity.QQ_X5_BROWSER_KEY_CACHE_MODE, WebSettings.LOAD_DEFAULT);
                 } else {
-                    intent = new Intent(NewestFragment.this.getActivity(), PDFActivity.class);
-                    intent.putExtra(PDFActivity.PDF_READER_KEY_URL, data.getLandingPageUrl());
-                    intent.putExtra(PDFActivity.PDF_READER_KEY_TITLE, WebSettings.LOAD_NO_CACHE);
+                    intent = new Intent(NewestFragment.this.getActivity(), XBasePDFActivity.class);
+                    intent.putExtra(XBasePDFActivity.PDF_READER_KEY_URL, data.getLandingPageUrl());
+                    intent.putExtra(XBasePDFActivity.PDF_READER_KEY_TITLE, WebSettings.LOAD_NO_CACHE);
                 }
                 NewestFragment.this.getActivity().startActivity(intent);
             }

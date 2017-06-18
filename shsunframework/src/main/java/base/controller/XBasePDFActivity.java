@@ -17,9 +17,9 @@ import com.github.barteksc.pdfviewer.PDFView;
 /**
  * Created by shsun on 6/17/17.
  */
-public class PDFActivity extends XBaseAppCompatActivity {
+public class XBasePDFActivity extends XBaseAppCompatActivity {
 
-    private static final String TAG = "PDFActivity";
+    private static final String TAG = "XBasePDFActivity";
 
     public static final String PDF_READER_KEY_TITLE = "PDF_READER_KEY_TITLE";
     public static final String PDF_READER_KEY_URL = "PDF_READER_KEY_URL";
