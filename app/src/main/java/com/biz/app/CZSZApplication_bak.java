@@ -1,28 +1,29 @@
-package com.biz;
+package com.biz.app;
 
-import android.os.Environment;
+import java.io.File;
 
 import com.danikula.videocache.HttpProxyCacheServer;
 import com.facebook.cache.disk.DiskCacheConfig;
 import com.facebook.common.logging.FLog;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
-import base.XBaseApplication;
 
-import java.io.File;
+import android.os.Environment;
+
+import base.XBaseApplication;
 
 /**
  *
  */
-public class CZSZApplication extends XBaseApplication {
+public class CZSZApplication_bak extends XBaseApplication {
 
     private HttpProxyCacheServer mProxyServer;
 
 
-    private static CZSZApplication theSingletonInstance;
+    private static CZSZApplication_bak theSingletonInstance;
 
     // Returns the application instance
-    public static CZSZApplication getInstance() {
+    public static CZSZApplication_bak getInstance() {
         return theSingletonInstance;
     }
 

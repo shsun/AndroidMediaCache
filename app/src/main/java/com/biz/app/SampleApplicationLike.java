@@ -1,4 +1,4 @@
-package com.biz;
+package com.biz.app;
 
 import android.annotation.TargetApi;
 import android.app.Application;

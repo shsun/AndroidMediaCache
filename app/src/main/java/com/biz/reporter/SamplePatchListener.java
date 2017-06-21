@@ -20,7 +20,7 @@ import java.io.File;
 import java.util.Properties;
 
 import com.biz.util.Utils;
-import com.biz.BuildInfo;
+import com.biz.app.BuildInfo;
 import com.biz.SampleUncaughtExceptionHandler;
 import com.tencent.tinker.lib.listener.DefaultPatchListener;
 import com.tencent.tinker.lib.tinker.Tinker;

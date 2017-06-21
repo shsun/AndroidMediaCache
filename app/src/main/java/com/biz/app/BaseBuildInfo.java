@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-package com.biz;
+package com.biz.app;
+
+import com.biz.BuildConfig;
 
 /**
  * Created by zhangshaowen on 16/6/30.

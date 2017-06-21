@@ -1,4 +1,4 @@
-package com.biz;
+package com.biz.app;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import base.net.XUrlConfigManager;
+
+import com.biz.R;
 import com.biz.adapter.WelcomeViewPagerAdapter;
 import base.controller.XBaseActivity;
 
