@@ -1,5 +1,9 @@
 buildscript {
     repositories {
+
+        // mavenLocal要特别注意别漏了，否则更改资源文件会出空指针异常
+        mavenLocal()
+
         // mavenCentral()
         // maven{ url 'http://maven.oschina.net/content/groups/public/'}
 
@@ -11,10 +15,22 @@ buildscript {
             url cn
             artifactUrls abroad
         }
+
+
+
+        //mavenLocal要特别注意别漏了，否则更改资源文件会出空指针异常
+        mavenLocal()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
         //classpath 'com.antfortune.freeline:gradle:0.8.7'
+
+
+        // classpath 'com.android.tools.build:gradle:2.2.1'
+        // 集成Tinker，热修复
+        classpath ('com.tencent.tinker:tinker-patch-gradle-plugin:1.7.11')
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
     }
 }
 
@@ -25,6 +41,7 @@ tasks.withType(Javadoc) {
 
 allprojects {
     repositories {
+        mavenLocal()
 
         maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
         jcenter()
