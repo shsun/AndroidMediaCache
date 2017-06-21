@@ -83,7 +83,6 @@ dependencies {
     //    compile project(':library')
     //compile files('libs/tbs_sdk_thirdapp_v3.0.0.1038_43000_sharewithdownload_obfs_20170110_144724.jar')
     compile fileTree(include: '*.jar', dir: 'libs')
-
     compile 'com.android.support:support-v4:24.0.0'
     //compile 'com.android.support:appcompat-v7:23.1.0+'
     compile 'com.android.support:appcompat-v7:24+'
@@ -125,15 +124,13 @@ dependencies {
     compile files('libs/unity-classes.jar')
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.android.support:support-annotations:25.3.1'
-
     // compile 'org.springframework.android:spring-android-rest-template:2.0.0.M3'
 
 
     //可选，用于生成application类
-    provided('com.tencent.tinker:tinker-android-anno:1.7.11')
+    provided 'com.tencent.tinker:tinker-android-anno:1.7.11'
     //tinker的核心库
-    compile('com.tencent.tinker:tinker-android-lib:1.7.11')
-
+    compile 'com.tencent.tinker:tinker-android-lib:1.7.11'
 }
 
 
@@ -178,8 +175,11 @@ android {
             } catch (ex) {
                 throw new InvalidUserDataException(ex.toString())
             }
+            keyAlias 'release'
+            keyPassword '123456'
+            storeFile file('/Users/shsun/repos/AndroidMediaCache/app/keystore/release.keystore')
+            storePassword '123456'
         }
-
         debug {
             storeFile file("./keystore/debug.keystore")
             storePassword "123456"

@@ -12,8 +12,9 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.VideoView;
 
-import com.biz.CZSZApplication;
+//import com.biz.CZSZApplication;
 import com.biz.R;
+import com.biz.app.SampleApplicationLike;
 import com.danikula.videocache.CacheListener;
 import com.danikula.videocache.HttpProxyCacheServer;
 import base.controller.XBaseFragment;
@@ -88,21 +89,26 @@ public class MyVideoFragment extends XBaseFragment {
 
 
     private void checkCachedState() {
+
+        /*
         HttpProxyCacheServer proxy = CZSZApplication.getInstance().getProxyCacheServer();
         boolean fullyCached = proxy.isCached(mRemoteVideoURL);
         setCachedState(fullyCached);
         if (fullyCached) {
             mSeekBar.setSecondaryProgress(100);
         }
+        */
     }
 
     private void startVideo() {
+        /*
         HttpProxyCacheServer proxy = CZSZApplication.getInstance().getProxyCacheServer();
         proxy.registerCacheListener(mCacheListener, mRemoteVideoURL);
         String proxyUrl = proxy.getProxyUrl(mRemoteVideoURL);
         Log.d(TAG, "Use proxy mRemoteVideoURL " + proxyUrl + " instead of original mRemoteVideoURL " + mRemoteVideoURL);
         mVideoView.setVideoPath(proxyUrl);
         mVideoView.start();
+        */
     }
 
     private void setCachedState(boolean cached) {
@@ -162,8 +168,10 @@ public class MyVideoFragment extends XBaseFragment {
     public void onDestroy() {
         super.onDestroy();
 
+        /*
         mVideoView.stopPlayback();
         CZSZApplication.getInstance().getProxyCacheServer().unregisterCacheListener(mCacheListener);
+        */
     }
 
     private void updateVideoProgress() {

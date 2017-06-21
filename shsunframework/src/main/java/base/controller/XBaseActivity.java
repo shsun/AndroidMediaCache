@@ -1,10 +1,12 @@
 package base.controller;
 
 import base.XBaseApplication;
+import base.XBaseTinkerApplication;
 import base.eventbus.XBaseEvent;
 import base.net.XRequestManager;
 
 import android.app.Activity;
+import android.app.Application;
 import android.os.Bundle;
 
 import org.greenrobot.eventbus.EventBus;
@@ -29,7 +31,13 @@ public abstract class XBaseActivity extends Activity implements IXController {
 
         this.requestManager = new XRequestManager();
         EventBus.getDefault().register(this);
-        ((XBaseApplication) this.getApplication()).addActivity(this);
+
+
+        Application abc = this.getApplication();
+
+        ((XBaseTinkerApplication) this.getApplication()).addActivity(this);
+
+
 
         Bundle bundle = this.getIntent().getExtras();
         //
