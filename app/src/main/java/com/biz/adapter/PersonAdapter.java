@@ -43,6 +43,11 @@ public class PersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+
+        Context a = viewGroup.getContext();
+        LayoutInflater b = LayoutInflater.from(a);
+        View c = b.inflate(R.layout.common_listview_item_content, null);
+
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.common_listview_item_content, null);
         LinearLayout.LayoutParams lp =
                 new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);

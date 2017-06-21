@@ -1,9 +1,11 @@
 package base.controller;
 
+import android.app.Application;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
-import base.XBaseApplication;
+import base.XBaseSystemApplication;
+import base.XBaseTinkerApplication;
 import base.eventbus.XBaseEvent;
 import base.net.XRequestManager;
 
@@ -28,8 +30,15 @@ public abstract class XBaseFragmentActivity extends FragmentActivity implements 
         this.requestManager = new XRequestManager();
 
         EventBus.getDefault().register(this);
-        ((XBaseApplication) this.getApplication()).addActivity(this);
 
+        Application application = this.getApplication();
+        if (application instanceof XBaseSystemApplication) {
+            ((XBaseSystemApplication) application).addActivity(this);
+
+        } else if (application instanceof XBaseTinkerApplication) {
+            ((XBaseTinkerApplication) application).addActivity(this);
+        }
+        
         Bundle bundle = this.getIntent().getExtras();
         initVariables(savedInstanceState, bundle);
         initView(savedInstanceState, bundle);
@@ -52,7 +61,7 @@ public abstract class XBaseFragmentActivity extends FragmentActivity implements 
     protected void onDestroy() {
         this.cancelAllRequest();
         EventBus.getDefault().unregister(this);
-        ((XBaseApplication) this.getApplication()).finishActivity(this);
+        ((XBaseSystemApplication) this.getApplication()).finishActivity(this);
 
         super.onDestroy();
     }

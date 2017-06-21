@@ -10,12 +10,12 @@ import com.facebook.imagepipeline.core.ImagePipelineConfig;
 
 import android.os.Environment;
 
-import base.XBaseApplication;
+import base.XBaseSystemApplication;
 
 /**
  *
  */
-public class CZSZApplication_bak extends XBaseApplication {
+public class CZSZApplication_bak extends XBaseSystemApplication {
 
     private HttpProxyCacheServer mProxyServer;
 

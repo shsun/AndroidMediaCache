@@ -1,13 +1,15 @@
 package base.controller;
 
+import android.app.Application;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 //import com.biz.entry.PersonEntry;
+import base.XBaseTinkerApplication;
 import base.eventbus.XBaseEvent;
 import base.net.XRequestManager;
 import com.google.gson.Gson;
-import base.XBaseApplication;
+import base.XBaseSystemApplication;
 import com.zhy.http.okhttp.OkHttpUtils;
 
 import org.greenrobot.eventbus.EventBus;
@@ -30,7 +32,14 @@ public abstract class XBaseAppCompatActivity extends AppCompatActivity implement
 
         this.requestManager = new XRequestManager();
         EventBus.getDefault().register(this);
-        ((XBaseApplication) this.getApplication()).addActivity(this);
+
+        Application application = this.getApplication();
+        if (application instanceof XBaseSystemApplication) {
+            ((XBaseSystemApplication) application).addActivity(this);
+
+        } else if (application instanceof XBaseTinkerApplication) {
+            ((XBaseTinkerApplication) application).addActivity(this);
+        }
 
 
         Bundle bundle = this.getIntent().getExtras();
@@ -88,7 +97,7 @@ public abstract class XBaseAppCompatActivity extends AppCompatActivity implement
         this.cancelAllRequest();
 
         EventBus.getDefault().unregister(this);
-        ((XBaseApplication) this.getApplication()).finishActivity(this);
+        ((XBaseSystemApplication) this.getApplication()).finishActivity(this);
 
         super.onDestroy();
     }

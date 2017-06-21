@@ -1,6 +1,6 @@
 package base.controller;
 
-import base.XBaseApplication;
+import base.XBaseSystemApplication;
 import base.XBaseTinkerApplication;
 import base.eventbus.XBaseEvent;
 import base.net.XRequestManager;
@@ -33,9 +33,13 @@ public abstract class XBaseActivity extends Activity implements IXController {
         EventBus.getDefault().register(this);
 
 
-        Application abc = this.getApplication();
+        Application application = this.getApplication();
+        if (application instanceof XBaseSystemApplication) {
+            ((XBaseSystemApplication) application).addActivity(this);
 
-        ((XBaseTinkerApplication) this.getApplication()).addActivity(this);
+        } else if (application instanceof XBaseTinkerApplication) {
+            ((XBaseTinkerApplication) application).addActivity(this);
+        }
 
 
 
@@ -58,7 +62,7 @@ public abstract class XBaseActivity extends Activity implements IXController {
         this.cancelAllRequest();
 
         EventBus.getDefault().unregister(this);
-        ((XBaseApplication) this.getApplication()).finishActivity(this);
+        ((XBaseSystemApplication) this.getApplication()).finishActivity(this);
 
         super.onDestroy();
     }

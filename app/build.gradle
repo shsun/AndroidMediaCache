@@ -417,7 +417,7 @@ if (buildWithTinker()) {
              *
              */
             loader = [
-                    //use sample, let BaseBuildInfo unchangeable with tinker
+                    // use sample, let BaseBuildInfo unchangeable with tinker
                     "com.biz.app.BaseBuildInfo"
             ]
         }

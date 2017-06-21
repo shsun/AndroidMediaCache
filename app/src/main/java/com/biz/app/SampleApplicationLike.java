@@ -63,6 +63,7 @@ import com.biz.util.TinkerManager;
 
 //@SuppressWarnings("unused")
 //@DefaultLifeCycle(application = "com.biz.app.SampleApplication", flags = ShareConstants.TINKER_ENABLE_ALL)
+
 public class SampleApplicationLike extends DefaultApplicationLike {
 
     private static final String TAG = "SampleApplicationLike";
