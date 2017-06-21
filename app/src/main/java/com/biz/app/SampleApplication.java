@@ -2,11 +2,17 @@ package com.biz.app;
 
 import com.tencent.tinker.loader.shareutil.ShareConstants;
 
+import base.XBaseTinkerApplication;
+
 /**
  * Created by shsun on 6/21/17.
  */
 
 public class SampleApplication extends XBaseTinkerApplication {
+
+    private static final String TAG = "SampleApplication";
+
+    private String theProperty = "what the fuck is going on";
 
     public SampleApplication() {
         super(
