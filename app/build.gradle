@@ -14,7 +14,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
     }
 }
 
@@ -41,7 +41,7 @@ apply plugin: 'com.tencent.tinker.patch'
 android {
     compileSdkVersion 24
     //compileSdkVersion 21
-    buildToolsVersion "25.0.0"
+    // buildToolsVersion "25.0.0"
 
     defaultConfig {
         applicationId 'com.biz'
@@ -140,11 +140,12 @@ def gitSha() {
         println '\n\ngitRev=' + gitRev + '\n'
 
         if (gitRev == null) {
-            throw new GradleException("can't get git rev, you should add git to system path or just input test value, such as 'testTinkerId'")
+
+            // throw new GradleException("can't get git rev, you should add git to system path or just input test value, such as 'testTinkerId'")
         }
         return gitRev
     } catch (Exception e) {
-        throw new GradleException("can't get git rev, you should add git to system path or just input test value, such as 'testTinkerId'")
+        // throw new GradleException("can't get git rev, you should add git to system path or just input test value, such as 'testTinkerId'")
     }
 }
 
@@ -173,7 +174,7 @@ android {
                 keyAlias "release"
                 keyPassword "123456"
             } catch (ex) {
-                throw new InvalidUserDataException(ex.toString())
+                // throw new InvalidUserDataException(ex.toString())
             }
             keyAlias 'release'
             keyPassword '123456'
