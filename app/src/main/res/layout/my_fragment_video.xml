@@ -4,6 +4,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <ImageView
+        android:id="@+id/iconView"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="60.0dip"
+        android:layout_height="40.0dip">
+    </ImageView>
+
+
+    <com.facebook.drawee.view.DraweeView
+        android:id="@+id/iconView1"
+        android:layout_width="60.0dip"
+        android:layout_height="40.0dip"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+    </com.facebook.drawee.view.DraweeView>
+
+    <com.facebook.drawee.view.GenericDraweeView
+        android:id="@+id/iconView2"
+        android:layout_width="60.0dip"
+        android:layout_height="40.0dip"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+    </com.facebook.drawee.view.GenericDraweeView>
+
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/iconView3"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="60.0dip"
+        android:layout_height="40.0dip">
+    </com.facebook.drawee.view.SimpleDraweeView>
+
+
+
     <VideoView
         android:id="@+id/videoView"
         android:layout_width="match_parent"
@@ -25,5 +62,9 @@
         android:layout_centerHorizontal="true"
         android:layout_margin="16dp"
         android:max="100" />
+
+
+
+
 
 </RelativeLayout>

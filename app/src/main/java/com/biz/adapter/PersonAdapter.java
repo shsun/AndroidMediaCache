@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -46,7 +47,13 @@ public class PersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         Context a = viewGroup.getContext();
         LayoutInflater b = LayoutInflater.from(a);
+
+
+        View c00 = b.inflate(R.layout.my_fragment_video, null);
+
+
         View c = b.inflate(R.layout.common_listview_item_content, null);
+
 
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.common_listview_item_content, null);
         LinearLayout.LayoutParams lp =

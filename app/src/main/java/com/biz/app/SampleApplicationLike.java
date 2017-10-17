@@ -5,68 +5,31 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.os.Environment;
 import android.support.multidex.MultiDex;
 
+import com.biz.Constants;
 import com.biz.log.MyLogImp;
-import com.tencent.tinker.anno.DefaultLifeCycle;
+import com.danikula.videocache.HttpProxyCacheServer;
+import com.facebook.cache.disk.DiskCacheConfig;
+import com.facebook.common.logging.FLog;
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.tencent.tinker.lib.tinker.Tinker;
 import com.tencent.tinker.lib.tinker.TinkerInstaller;
-import com.tencent.tinker.loader.app.ApplicationLifeCycle;
 import com.tencent.tinker.loader.app.DefaultApplicationLike;
-import com.tencent.tinker.loader.shareutil.ShareConstants;
-
-/**
- * Created by shsun on 6/21/17.
- */
-
-
-        import android.annotation.TargetApi;
-        import android.app.Application;
-        import android.content.Context;
-        import android.content.Intent;
-        import android.os.Build;
-        import android.support.multidex.MultiDex;
-
-        import com.tencent.tinker.anno.DefaultLifeCycle;
-        import com.tencent.tinker.lib.tinker.Tinker;
-        import com.tencent.tinker.lib.tinker.TinkerInstaller;
-        import com.tencent.tinker.loader.app.ApplicationLifeCycle;
-        import com.tencent.tinker.loader.app.DefaultApplicationLike;
-        import com.tencent.tinker.loader.shareutil.ShareConstants;
 
 import com.biz.util.SampleApplicationContext;
-import com.biz.util.Utils;
 import com.biz.util.TinkerManager;
 
-
-/**
- * because you can not use any other class in your application, we need to
- * move your implement of Application to {@link ApplicationLifeCycle}
- * As Application, all its direct reference class should be in the main dex.
- *
- * We use tinker-android-anno to make sure all your classes can be patched.
- *
- * application: if it is start with '.', we will add SampleApplicationLifeCycle's package name
- *
- * flags:
- * TINKER_ENABLE_ALL: support dex, lib and resource
- * TINKER_DEX_MASK: just support dex
- * TINKER_NATIVE_LIBRARY_MASK: just support lib
- * TINKER_RESOURCE_MASK: just support resource
- *
- * loaderClass: define the tinker loader class, we can just use the default TinkerLoader
- *
- * loadVerifyFlag: whether check files' md5 on the load time, defualt it is false.
- *
- * Created by zhangshaowen on 16/3/17.
- */
+import java.io.File;
 
 //@SuppressWarnings("unused")
 //@DefaultLifeCycle(application = "com.biz.app.SampleApplication", flags = ShareConstants.TINKER_ENABLE_ALL)
-
 public class SampleApplicationLike extends DefaultApplicationLike {
 
     private static final String TAG = "SampleApplicationLike";
+    private HttpProxyCacheServer mProxyServer;
 
     public SampleApplicationLike(Application application, int tinkerFlags, boolean tinkerLoadVerifyFlag,
                                  long applicationStartElapsedTime, long applicationStartMillisTime, Intent tinkerResultIntent) {
@@ -101,11 +64,43 @@ public class SampleApplicationLike extends DefaultApplicationLike {
         //or you can put com.tencent.tinker.** to main dex
         TinkerManager.installTinker(this);
         Tinker tinker = Tinker.with(getApplication());
+
+        Application application = this.getApplication();
+        //
+        com.xsj.crasheye.Crasheye.init(application, Constants.APP_KEY_OF_CRASHEYE);
+
+        FLog.setMinimumLoggingLevel(FLog.VERBOSE);
+        File file = new File(Environment.getExternalStorageDirectory().getAbsoluteFile(), "imgcache");
+        DiskCacheConfig diskCfg = DiskCacheConfig.newBuilder(application)
+                .setBaseDirectoryPath(file)
+                .setBaseDirectoryName("czsccj")
+                .setMaxCacheSize(200 * 1024 * 1024)//200MB
+                .build();
+
+        ImagePipelineConfig imgCfg = ImagePipelineConfig.newBuilder(application)
+                .setMainDiskCacheConfig(diskCfg)
+                .build();
+
+        Fresco.initialize(application, imgCfg);
     }
 
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     public void registerActivityLifecycleCallbacks(Application.ActivityLifecycleCallbacks callback) {
-        getApplication().registerActivityLifecycleCallbacks(callback);
+        Application application = this.getApplication();
+        application.registerActivityLifecycleCallbacks(callback);
+    }
+
+    public HttpProxyCacheServer getProxyCacheServer() {
+        if (mProxyServer == null) {
+            // limit total count of files in cache:
+//            mProxyServer = new HttpProxyCacheServer.Builder(this)
+//                    .maxCacheFilesCount(20)
+//                    .build();
+            mProxyServer = new HttpProxyCacheServer.Builder(this.getApplication())
+                    .maxCacheSize(1024 * 1024 * 1024)       // 100 M for cache
+                    .build();
+        }
+        return mProxyServer;
     }
 
 }

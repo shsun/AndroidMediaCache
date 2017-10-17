@@ -2,6 +2,7 @@ package com.biz.app;
 
 import java.io.File;
 
+import com.biz.Constants;
 import com.danikula.videocache.HttpProxyCacheServer;
 import com.facebook.cache.disk.DiskCacheConfig;
 import com.facebook.common.logging.FLog;
@@ -29,7 +30,7 @@ public class CZSZApplication_bak extends XBaseSystemApplication {
 
     @Override
     public void onCreate() {
-        com.xsj.crasheye.Crasheye.init(this, "e0ce3280");
+        com.xsj.crasheye.Crasheye.init(this, Constants.APP_KEY_OF_CRASHEYE);
 
         super.onCreate();
         theSingletonInstance = this;
