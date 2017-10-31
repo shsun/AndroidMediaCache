@@ -14,7 +14,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        // classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
     }
 }
 
@@ -34,7 +34,7 @@ repositories {
 
 //apply plugin: 'com.antfortune.freeline'
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
+// apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'build-announcements'
 apply plugin: 'com.tencent.tinker.patch'
 
@@ -71,13 +71,13 @@ android {
 }
 
 
-apt {
-    arguments {
-        androidManifestFile variant.outputs[0].processResources.manifestFile
-        resourcePackageName android.defaultConfig.applicationId
-        eventBusIndex "com.study.sangerzhong.studyapp.MyEventBusIndex"
-    }
-}
+//apt {
+//    arguments {
+//        androidManifestFile variant.outputs[0].processResources.manifestFile
+//        resourcePackageName android.defaultConfig.applicationId
+//        eventBusIndex "com.study.sangerzhong.studyapp.MyEventBusIndex"
+//    }
+//}
 
 dependencies {
     //    compile project(':library')
@@ -153,7 +153,7 @@ def javaVersion = JavaVersion.VERSION_1_7
 
 android {
     compileSdkVersion 24
-    buildToolsVersion '25.0.0'
+    buildToolsVersion '26.0.2'
 
     compileOptions {
         sourceCompatibility javaVersion
